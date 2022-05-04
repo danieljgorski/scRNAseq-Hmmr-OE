@@ -82,7 +82,7 @@ p <- VlnPlot(obj,
              features = c("nFeature_RNA", "nCount_RNA", "percent.mt"),
              group.by = "sample",
              pt.size = 0)
-pdf(file = "results/pre-processing/VlnPlot_QC_metrics_pre-filter.pdf",
+pdf(file = "results/preprocessing/VlnPlot_QC_metrics_pre-filter.pdf",
     width = 12,
     height = 6,
     pointsize = 12,
@@ -98,7 +98,7 @@ qc_filter <- as.data.frame(cells_pre_qc)
 qc_filter$cells_post_qc <- cells_post_qc
 qc_filter$percent_passed <- percent_passed
 write.csv(qc_filter,
-          file = "results/pre-processing/qc_filter.csv",
+          file = "results/preprocessing/qc_filter.csv",
           row.names = F)
 
 # Post-filter QC metrics by sample
@@ -106,7 +106,7 @@ p <- VlnPlot(obj,
              features = c("nFeature_RNA", "nCount_RNA", "percent.mt"),
              group.by = "sample",
              pt.size = 0)
-pdf(file = "results/pre-processing/VlnPlot_QC_metrics_post-filter.pdf",
+pdf(file = "results/preprocessing/VlnPlot_QC_metrics_post-filter.pdf",
     width = 12,
     height = 6,
     pointsize = 12,
