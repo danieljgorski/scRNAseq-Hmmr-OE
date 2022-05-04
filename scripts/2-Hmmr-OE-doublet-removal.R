@@ -1,0 +1,189 @@
+# Load libraries----
+library(Seurat) #v4.0.1
+library(DoubletFinder) #v2.0.3
+library(dplyr)
+library(ggplot2)
+
+# Load object----
+load("results/objects/obj.Rdata")
+
+# DoubletFinder classification----
+obj_list <- list()
+for (i in unique(obj@meta.data$sample)) {
+  
+  # Cluster and sweep
+  obj_sub <- subset(x = obj, subset = sample == i)
+  obj_sub <- SCTransform(obj_sub)
+  obj_sub <- RunPCA(obj_sub)
+  obj_sub <- RunUMAP(obj_sub, reduction = "pca", dims = 1:18, verbose = T)
+  obj_sub <- FindNeighbors(obj_sub, dims = 1:18, verbose = T) 
+  obj_sub <- FindClusters(obj_sub, resolution = 0.8, verbose = T)
+  sweep.res.list.obj <- paramSweep_v3(obj_sub, PCs = 1:18, sct = T)
+  sweep.stats.obj <- summarizeSweep(sweep.res.list.obj, GT = FALSE)
+  bcmvn.obj <- find.pK(sweep.stats.obj)
+  
+  # Model homotypic doublets
+  # https://github.com/chris-mcginnis-ucsf/DoubletFinder/issues/54
+  homotypic.prop <- modelHomotypic(as.character(obj_sub@active.ident)) 
+  # assuming ~ 0.8% per 1000 cells recovered
+  doublet_rate <- (ncol(obj_sub)/1000)*0.008 
+  nExp_poi <- round(doublet_rate*length(colnames(obj_sub)))  
+  nExp_poi.adj <- round(nExp_poi*(1-homotypic.prop))
+  
+  # Choose pK
+  # https://github.com/chris-mcginnis-ucsf/DoubletFinder/issues/62
+  pK=as.numeric(as.character(bcmvn.obj$pK)) 
+  BCmetric=bcmvn.obj$BCmetric
+  pK_choose = pK[which(BCmetric %in% max(BCmetric))]
+  par(mar=c(5,4,4,8)+1,cex.main=1.2,font.main=2)
+  
+  # BCmvn distributions
+  pdf(file = paste0("results/doublet-removal/BCmvn_distributions_",
+                    i,
+                    ".pdf"),
+      useDingbats = F)
+  plot(x = pK,
+       y = BCmetric,
+       pch = 16,
+       type="b",
+       col = "blue",
+       lty=1)
+  abline(v=pK_choose,lwd=2,col='red',lty=2)
+  title(paste0("BCmvn_distributions_", i))
+  text(pK_choose, max(BCmetric), as.character(pK_choose), pos = 4, col = "red")
+  dev.off()
+  
+  # Classification
+  obj_sub <- doubletFinder_v3(obj_sub,
+                              PCs = 1:18,
+                              pN = 0.25,
+                              pK = pK_choose,
+                              nExp = nExp_poi.adj,
+                              reuse.pANN = FALSE,
+                              sct = T)
+  colnames(obj_sub@meta.data)[ncol(obj_sub@meta.data)] <- "doublet_classification"
+  obj_sub@meta.data$doublet_classification <- factor(obj_sub@meta.data$doublet_classification,
+                                                     levels = c("Singlet", "Doublet"))
+  
+  # DimPlot of classification
+  p <- DimPlot(obj_sub, group.by = "doublet_classification") + ggtitle(i)
+  pdf(file = paste0("results/doublet-removal/DimPlot_classification_",
+                    i,
+                    ".pdf"),
+      useDingbats = F)
+  print(p)
+  dev.off()
+  
+  # VlnPlot of classification
+  v <- VlnPlot(obj_sub,
+               features = "nFeature_RNA",
+               group.by = "doublet_classification") +
+    ylab("nFeature_RNA") +
+    ggtitle(i) +
+    NoLegend()
+  pdf(file = paste0("results/doublet-removal/VlnPlot_nFeature_RNA_classification_",
+                    i,
+                    ".pdf"),
+      useDingbats = F)
+  print(v)
+  dev.off()
+  
+  # Append classified objects to list
+  obj_list[i] <- obj_sub
+}
+
+# Unlist and merge classified objects
+list2env(obj_list, .GlobalEnv)
+obj <- merge(x=S18_G1_OE, y=c(S18_G2_WT,
+                              S18_G3_WT,
+                              S18_G6_OE,
+                              S18_G7_OE,
+                              S18_G8_WT,
+                              S18_R1_OE,
+                              S47_B1_OE,
+                              S47_B3_OE,
+                              S47_B5_WT,
+                              S47_B6_WT,
+                              S48_R1_OE,
+                              S48_R3_OE,
+                              S48_R5_WT))
+
+# Clean up environment
+rm(obj_list,
+   obj_sub)
+rm(sweep.res.list.obj,
+   sweep.stats.obj,
+   BCmetric,
+   doublet_rate,
+   homotypic.prop,
+   i,
+   nExp_poi,
+   nExp_poi.adj,
+   pK,
+   pK_choose,
+   bcmvn.obj)
+rm(S18_G1_OE,
+   S18_G2_WT,
+   S18_G3_WT,
+   S18_G6_OE,
+   S18_G7_OE,
+   S18_G8_WT,
+   S18_R1_OE,
+   S47_B1_OE,
+   S47_B3_OE,
+   S47_B5_WT,
+   S47_B6_WT,
+   S48_R1_OE,
+   S48_R3_OE,
+   S48_R5_WT)
+gc()
+
+# Save barcode classifications and summary
+barcode <- rownames(obj@meta.data)
+classification <- obj@meta.data$doublet_classification
+sample <- obj@meta.data$sample
+barcode_classification <- data.frame(barcode, classification, sample)
+write.csv(barcode_classification,
+          file = "results/doublet-removal/barcode_classification.csv",
+          row.names = F)
+
+# Calculate total doublet frequency
+doublet_summary <- barcode_classification %>%
+  group_by(classification) %>%
+  summarise(count = n()) %>%
+  mutate(freq = count / sum(count))
+write.csv(doublet_summary,
+          file = "results/doublet-removal/doublet_summary.csv",
+          row.names = F)
+
+# Calculate doublet frequency by sample
+doublet_summary_by_sample <- barcode_classification %>%
+  group_by(sample, classification) %>%
+  summarise(count = n()) %>%
+  mutate(freq = count / sum(count))
+write.csv(doublet_summary_by_sample,
+          file = "results/doublet-removal/doublet_summary_by_sample.csv",
+          row.names = F)
+
+# have to save obj, and restart R to clear memory
+save(obj, file = "results/objects/obj.Rdata")
+
+# Cluster merged object to visualize doublets
+obj <- SCTransform(obj, verbose = T)
+obj <- RunPCA(obj, verbose = T)
+obj <- RunUMAP(obj, reduction = "pca", dims = 1:18, verbose = T)
+obj <- FindNeighbors(obj, dims = 1:18, verbose = T)
+obj <- FindClusters(obj, resolution = 0.8, verbose = T)
+obj@meta.data$doublet_classification <- factor(obj@meta.data$doublet_classification, 
+                                               levels = c("Singlet", "Doublet"))
+
+p <- DimPlot(obj, group.by = "doublet_classification", raster = F)
+pdf(file = "results/doublet-removal/DimPlot_doublet_classification.pdf",
+    useDingbats = F)
+print(p)
+dev.off()
+
+# Subset for singlets only and save object----
+obj <- subset(x = obj, subset = doublet_classification == "Singlet")
+save(obj, file = "results/objects/obj.Rdata")
+
