@@ -10,33 +10,32 @@ load("results/objects/obj.Rdata")
 # DoubletFinder classification----
 obj_list <- list()
 for (i in unique(obj@meta.data$sample)) {
-  
   # Cluster and sweep
   obj_sub <- subset(x = obj, subset = sample == i)
   obj_sub <- SCTransform(obj_sub)
   obj_sub <- RunPCA(obj_sub)
   obj_sub <- RunUMAP(obj_sub, reduction = "pca", dims = 1:18, verbose = T)
-  obj_sub <- FindNeighbors(obj_sub, dims = 1:18, verbose = T) 
+  obj_sub <- FindNeighbors(obj_sub, dims = 1:18, verbose = T)
   obj_sub <- FindClusters(obj_sub, resolution = 0.8, verbose = T)
-  sweep.res.list.obj <- paramSweep_v3(obj_sub, PCs = 1:18, sct = T)
-  sweep.stats.obj <- summarizeSweep(sweep.res.list.obj, GT = FALSE)
-  bcmvn.obj <- find.pK(sweep.stats.obj)
-  
+  sweep_res_list_obj <- paramSweep_v3(obj_sub, PCs = 1:18, sct = T)
+  sweep_stats_obj <- summarizeSweep(sweep_res_list_obj, GT = FALSE)
+  bcmvn_obj <- find.pK(sweep_stats_obj)
+
   # Model homotypic doublets
   # https://github.com/chris-mcginnis-ucsf/DoubletFinder/issues/54
-  homotypic.prop <- modelHomotypic(as.character(obj_sub@active.ident)) 
+  homotypic_prop <- modelHomotypic(as.character(obj_sub@active.ident))
   # assuming ~ 0.8% per 1000 cells recovered
-  doublet_rate <- (ncol(obj_sub)/1000)*0.008 
-  nExp_poi <- round(doublet_rate*length(colnames(obj_sub)))  
-  nExp_poi.adj <- round(nExp_poi*(1-homotypic.prop))
-  
+  doublet_rate <- (ncol(obj_sub) / 1000) * 0.008
+  nexp_poi <- round(doublet_rate * length(colnames(obj_sub)))
+  nexp_poi_adj <- round(nexp_poi * (1 - homotypic_prop))
+
   # Choose pK
   # https://github.com/chris-mcginnis-ucsf/DoubletFinder/issues/62
-  pK=as.numeric(as.character(bcmvn.obj$pK)) 
-  BCmetric=bcmvn.obj$BCmetric
+  pK = as.numeric(as.character(bcmvn_obj$pK))
+  BCmetric = bcmvn_obj$BCmetric
   pK_choose = pK[which(BCmetric %in% max(BCmetric))]
-  par(mar=c(5,4,4,8)+1,cex.main=1.2,font.main=2)
-  
+  par(mar = c(5, 4, 4, 8) + 1, cex.main = 1.2, font.main = 2)
+
   # BCmvn distributions
   pdf(file = paste0("results/doublet-removal/BCmvn_distributions_",
                     i,
@@ -45,26 +44,26 @@ for (i in unique(obj@meta.data$sample)) {
   plot(x = pK,
        y = BCmetric,
        pch = 16,
-       type="b",
+       type = "b",
        col = "blue",
-       lty=1)
-  abline(v=pK_choose,lwd=2,col='red',lty=2)
+       lty = 1)
+  abline(v = pK_choose, lwd = 2, col = "red", lty = 2)
   title(paste0("BCmvn_distributions_", i))
   text(pK_choose, max(BCmetric), as.character(pK_choose), pos = 4, col = "red")
   dev.off()
-  
+
   # Classification
   obj_sub <- doubletFinder_v3(obj_sub,
                               PCs = 1:18,
                               pN = 0.25,
                               pK = pK_choose,
-                              nExp = nExp_poi.adj,
+                              nExp = nexp_poi_adj,
                               reuse.pANN = FALSE,
                               sct = T)
   colnames(obj_sub@meta.data)[ncol(obj_sub@meta.data)] <- "doublet_classification"
   obj_sub@meta.data$doublet_classification <- factor(obj_sub@meta.data$doublet_classification,
                                                      levels = c("Singlet", "Doublet"))
-  
+
   # DimPlot of classification
   p <- DimPlot(obj_sub, group.by = "doublet_classification") + ggtitle(i)
   pdf(file = paste0("results/doublet-removal/DimPlot_classification_",
@@ -73,7 +72,7 @@ for (i in unique(obj@meta.data$sample)) {
       useDingbats = F)
   print(p)
   dev.off()
-  
+
   # VlnPlot of classification
   v <- VlnPlot(obj_sub,
                features = "nFeature_RNA",
@@ -87,14 +86,14 @@ for (i in unique(obj@meta.data$sample)) {
       useDingbats = F)
   print(v)
   dev.off()
-  
+
   # Append classified objects to list
   obj_list[i] <- obj_sub
 }
 
 # Unlist and merge classified objects
 list2env(obj_list, .GlobalEnv)
-obj <- merge(x=S18_G1_OE, y=c(S18_G2_WT,
+obj <- merge(x = S18_G1_OE, y = c(S18_G2_WT,
                               S18_G3_WT,
                               S18_G6_OE,
                               S18_G7_OE,
@@ -111,17 +110,17 @@ obj <- merge(x=S18_G1_OE, y=c(S18_G2_WT,
 # Clean up environment
 rm(obj_list,
    obj_sub)
-rm(sweep.res.list.obj,
-   sweep.stats.obj,
+rm(sweep_res_list_obj,
+   sweep_stats_obj,
    BCmetric,
    doublet_rate,
-   homotypic.prop,
+   homotypic_prop,
    i,
-   nExp_poi,
-   nExp_poi.adj,
+   nexp_poi,
+   nexp_poi_adj,
    pK,
    pK_choose,
-   bcmvn.obj)
+   bcmvn_obj)
 rm(S18_G1_OE,
    S18_G2_WT,
    S18_G3_WT,
@@ -174,7 +173,7 @@ obj <- RunPCA(obj, verbose = T)
 obj <- RunUMAP(obj, reduction = "pca", dims = 1:18, verbose = T)
 obj <- FindNeighbors(obj, dims = 1:18, verbose = T)
 obj <- FindClusters(obj, resolution = 0.8, verbose = T)
-obj@meta.data$doublet_classification <- factor(obj@meta.data$doublet_classification, 
+obj@meta.data$doublet_classification <- factor(obj@meta.data$doublet_classification,
                                                levels = c("Singlet", "Doublet"))
 
 p <- DimPlot(obj, group.by = "doublet_classification", raster = F)
@@ -186,4 +185,3 @@ dev.off()
 # Subset for singlets only and save object----
 obj <- subset(x = obj, subset = doublet_classification == "Singlet")
 save(obj, file = "results/objects/obj.Rdata")
-
