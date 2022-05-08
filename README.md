@@ -6,6 +6,8 @@ This project consists of single-cell RNA sequencing of cardiac interstitial cell
 To include:
 * Abstract
 * Link to data
+* Package details
 * Instructions for analysis (single v. complete)
 * Summary of analysis with basic steps
 * Summary of results
+* Explanation that parts are interactive
