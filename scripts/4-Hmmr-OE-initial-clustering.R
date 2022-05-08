@@ -1,24 +1,24 @@
+# Cluster object after doublet removal
+
 # Load libraries
 library(Seurat) #v4.0.1
 
 # Load object
 load("results/objects/obj.Rdata")
 
-# Clustering object after doublet removal
-
 # SCTransform
 obj <- SCTransform(obj, verbose = T, variable.features.n = 3002)
 
 # Take Hmmr and FIJ5 out of variable features, intentional over-expression
 # will influence variable features and therefore PCA and clustering
-var.features <- VariableFeatures(obj, assay = "SCT")
-which(var.features=="Hmmr")
-which(var.features=="FIJ5")
-var.features <- var.features[var.features!= "Hmmr"]
-var.features <- var.features[var.features!= "FIJ5"]
-which(var.features=="Hmmr")
-which(var.features=="FIJ5")
-VariableFeatures(obj, assay = "SCT") <- var.features
+var_features <- VariableFeatures(obj, assay = "SCT")
+which(var_features == "Hmmr")
+which(var_features == "FIJ5")
+var_features <- var_features[var_features != "Hmmr"]
+var_features <- var_features[var_features != "FIJ5"]
+which(var_features == "Hmmr")
+which(var_features == "FIJ5")
+VariableFeatures(obj, assay = "SCT") <- var_features
 
 # PCA
 obj <- RunPCA(obj, npcs = 50, verbose = T)

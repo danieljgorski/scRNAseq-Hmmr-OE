@@ -1,3 +1,5 @@
+# Quality control after initial clustering
+
 # Load libraries
 library(Seurat) #v4.0.1
 library(dplyr)
@@ -24,12 +26,12 @@ diss_genes <- unique(c("Atf3", "Btg2", "Cebpb", "Cebpb",
                        "Mt1", "Nfkbia", "Nr4a1", "Ppp1r15a",
                        "Socs3", "Zfp36"))
 obj <- AddModuleScore(obj,
-                      features = list(diss_genes), 
-                      ctrl = 50, 
+                      features = list(diss_genes),
+                      ctrl = 50,
                       name = "diss_genes")
-p1 <- FeaturePlot(obj, features="diss_genes1", label = T, raster = F) + 
+p1 <- FeaturePlot(obj, features = "diss_genes1", label = T, raster = F) +
   ggtitle("Dissociation gene score")
-p2 <- VlnPlot(obj, features = "diss_genes1", pt.size = 0, sort = T) + 
+p2 <- VlnPlot(obj, features = "diss_genes1", pt.size = 0, sort = T) +
   ggtitle("Dissociation gene score") +
   theme(axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0.5)) +
   NoLegend()
@@ -81,7 +83,7 @@ p1 + p2 + plot_layout(ncol = 2)
 dev.off()
 
 # percent.mt
-p1 <- FeaturePlot(obj, features="percent.mt", label = T, raster = F)
+p1 <- FeaturePlot(obj, features = "percent.mt", label = T, raster = F)
 p2 <- VlnPlot(obj, features = "percent.mt", pt.size = 0, sort = T) +
   theme(axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0.5)) +
   NoLegend()
@@ -94,21 +96,21 @@ dev.off()
 
 # Cell-cycle phase
 cc_genes <- read_csv("data/seurat_cell_cycle.csv")
-s_genes <- as.character(cc_genes$mouse.s.genes) 
-g2m_genes <- as.character(cc_genes$mouse.g2m.genes) 
+s_genes <- as.character(cc_genes$mouse.s.genes)
+g2m_genes <- as.character(cc_genes$mouse.g2m.genes)
 g2m_genes[42]
-g2m_genes_no_Hmmr <- g2m_genes[-42]
-remove(cc_genes) 
+g2m_genes_no_hmmr <- g2m_genes[-42]
+remove(cc_genes)
 obj <- CellCycleScoring(obj,
                         s.features = s_genes,
-                        g2m.features = g2m_genes_no_Hmmr)
+                        g2m.features = g2m_genes_no_hmmr)
 obj@meta.data$Phase <- factor(obj@meta.data$Phase,
                               levels = c("G1", "S", "G2M"))
 phase_membership <- (prop.table(table(obj$Phase, Idents(obj)),
-                                margin = 2)*100)
+                                margin = 2) * 100)
 phase_membership <- as.data.frame(phase_membership)
 colnames(phase_membership) <- c("Phase", "Cluster", "Percent")
-phase_membership$Percent.round <- round(phase_membership$Percent)
+phase_membership$percent_round <- round(phase_membership$Percent)
 write.csv(phase_membership,
           file = "results/post-clustering-qc/phase_membership.csv",
           row.names = F)
@@ -117,15 +119,15 @@ phase_membership$Phase <- factor(phase_membership$Phase,
 p1 <- DimPlot(obj,
               group.by = "Phase",
               cols = c("#e5e5e5", "#3a86ff", "#ffaa00"),
-              raster = F) 
+              raster = F)
 p2 <- ggplot(phase_membership,
              aes(fill = Phase,
                  y = Percent,
-                 x = Cluster)) + 
+                 x = Cluster)) +
   geom_bar(position = "stack", stat = "identity") +
   ylab("Percent of total") +
   xlab("Identity") +
-  geom_text(aes(label = paste0(Percent.round, "%", sep = "")),
+  geom_text(aes(label = paste0(percent_round, "%", sep = "")),
             position = position_stack(vjust = 0.5), size = 2.5) +
   theme(panel.background = element_blank(),
         axis.line = element_line(colour = "Black"),
@@ -173,8 +175,8 @@ calculate_mode <- function(x) {
   uniqx <- unique(na.omit(x))
   uniqx[which.max(tabulate(match(x, uniqx)))]
 }
-qc_summary <- obj@meta.data %>% 
-  group_by(seurat_clusters) %>% 
+qc_summary <- obj@meta.data %>%
+  group_by(seurat_clusters) %>%
   summarize(mean(percent.mt),
             mean(diss_genes1),
             mean(nFeature_RNA),
@@ -214,30 +216,30 @@ dev.off()
 # Manual investigation of clusters that may be low-quality cells.
 ###############################################################################
 
-# Investigating clusters with <1000 mean_nfeatures, cluster numbering might be 
+# Investigating clusters with <1000 mean_nfeatures, cluster numbering might be
 # different based on your machine, for me, these are specifically clusters:
 # 10, 23, 29 and 33
 
-# Cluster 10: Likely macrophage sub-population, percent_mt is fine, G1, 
+# Cluster 10: Likely macrophage sub-population, percent_mt is fine, G1,
 # low number marker genes (116) but they seem to have plausible macrophage
 # function.
 
-# Cluster 23: Likely macrophage sub-population, percent_mt is high, G2M, 
+# Cluster 23: Likely macrophage sub-population, percent_mt is high, G2M,
 # low number of markers genes (86), but function is consistent with macrophages,
 # could be macs that are starting or ending proliferation.
 
 # Cluster 29: Cardiomyocytes, expressing canonical cardiomyocyte marker genes,
 # Actc1, Tnnt2, but also express Ankrd1 a known border zone gene. Perhaps these
-# are border zone cardiomyocytes small enough to make into through FACS 
+# are border zone cardiomyocytes small enough to make into through FACS
 # and into gems.
 
 # Cluster 33: Likely macrophage sub-population, percent_mt is ok, G1, lowest
-# number of marker genes. Top markers are lncRNA (Gm42418, Gm26917), 
-# interestingly other groups have found and excluded clusters with these 
-# top 2 markers genes (PMID: 33205009). Also has stress markers Jun, Fosb. 
+# number of marker genes. Top markers are lncRNA (Gm42418, Gm26917),
+# interestingly other groups have found and excluded clusters with these
+# top 2 markers genes (PMID: 33205009). Also has stress markers Jun, Fosb.
 # Likely low-quality macrophages.
 
-# Investigating clusters with >5% mean_percent_mt, cluster numbering might be 
+# Investigating clusters with >5% mean_percent_mt, cluster numbering might be
 # different based on your machine, for me, these are specifically clusters:
 # 8, 9, 23, 35
 
@@ -250,7 +252,7 @@ dev.off()
 # Cluster 23: See above.
 
 # Cluster 35: Likley endothelial cell sub-population, G1, 415 marker genes.
-# Top markers have plausible EC function, including Plvap, 
+# Top markers have plausible EC function, including Plvap,
 # an EC-specific membrane protein.
 
 ###############################################################################
@@ -263,8 +265,8 @@ obj@meta.data <- select(obj@meta.data, -starts_with("pANN"), -c(nCount_SCT,
                                               nFeature_SCT,
                                               SCT_snn_res.0.8,
                                               seurat_clusters,
-                                              doublet_classification),)
-# Keep only necessary counts and data slots 
+                                              doublet_classification))
+# Keep only necessary counts and data slots
 obj <- DietSeurat(obj,
                   counts = T,
                   data = T,

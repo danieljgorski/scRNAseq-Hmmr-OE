@@ -1,4 +1,6 @@
-# make directories
+# Complete analysis of scRNAseq-Hmmr-OE data
+
+# Make directories
 output_dirs <- c(
   "results",
   "results/objects",
@@ -16,7 +18,7 @@ for (i in output_dirs) {
   }
 }
 
-# run analysis in order
+# Run analysis in order
 source("scripts/1-Hmmr-OE-preprocessing.R")
 source("scripts/2-Hmmr-OE-doublet-classification.R")
 source("scripts/3-Hmmr-OE-doublet-removal.R")

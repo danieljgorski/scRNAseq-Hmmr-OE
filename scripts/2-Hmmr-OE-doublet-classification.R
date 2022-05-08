@@ -1,3 +1,5 @@
+# Doublet classification with DoubletFinder
+
 # Load libraries
 library(Seurat) #v4.0.1
 library(DoubletFinder) #v2.0.3
@@ -7,7 +9,7 @@ library(ggplot2)
 # Load object
 load("results/objects/obj.Rdata")
 
-# Doublet classification with DoubletFinder
+# Loop through each sample and classify doublets
 obj_list <- list()
 for (i in unique(obj@meta.data$sample)) {
   # Cluster and sweep
@@ -89,7 +91,7 @@ for (i in unique(obj@meta.data$sample)) {
 
   # Append classified objects to list
   obj_list[i] <- obj_sub
-  
+
   # Status
   print(paste0(i, " done.---------------------------------------------------"))
 }
@@ -137,7 +139,7 @@ write.csv(doublet_summary_by_sample,
           file = "results/doublet-removal/doublet_summary_by_sample.csv",
           row.names = F)
 
-# Save obj
+# Save object
 save(obj, file = "results/objects/obj.Rdata")
 
 # Clear memory

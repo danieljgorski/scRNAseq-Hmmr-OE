@@ -1,10 +1,10 @@
+# Doublet removal
+
 # Load libraries
 library(Seurat) #v4.0.1
 
 # Load object
 load("results/objects/obj.Rdata")
-
-# Doublet removal
 
 # Cluster merged object to visualize doublets
 obj <- SCTransform(obj, verbose = T)
