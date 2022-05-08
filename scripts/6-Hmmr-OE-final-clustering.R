@@ -38,5 +38,5 @@ obj <- NormalizeData(obj,
                      verbose = T)
 obj <- ScaleData(obj, features = rownames(obj), verbose = T)
 
-## Save object
+# Save object
 save(obj, file = "results/objects/obj.Rdata")
