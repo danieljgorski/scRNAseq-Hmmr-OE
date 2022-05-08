@@ -1,8 +1,8 @@
-# Load libraries----
+# Load libraries
 library(Seurat) #v4.0.1
 library(dplyr)
 
-# Read in 10x outputs and create Seurat objects----
+# Read in 10x outputs and create Seurat objects
 day_3 <- Read10X("data/count_matrices/day_3_filtered_feature_bc_matrix")
 day_3 <- CreateSeuratObject(counts = day_3,
                             project = "474",
@@ -18,7 +18,7 @@ day_7 <- CreateSeuratObject(counts = day_7,
                             names.field = 2,
                             names.delim = "-")
 
-# Add metadata----
+# Add metadata
 day_3 <- AddMetaData(day_3, metadata = "day_3", col.name = "timepoint")
 day_3@meta.data <- day_3@meta.data %>%
   mutate(sample =
@@ -68,12 +68,12 @@ day_7@meta.data <- day_7@meta.data %>%
                      orig.ident == "6" ~ "OE",
                      orig.ident == "7" ~ "OE"))
 
-# Merge objects and remove singles----
+# Merge objects and remove singles
 obj <- merge(x = day_3, y = day_7)
 remove(day_3)
 remove(day_7)
 
-# Quality control filtering----
+# Quality control filtering
 obj[["percent.mt"]] <- PercentageFeatureSet(obj, pattern = "^mt-")
 cells_pre_qc <- length(colnames(obj))
 
@@ -114,5 +114,5 @@ pdf(file = "results/preprocessing/VlnPlot_QC_metrics_post-filter.pdf",
 print(p)
 dev.off()
 
-# Save object----
+# Save object
 save(obj, file = "results/objects/obj.Rdata")
