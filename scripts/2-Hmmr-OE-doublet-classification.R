@@ -7,7 +7,7 @@ library(dplyr)
 library(ggplot2)
 
 # Load object
-load("results/objects/obj.Rdata")
+load("results/objects/obj_preprocessed.Rdata")
 
 # Loop through each sample and classify doublets
 obj_list <- list()
@@ -66,7 +66,7 @@ for (i in unique(obj@meta.data$sample)) {
   obj_sub@meta.data$doublet_classification <- factor(obj_sub@meta.data$doublet_classification,
                                                      levels = c("Singlet", "Doublet"))
 
-  # DimPlot of classification
+  # DimPlot of classifications
   p <- DimPlot(obj_sub, group.by = "doublet_classification") + ggtitle(i)
   pdf(file = paste0("results/doublet-removal/DimPlot_classification_",
                     i,
@@ -140,7 +140,7 @@ write.csv(doublet_summary_by_sample,
           row.names = F)
 
 # Save object
-save(obj, file = "results/objects/obj.Rdata")
+save(obj, file = "results/objects/obj_db_classified.Rdata")
 
 # Clear memory
 rm(list = ls())
