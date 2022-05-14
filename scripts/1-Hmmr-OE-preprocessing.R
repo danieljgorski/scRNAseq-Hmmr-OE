@@ -23,52 +23,47 @@ day_7 <- CreateSeuratObject(counts = day_7,
 # Add metadata
 day_3 <- AddMetaData(day_3, metadata = "day_3", col.name = "timepoint")
 day_3@meta.data <- day_3@meta.data %>%
-  mutate(sample =
-           case_when(orig.ident == "1" ~ "S47_B1_OE",
-                     orig.ident == "2" ~ "S47_B3_OE",
-                     orig.ident == "3" ~ "S47_B5_WT",
-                     orig.ident == "4" ~ "S47_B6_WT",
-                     orig.ident == "5" ~ "S48_R1_OE",
-                     orig.ident == "6" ~ "S48_R3_OE",
-                     orig.ident == "7" ~ "S48_R5_WT"))
+  mutate(sample = case_when(orig.ident == "1" ~ "S47_B1_OE",
+                            orig.ident == "2" ~ "S47_B3_OE",
+                            orig.ident == "3" ~ "S47_B5_WT",
+                            orig.ident == "4" ~ "S47_B6_WT",
+                            orig.ident == "5" ~ "S48_R1_OE",
+                            orig.ident == "6" ~ "S48_R3_OE",
+                            orig.ident == "7" ~ "S48_R5_WT"))
 day_3@meta.data <- day_3@meta.data %>%
-  mutate(date =
-           case_when(orig.ident == "1" ~ "16_Aug_21_day_3",
-                     orig.ident == "2" ~ "16_Aug_21_day_3",
-                     orig.ident == "3" ~ "16_Aug_21_day_3",
-                     orig.ident == "4" ~ "16_Aug_21_day_3",
-                     orig.ident == "5" ~ "19_Aug_21_day_3",
-                     orig.ident == "6" ~ "19_Aug_21_day_3",
-                     orig.ident == "7" ~ "19_Aug_21_day_3"))
+  mutate(date = case_when(orig.ident == "1" ~ "16_Aug_21_day_3",
+                          orig.ident == "2" ~ "16_Aug_21_day_3",
+                          orig.ident == "3" ~ "16_Aug_21_day_3",
+                          orig.ident == "4" ~ "16_Aug_21_day_3",
+                          orig.ident == "5" ~ "19_Aug_21_day_3",
+                          orig.ident == "6" ~ "19_Aug_21_day_3",
+                          orig.ident == "7" ~ "19_Aug_21_day_3"))
 day_3@meta.data <- day_3@meta.data %>%
-  mutate(genotype =
-           case_when(orig.ident == "1" ~ "OE",
-                     orig.ident == "2" ~ "OE",
-                     orig.ident == "3" ~ "WT",
-                     orig.ident == "4" ~ "WT",
-                     orig.ident == "5" ~ "OE",
-                     orig.ident == "6" ~ "OE",
-                     orig.ident == "7" ~ "WT"))
+  mutate(genotype = case_when(orig.ident == "1" ~ "OE",
+                              orig.ident == "2" ~ "OE",
+                              orig.ident == "3" ~ "WT",
+                              orig.ident == "4" ~ "WT",
+                              orig.ident == "5" ~ "OE",
+                              orig.ident == "6" ~ "OE",
+                              orig.ident == "7" ~ "WT"))
 day_7 <- AddMetaData(day_7, metadata = "day_7", col.name = "timepoint")
 day_7@meta.data <- day_7@meta.data %>%
-  mutate(sample =
-           case_when(orig.ident == "1" ~ "S18_G2_WT",
-                     orig.ident == "2" ~ "S18_G1_OE",
-                     orig.ident == "3" ~ "S18_G3_WT",
-                     orig.ident == "4" ~ "S18_R1_OE",
-                     orig.ident == "5" ~ "S18_G8_WT",
-                     orig.ident == "6" ~ "S18_G6_OE",
-                     orig.ident == "7" ~ "S18_G7_OE"))
+  mutate(sample = case_when(orig.ident == "1" ~ "S18_G2_WT",
+                            orig.ident == "2" ~ "S18_G1_OE",
+                            orig.ident == "3" ~ "S18_G3_WT",
+                            orig.ident == "4" ~ "S18_R1_OE",
+                            orig.ident == "5" ~ "S18_G8_WT",
+                            orig.ident == "6" ~ "S18_G6_OE",
+                            orig.ident == "7" ~ "S18_G7_OE"))
 day_7 <- AddMetaData(day_7, metadata = "22_Jun_20_day_7", col.name = "date")
 day_7@meta.data <- day_7@meta.data %>%
-  mutate(genotype =
-           case_when(orig.ident == "1" ~ "WT",
-                     orig.ident == "2" ~ "OE",
-                     orig.ident == "3" ~ "WT",
-                     orig.ident == "4" ~ "OE",
-                     orig.ident == "5" ~ "WT",
-                     orig.ident == "6" ~ "OE",
-                     orig.ident == "7" ~ "OE"))
+  mutate(genotype = case_when(orig.ident == "1" ~ "WT",
+                              orig.ident == "2" ~ "OE",
+                              orig.ident == "3" ~ "WT",
+                              orig.ident == "4" ~ "OE",
+                              orig.ident == "5" ~ "WT",
+                              orig.ident == "6" ~ "OE",
+                              orig.ident == "7" ~ "OE"))
 
 # Merge objects and remove singles
 obj <- merge(x = day_3, y = day_7)
@@ -117,4 +112,8 @@ print(p)
 dev.off()
 
 # Save object
-save(obj, file = "results/objects/obj.Rdata")
+save(obj, file = "results/objects/obj_preprocessed.Rdata")
+
+# Clear memory
+rm(list = ls())
+gc()
