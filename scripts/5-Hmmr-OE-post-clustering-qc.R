@@ -9,7 +9,7 @@ library(readr)
 library(ggrepel)
 
 # Load object
-load("results/objects/obj.Rdata")
+load("results/objects/obj_integrated.Rdata")
 
 # Switch default assay to RNA
 DefaultAssay(obj) <- "RNA"
@@ -251,30 +251,8 @@ dev.off()
 
 # Cluster 23: See above.
 
-# Cluster 35: Likley endothelial cell sub-population, G1, 415 marker genes.
+# Cluster 35: Likely endothelial cell sub-population, G1, 415 marker genes.
 # Top markers have plausible EC function, including Plvap,
 # an EC-specific membrane protein.
 
 ###############################################################################
-
-# Sub-setting object to exclude low-quality clusters
-obj <- subset(x = obj, idents = "33", invert = TRUE)
-
-# Remove extra meta data columns
-obj@meta.data <- select(obj@meta.data, -starts_with("pANN"), -c(nCount_SCT,
-                                              nFeature_SCT,
-                                              SCT_snn_res.0.8,
-                                              seurat_clusters,
-                                              doublet_classification))
-# Keep only necessary counts and data slots
-obj <- DietSeurat(obj,
-                  counts = T,
-                  data = T,
-                  scale.data = F,
-                  features = NULL,
-                  assays = NULL,
-                  dimreducs = NULL,
-                  graphs = NULL)
-
-# Save object
-save(obj, file = "results/objects/obj.Rdata")
