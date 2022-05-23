@@ -183,3 +183,22 @@ DimPlot(obj,
 
 # Save object with basic annotations
 save(obj, file = "results/objects/obj_annotated.Rdata")
+
+# Saved basic annotation, barcodes and UMAP embeddings etc. for consistency in 
+# external usage, de-comment to overwrite
+
+# barcodes <- rownames(obj@meta.data)
+# annotation <- obj@meta.data$basic_annotation
+# genotype <- obj@meta.data$genotype
+# timepoint <- obj@meta.data$timepoint
+# sample <- obj@meta.data$sample
+# UMAP_1 <- Embeddings(obj[["umap"]])[,1]
+# UMAP_2 <- Embeddings(obj[["umap"]])[,2]
+# basic_annotation <- data.frame(barcodes,
+#                                annotation,
+#                                genotype,
+#                                timepoint,
+#                                sample,
+#                                UMAP_1,
+#                                UMAP_2)
+# write.csv(basic_annotation, file = "data/basic_annotation.csv", row.names = F)
