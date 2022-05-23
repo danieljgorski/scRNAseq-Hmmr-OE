@@ -184,7 +184,7 @@ DimPlot(obj,
 # Save object with basic annotations
 save(obj, file = "results/objects/obj_annotated.Rdata")
 
-# Saved basic annotation, barcodes and UMAP embeddings etc. for consistency in 
+# Saved basic annotation, barcodes and UMAP embeddings etc. for consistency in
 # external usage, de-comment to overwrite
 
 # barcodes <- rownames(obj@meta.data)
