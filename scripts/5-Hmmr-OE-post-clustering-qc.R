@@ -212,47 +212,204 @@ pdf(file = "results/post-clustering-qc/qc_summary_scatter.pdf",
 print(p)
 dev.off()
 
+# Plotting QC overview summary + nFeature + Clusters
+p1 <- DimPlot(obj, label = T, raster = F) + NoLegend()
+p2 <- FeaturePlot(obj,
+                  features = "nFeature_RNA",
+                  label = T,
+                  raster = F) + NoLegend()
+p3 <- ggplot(qc_summary, aes(x = mean_percent_mt,
+                            y = mean_nFeatures,
+                            colour = nMarkers,
+                            label = cluster)) +
+  scale_colour_viridis_c() +
+  geom_point(aes(shape = cell_cycle), size = 3) +
+  geom_text_repel() +
+  ggtitle("Initial clustering QC")
+pdf(file = "results/post-clustering-qc/qc_overview.pdf",
+    width = 13,
+    height = 10,
+    useDingbats = F)
+print((p1 / p2) | p3 )
+dev.off()
+
+# Simple annotation, to identify remaining possible heterotypic multiplets
+
+# Read in markers
+markers <- read.csv(file = "data/canonical_markers.csv")
+markers <- markers$All
+
+# Loop through markers and generate Feature and VlnPlots of expression
+for (i in markers) {
+  p1 <- FeaturePlot(obj, features = i, label = T, raster = F)
+  p2 <- VlnPlot(obj, features = i, pt.size = 0, sort = T) + NoLegend() +
+    theme(axis.text.x = element_text(angle = 0, hjust = 0.5))
+  pdf(file = paste0("results/post-clustering-qc/Feat_VlnPlot_", i, ".pdf"),
+      width = 16,
+      height = 5,
+      useDingbats = F)
+  print(p1 + p2 + plot_layout(ncol = 2, widths = c(1,2)))
+  dev.off()
+}
+
+# Typical cell-types with top canonical markers
+
+# Fibroblast markers, Col1a1, Tcf21, Postn
+# Macrophage markers, Fcgr1, Adgre1, 
+# EC markers, Cdh5, Kdr, Pecam1
+# Granulocytes, S100a8, S100a9,
+# Proliferating, Mki67, Ccnb2
+# DC_like Cd209a, H2-Ab1, Cd74
+# Cardiomyocyte, Nppa, Actc1
+# Bcell Ms4a1, Cd79a
+# Tcell Cd3e, Cd3d
+# NKcell Ncr1, Klrk1, Ccl5
+# Mural Myh11, Vtn
+# Epicardial Wt1, Dmkn, Krt19, Krt8
+# Glial Plp1, Kcna1
+
+# Notes on canonical marker expression across clusters
+
+#0- Fcgr1, Adgre1
+#1- Fcgr1, Adgre1
+#2- Fcgr1, Adgre1, H2-Ab1, Cd74
+#3- Cdh5, Kdr, Pecam1
+#4- Ms4a1, Cd79a, H2-Ab1, Cd74
+#5- S100a8, S100a9
+#6- Fcgr1 low, Adgre1 low
+#7- Fcgr1, Adgre1, Mik67, Ccnb2
+#8- S100a8, S100a9
+#9- Fcgr1, Adgre1, H2-Ab1 low, Cd74
+#10- Fcgr1, Adgre1
+#11- Cdh5, Kdr, Pecam1
+#12- Cdh5 biphasic, Kdr biphasic, Pecam1 biphasic
+#13- Fcgr1, Adgre1, H2-Ab1, Cd74
+#14- Col1a1, Tcf21, Postn low
+#15- Col1a1, Tcf21, Postn
+#16- Fcgr1 low, Cd209a, H2-Ab1, Cd74, Klrk1 low
+#17- Fcgr1, Adgre1 low, Cd74, Dmkn
+#18- Col1a1, Tcf21, Postn
+#19- Cd3e, Cd3d, Klrk1 low, Ccl5 low
+#20- Cdh5, Kdr, Pecam1
+#21- Col1a1 low, Tcf21 low, Postn low, Plp1 low, Kcna1 low
+#22- Col1a1, Tcf21 low, Postn, Mik67 low, Ccnb2 low, Wt1, Dmkn
+#23- Col1a1 low, Postn low, Fcgr1 low, Adgre1 low, S100a8 low, S100a9 low, 
+#    H2-Ab1, Cd74
+#24- Fcgr1 low, Adgre1 low, H2-Ab1 low
+#25- Fcgr1, Adgre1
+#26- Cd3e, Cd3d
+#27- S100a8, S100a9
+#28- Ncr1, Klrk1, Ccl5
+#29- H2-Ab1, Cd74, Klrk1
+#30- Nppa, Nppb, Actc1
+#31- Myh11, Vtn, Col1a1 low, Postn low
+#32- Cdh5, Kdr, Pecam1, Wt1
+#33- Fcgr1, Adgre1 low, Mik67, Ccnb2, H2-Ab1, Cd74
+#34- Mik67 low, Ccnb2 low
+#35- Cdh5, Kdr, Pecam1, Klrk1 low
+#36- H2-Ab1 biphasic, Cd74 biphasic, Ccl5
+#37- Cdh5 low, Pecam1 low, Cd209a, H2-Ab1, Cd74 biphasic
+#38- Cdh5, Kdr, Pecam1, H2-Ab1, Cd74, Ms4a1, Cd79a
+#39- Pecam1 low, S100a8 and S100a9 low, H2-Ab1, Cd74, Ms4a1 low, Cd79a biphasic
+#40- Pecam1 low, H2-Ab1, Cd74, Ms4a1, Cd79a, Cd3e, Cd3d, Ccl5 low
+
+# At risk clusters with multiple canonical cell type markers include:
+# 23, 37, 38, 39, 40
+
 ###############################################################################
 # Manual investigation of clusters that may be low-quality cells.
 ###############################################################################
 
-# Investigating clusters with <1000 mean_nfeatures, cluster numbering might be
+# Investigating clusters with ~<1000 mean_nfeatures, cluster numbering might be
 # different based on your machine, for me, these are specifically clusters:
-# 10, 23, 29 and 33
+# 5, 6, 12, 23, 24, 27, 30
 
-# Cluster 10: Likely macrophage sub-population, percent_mt is fine, G1,
-# low number marker genes (116) but they seem to have plausible macrophage
-# function.
+# 5: Typical low feature granulocyte cluster with strong canonical 
+# marker gene expression (S100a8, S100a9). Low percent.mt
 
-# Cluster 23: Likely macrophage sub-population, percent_mt is high, G2M,
-# low number of markers genes (86), but function is consistent with macrophages,
-# could be macs that are starting or ending proliferation.
+# 6: Seems to be macrophage cluster, but has low expression of Fcgr1, Adgre1 
+# and Cd68. But very high expression of Lgals3 (Mac-2). Marker genes include
+# Fabp5, Ftl1, Fth1, Prdx1, all which plausible macrophage function. Low 
+# percent.mt
 
-# Cluster 29: Cardiomyocytes, expressing canonical cardiomyocyte marker genes,
-# Actc1, Tnnt2, but also express Ankrd1 a known border zone gene. Perhaps these
-# are border zone cardiomyocytes small enough to make into through FACS
-# and into gems.
+# 12: Contains cells with high and low endothelial marker gene expression, has
+# relatively few marker genes (124), high percent.mt. However high expression
+# of genes with plausible EC function, e.g. Fabp4 (known EC marker gene) and
+# Cd36 (fatty acid transport).
 
-# Cluster 33: Likely macrophage sub-population, percent_mt is ok, G1, lowest
-# number of marker genes. Top markers are lncRNA (Gm42418, Gm26917),
-# interestingly other groups have found and excluded clusters with these
-# top 2 markers genes (PMID: 33205009). Also has stress markers Jun, Fosb.
-# Likely low-quality macrophages.
+# 23: Very high percent.mt, marker genes have a mix of cell types. Likely 
+# multiplets of fibroblasts, macrophages, granulocytes and DC-like cells.
+# Will remove from the analysis.
+
+# 24: Very few marker genes (58), likely macrophage but has low expression of
+# Fcgr1 and Adgre1. High percent.mt. Marker genes include long-non-coding RNA
+# (Gm42418 and Gm26917), similar to PMID: 33205009. tRNA synthetase Lars2, 
+# and transcription factor AY036118. Likely low-quality macrophages, will 
+# removed from analysis.
+
+# 27: Typical low feature granulocyte cluster with strong canonical 
+# marker gene expression (S100a8, S100a9). Low percent.mt
+
+# 30: Cardiomyocytes, strong expression of canonical markers Actc1, Nppa, Nppb.
 
 # Investigating clusters with >5% mean_percent_mt, cluster numbering might be
 # different based on your machine, for me, these are specifically clusters:
-# 8, 9, 23, 35
+# 4, 12, 23, 24, 25
 
-# Cluster 8: B-cells, with typical low nFeature. Express canonical
-# B-cell markers Igkc, Cd79a, Ms4a1.
+# 4: B-cells, strong expression of canonical markers Ms4a1, Cd79a
 
-# Cluster 9: Endothelial sub-population, G1, 146 marker genes, top markers
-# have plausible EC function (Fabp4, Cd36)
+# 12: See above.
 
-# Cluster 23: See above.
+# 23: See above.
 
-# Cluster 35: Likely endothelial cell sub-population, G1, 415 marker genes.
-# Top markers have plausible EC function, including Plvap,
-# an EC-specific membrane protein.
+# 24: See above
+
+# 25: Borderline high percent.mt, however has high nFeature, many markers genes
+# (244) and strong expression of macrophage markers Fcgr1, Adgre1. Likely a 
+# macrophage sub-population.
+
+# Investigating very small clusters, cluster numbering might be
+# different based on your machine, for me, these are specifically clusters:
+# 37, 38, 39, 40
+
+# Unfortunately clusters 37, 38, 39, 40 all express a combination of endothelial
+# cell, innate immune cell, and B-cell markers. Because its possible that these
+# populations are multiplets of endothelial cells with bound extravasating 
+# leukocytes, they will be removed.
 
 ###############################################################################
+
+# Exclude low-quality clusters determined during post-clustering-qc
+obj <- subset(x = obj,
+              idents = c("23",
+                         "24",
+                         "37",
+                         "38",
+                         "39",
+                         "40"),
+              invert = TRUE)
+
+# Remove extra meta data columns created during integrated clustering
+obj@meta.data <- select(obj@meta.data,
+                        -c(nCount_SCT,
+                           nFeature_SCT,
+                           integrated_snn_res.0.8,
+                           seurat_clusters))
+
+# Keep only necessary counts and data slots
+obj <- DietSeurat(obj,
+                  counts = T,
+                  data = T,
+                  scale.data = F,
+                  features = NULL,
+                  assays = "RNA",
+                  dimreducs = NULL,
+                  graphs = NULL)
+
+# Save clean object
+save(obj, file = "results/objects/obj_clean.Rdata")
+
+# Clear memory
+rm(list = ls())
+gc()
+
