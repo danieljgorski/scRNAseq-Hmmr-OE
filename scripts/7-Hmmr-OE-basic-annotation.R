@@ -6,7 +6,7 @@ library(patchwork)
 library(ggplot2)
 
 # Load object
-load("results/objects/obj.Rdata")
+load("results/objects/obj_integrated_clean.Rdata")
 
 # Read in markers
 markers <- read.csv(file = "data/canonical_markers.csv")
@@ -21,50 +21,165 @@ for (i in markers) {
       width = 16,
       height = 5,
       useDingbats = F)
-  print(p1 + p2 + plot_layout(ncol = 2, widths = c(1,2)))
+  print(p1 + p2 + plot_layout(ncol = 2, widths = c(1, 2)))
   dev.off()
 }
 
+# Export a basic DimPlot of clusters
+p <- DimPlot(obj, label = T, raster = F)
+pdf(file = "results/basic-annotation/DimPlot.pdf",
+    useDingbats = F)
+print(p)
+dev.off()
 
 ###############################################################################
 # Annotation notes
 ###############################################################################
-# 0 - Cdh5, Pecam1, Kdr
-# 1 - Fcgr1, Adgre1, Cd68
-# 2 - Fcgr1, Adgre1, Cd68, Cd74, H2-Ab1, H2-Aa
-# 3 - Fcgr1, Adgre1, Cd68
-# 4 - Cd68 low, S100a8, S100a8
-# 5 - Fcgr1, Adgre1, Cd68, Cd74, H2-Ab1, H2-Aa
-# 6 - Fcgr1, Adgre1, Cd68, Cd74 low
-# 7 - Cdh5, Pecam1, Kdr
-# 8 - Cd74, H2-Ab1, H2-Aa, Ms4a1, Cd79a
-# 9 - Tcf21, Pdgfra, Cthrc1, Postn
-# 10 - Cd68
-# 11 - Fcgr1, Adgre1, Cd68, Cd74
-# 12 - Cd68 low, S100a8
-# 13 - Tcf21, Pdgfra, Postn low
-# 14 - Fcgr1, Adgre1, Cd68
-# 15 - Fcgr1, Adgre1, Cd68, Mki67, Ccnb2, Cd74 low
-# 16 - Fcgr1, Adgre1, Cd68, Cd74 low
-# 17 - Cdh5, Pecam1, Kdr
-# 18 - Fcgr1, Cd68, Cd74, H2-Ab1, H2-Aa, Cd209a DENDRITIC CELLS
-# 19 - Fcgr1, Adgre1, Cd68, Cd74 low
-# 20 - Mki67 low, Ccnb2 low, Tcf21, Pdgfra, Cthrc1, Postn, Clu, Wt1
-# 21 - Fcgr1, Adgre1, Cd68, Cd74 low
-# 22 - 
-# 23 - Fcgr1, Adgre1, Cd68, Cd74, H2-Ab1, H2-Aa, Postn low, S100a8
-# 24 - Cthrc1 low, Postn low
-# 25 - Ccl5
-# 26 - Ccl5
-# 27 - Cd68, Mki67 low, Cd74, H2-Ab1, H2-Aa
-# 28 - Mki67, Ccnb2, Cdh5, Pecam1, Kdr, Wt1
-# 29 - Clu
-# 30 - , Postn low
-# 31 - Cd68 low, Cd74, H2-Ab1, H2-Aa, Ccl5
-# 32 - Fcgr1, Adgre1, Cd68, Cd74, H2-Ab1, H2-Aa, Cdh5, Pecam1, Kdr
-# 33 - Adgre1 low, Cd68, Mki67 low, Ccnb2 low
-# 34 - Cdh5, Pecam1, Kdr, Clu
-# 35 - Fcgr1, Adgre1, Cd68, Cd74, H2-Ab1 low, H2-Aa low, S100a8, S100a8
-# 36 - Cd74, H2-Ab1, H2-Aa, Cdh5, Pecam1, Kdr, Ms4a1, Cd79a
-# 37 - Mki67, Ccnb2, Tcf21, Pdgfra, Postn
-# 38 -
+
+# Macrophages
+# 0 - Mac-1 - Fcgr1+ Adgre1+ Cd68+ Lgals3+
+# 1 - Mac-2 - Fcgr1+ Adgre1+ Cd68+ Lgals3+
+# 9 - Mac-3 - Cd68+ Lgals3+
+# 11 - Mac-4 - Fcgr1+ Adgre1+ Cd68+ Lgals3+
+# 13 - Mac-5 - Fcgr1+ Adgre1+ Cd68+ Lgals3+
+# 16 - Mac-6 - Fcgr1+ Adgre1+ Cd68+ Lgals3+
+# 21 - Mac-7 - Fcgr1+ Adgre1+ Cd68+ Lgals3+
+
+# Antigen presenting cells
+# 2 - APC-1 - H2-Ab1+ H2-Aa+ Cd74+ Fcgr1+ Adgre1+ Cd68+ Lgals3+
+# 14 - APC-2 - H2-Ab1+ H2-Aa+ Cd74+ Fcgr1+ Adgre1+ Cd68+ Lgals3+
+# 15 - APC-3 - Cd209a+ H2-Ab1+ H2-Aa+ Cd74+ Fcgr1+ Cd68+ Lgals3+
+# 24 - APC-4 - H2-Ab1+ H2-Aa+ Cd74+ Cd68+ Lgals3+
+# 30 - APC-5 - H2-Ab1+ H2-Aa+ Cd74+ Ccl5+
+
+# Endothelial cells
+# 3 - EC-1 - Cdh5+ Pecam1+ Kdr+ Fabp4+
+# 10 - EC-2 - Cdh5+ Pecam1+ Kdr+ Fabp4+
+# 17 - EC-3 - Cdh5+ Pecam1+ Kdr+ Fabp4+
+# 19 - EC-4 - Cdh5+ Pecam1+ Kdr+ Fabp4+
+# 25 - EC-5 - Cdh5+ Pecam1+ Kdr+ Fabp4+
+# 28 - EC-6 - Cdh5+ Pecam1+ Kdr+ Fabp4+
+# 33 - EC-7 - Pecam1+ Fabp4+
+
+# Fibroblasts
+# 4 - Fibro-Myo - Pdgfra+ Tcf21+ Col1a1+ Postn++ Cthrc1++
+# 12 - Fibro-Rest - Pdgfra+ Tcf21+ Col1a1+ Gsn++ Postn+
+# 20 - Fibro-Act - Col1a1+ Postn+ Cthrc1+
+
+# Epicardial cells
+# 26 - Epi - Wt1+ Dmkn+ Saa3+ Krt8+ Krt19+
+
+# Mural cells (smooth muscle cells and pericytes)
+# 29 - Mural - Myh11+ Rgs5+ Tagln+ Pdgfrb+ Cspg4+ Vtn+ Postn+ Fabp4+
+
+# Granulocytes
+# 5 - Gran-1 - S100a8+ S100a9+ Csf3r+
+# 6 - Gran-2 - S100a8+ S100a9+ Csf3r+
+# 31 - Gran-3 - S100a8+ S100a9+ Csf3r+
+
+# B cells
+# 7 - B-cell - Ms4a1+ Cd79a+ H2-Ab1+ Cd74+  H2-Aa+
+
+# T cells
+# 18 - T-cell-1 - Cd3e+ Cd3d+ Ccl5+
+# 22 - T-cell-2 - TCd3e+ Cd3d+ Lef1+
+
+# NK cells
+# 23 - NK-cell - Ncr1+ Klrk1+ Ccl5+
+
+# Cardiomyocytes
+# 27 - CM - Actc1+ Nppa+ Nppb+ Tnnc1+ Tnnt2+
+
+# Cycling
+# 8 - Cyc-1 - Mki67+ Ccnb2+ Ccna2+ Stmn1++ Fcgr1+ Adgre1+ Cd68+ Lgals3+,
+#     Cluster 8 is proliferating and mostly macrophages, but not entirely ,
+#     macrophages, there are some endothelial cells and fibroblasts inside
+# 32 - Cyc-2 - Mki67+ Ccnb2+ Ccna2+ Stmn1++ Cd3e+ Cd3d+ Ccl5+,
+#      Cluster 32 is mostly proliferating T-cells, but to be safe I will,
+#      annotate these as the second cycling cluster
+###############################################################################
+
+# Rename Idents to annotations
+obj <- RenameIdents(obj,
+                    "0" = "Mac-1",
+                    "1" = "Mac-2",
+                    "2" = "APC-1",
+                    "3" = "EC-1",
+                    "4" = "Fibro-Myo",
+                    "5" = "Gran-1",
+                    "6" = "Gran-2",
+                    "7" = "B-cell",
+                    "8" = "Cycling-1",
+                    "9" = "Mac-3",
+                    "10" = "EC-2",
+                    "11" = "Mac-4",
+                    "12" = "Fibro-Rest",
+                    "13" = "Mac-5",
+                    "14" = "APC-2",
+                    "15" = "APC-3",
+                    "16" = "Mac-6",
+                    "17" = "EC-3",
+                    "18" = "T-cell-1",
+                    "19" = "EC-4",
+                    "20" = "Fibro-Act",
+                    "21" = "Mac-7",
+                    "22" = "T-cell-2",
+                    "23" = "NK-cell",
+                    "24" = "APC-4",
+                    "25" = "EC-5",
+                    "26" = "Epi",
+                    "27" = "CM",
+                    "28" = "EC-6",
+                    "29" = "Mural",
+                    "30" = "APC-5",
+                    "31" = "Gran-3",
+                    "32" = "Cycling-2",
+                    "33" = "EC-7")
+
+# Store renamed idents as a new meta data column
+obj@meta.data$basic_annotation <- Idents(obj)
+
+# Refactor annotation levels
+dimplotlevels <- c("Mac-1",
+                   "Mac-2",
+                   "Mac-3",
+                   "Mac-4",
+                   "Mac-5",
+                   "Mac-6",
+                   "Mac-7",
+                   "APC-1",
+                   "APC-2",
+                   "APC-3",
+                   "APC-4",
+                   "APC-5",
+                   "EC-1",
+                   "EC-2",
+                   "EC-3",
+                   "EC-4",
+                   "EC-5",
+                   "EC-6",
+                   "EC-7",
+                   "Fibro-Rest",
+                   "Fibro-Act",
+                   "Fibro-Myo",
+                   "Epi",
+                   "Mural",
+                   "Gran-1",
+                   "Gran-2",
+                   "Gran-3",
+                   "B-cell",
+                   "T-cell-1",
+                   "T-cell-2",
+                   "NK-cell",
+                   "CM",
+                   "Cycling-1",
+                   "Cycling-2")
+obj@meta.data$basic_annotation <- factor(obj@meta.data$basic_annotation,
+                                         levels = dimplotlevels)
+DimPlot(obj,
+        group.by = "basic_annotation",
+        label = T,
+        repel = T)
+
+# Save object with basic annotations
+save(obj, file = "results/objects/obj_annotated.Rdata")
