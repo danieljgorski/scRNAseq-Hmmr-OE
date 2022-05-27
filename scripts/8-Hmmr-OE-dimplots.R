@@ -5,6 +5,7 @@ library(Seurat) #>=4.0.1
 library(ggplot2)
 library(ggrepel)
 source("scripts/colors.R")
+source("scripts/HighlightedDimPlot.R")
 
 # Load object
 load("results/objects/obj_annotated.Rdata")
@@ -46,33 +47,12 @@ pdf(file = "results/dimplots/DimPlot_basic_annotation.pdf",
 print(q)
 dev.off()
 
-# Highlighted Dimplots
+# Highlighted DimPlots of each cluster
 for (i in levels(Idents(obj))) {
-  dd <- DimPlot(obj, 
-                reduction = "umap", 
-                cells.highlight = WhichCells(obj, idents = i),
-                cols.highlight = "#5179A7",
-                raster = F,
-                pt.size = .3) +
-    theme(axis.text.x = element_blank(),
-          axis.text.y = element_blank(),
-          axis.title = element_blank(),
-          axis.ticks = element_blank(),
-          axis.line = element_blank()) +
-    NoLegend()
-  dd <- LabelClusters(plot = dd, 
-                      id = "ident",
-                      clusters = i,
-                      repel = F, 
-                      box = T, 
-                      fill = alpha("white", 0.45),
-                      size = 4,
-                      label.r = unit(0.25, "lines"),
-                      label.size = NA)
   pdf(file = paste0("results/dimplots/DimPlot_highlighted_", i, ".pdf"),
       height = 6.5,
       width = 8,
       useDingbats = F)
-  print(dd)
+  HighlightedDimPlot(obj, i)
   dev.off()
 }
