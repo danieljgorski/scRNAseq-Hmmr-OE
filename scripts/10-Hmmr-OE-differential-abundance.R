@@ -67,8 +67,8 @@ milo_res %>%  arrange(SpatialFDR) %>%  head()
 
 # Inspecting and plotting results
 p1 <- ggplot(milo_res, aes(PValue)) + geom_histogram(bins=50)
-p2 <- ggplot(milo_res, aes(logFC, -log10(SpatialFDR))) +  
-  geom_point() +  
+p2 <- ggplot(milo_res, aes(logFC, -log10(SpatialFDR))) +
+  geom_point() +
   geom_hline(yintercept = 1) ## Mark significance threshold (10% FDR)
 pdf(file = "results/differential-abundance/milo_pvalue_spatialfdr.pdf",
     useDingbats = F)
@@ -79,12 +79,12 @@ dev.off()
 obj_milo <- buildNhoodGraph(obj_milo)
 
 # Plot DA results next to UMAP
-p1 <- plotReducedDim(obj_milo, 
-                     dimred = "UMAP", 
-                     colour_by="basic_annotation", 
-                     text_by = "basic_annotation", 
+p1 <- plotReducedDim(obj_milo,
+                     dimred = "UMAP",
+                     colour_by="basic_annotation",
+                     text_by = "basic_annotation",
                      text_size = 3) +
-  scale_color_manual(values = colors) + 
+  scale_color_manual(values = colors) +
   NoLegend()
 p2 <- plotNhoodGraphDA(obj_milo, milo_res, alpha = 0.05) # alpha here is statistical sig threshold, not transparency
 pdf(file = "results/differential-abundance/milo_UMAP_NhoodGraph.pdf",
@@ -100,14 +100,14 @@ milo_res <- annotateNhoods(obj_milo, milo_res, coldata_col = "basic_annotation")
 unique(milo_res$basic_annotation)
 ggplot(milo_res, aes(basic_annotation_fraction)) + geom_histogram(bins=50)
 milo_res$basic_annotation <- ifelse(milo_res$basic_annotation_fraction < 0.6,
-                                    "Mixed", 
+                                    "Mixed",
                                     milo_res$basic_annotation)
 milo_res$basic_annotation <- factor(milo_res$basic_annotation,
                                     levels = dimplotlevels)
 
 # plot DAbeeswarm...ignored because none are significant
-plotDAbeeswarm(milo_res, 
-               group.by = "basic_annotation", 
+plotDAbeeswarm(milo_res,
+               group.by = "basic_annotation",
                alpha = 0.05) +
   ggtitle("Cluster assignment of DA neighborhoods") +
   theme(axis.title.y = element_blank(),
@@ -128,8 +128,8 @@ save(obj_milo, file = "results/objects/obj_milo.Rdata")
 #http://bioconductor.org/books/3.14/OSCA.multisample/differential-abundance.html
 
 # Abundances
-abundances <- table(obj_sce$basic_annotation, obj_sce$sample) 
-abundances <- unclass(abundances) 
+abundances <- table(obj_sce$basic_annotation, obj_sce$sample)
+abundances <- unclass(abundances)
 head(abundances)
 
 # Attaching some column metadata and making DGEList object

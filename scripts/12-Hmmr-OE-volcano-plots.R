@@ -1,14 +1,14 @@
-# VolcanoPlots of differential gene expression analysis
+# Volcano plots of differential gene expression analysis
 
 # Load libraries
 library(Seurat) #>=4.0.1
 library(ggplot2)
 library(dplyr)
-library(ggrepel) 
+library(ggrepel)
 source("scripts/VolcanoPlot.R")
 
 # Load dge data
-dge_no_threshold <- 
+dge_no_threshold <-
   read.csv(file = "results/differential-gene-expression/dge_no_threshold.csv")
 
 # Loop through clusters and output VolcanoPlots

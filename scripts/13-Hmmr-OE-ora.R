@@ -1,4 +1,4 @@
-# Over-representation analysis plots of differentially expressed genes
+# Over-representation analysis of differentially expressed genes
 
 # Load libraries
 library(Seurat) #>=4.0.1
@@ -15,7 +15,7 @@ source("scripts/ORA_up.R")
 source("scripts/ORA_down.R")
 
 # Load dge data
-dge_no_threshold <- 
+dge_no_threshold <-
   read.csv(file = "results/differential-gene-expression/dge_no_threshold.csv")
 
 # Load object for background genes
