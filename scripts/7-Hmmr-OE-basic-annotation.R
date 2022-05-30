@@ -4,11 +4,29 @@
 library(Seurat) #v4.0.1
 library(patchwork)
 library(ggplot2)
+library(dplyr)
 
 # Load object
 load("results/objects/obj_integrated_clean.Rdata")
 
-# Read in markers
+# Calculate seurat_cluster markers, with high stringency to return very 
+# specific markers, quickly.
+seurat_cluster_markers <- FindAllMarkers(obj,
+                                  assay = "RNA",
+                                  logfc.threshold = 1.5,
+                                  min.pct = 0.5,
+                                  only.pos = T,
+                                  return.thresh = 0.0001,
+                                  densify = T,
+                                  verbose = T)
+write.csv(seurat_cluster_markers,
+          file = "results/basic-annotation/seurat_cluster_markers.csv",
+          row.names = F)
+top5 <- seurat_cluster_markers %>%
+  group_by(cluster) %>%
+  top_n(n = 5, wt = avg_log2FC)
+
+# Read in canonical markers
 markers <- read.csv(file = "data/canonical_markers.csv")
 markers <- markers$All
 
@@ -39,18 +57,20 @@ dev.off()
 # Macrophages
 # 0 - Mac-1 - Fcgr1+ Adgre1+ Cd68+ Lgals3+
 # 1 - Mac-2 - Fcgr1+ Adgre1+ Cd68+ Lgals3+
-# 9 - Mac-3 - Cd68+ Lgals3+
-# 11 - Mac-4 - Fcgr1+ Adgre1+ Cd68+ Lgals3+
-# 13 - Mac-5 - Fcgr1+ Adgre1+ Cd68+ Lgals3+
-# 16 - Mac-6 - Fcgr1+ Adgre1+ Cd68+ Lgals3+
-# 21 - Mac-7 - Fcgr1+ Adgre1+ Cd68+ Lgals3+
+# 2 - Mac-3 - H2-Ab1+ H2-Aa+ Cd74+ Fcgr1+ Adgre1+ Cd68+ Lgals3+
+# 9 - Mac-4 - Cd68+ Lgals3+
+# 11 - Mac-5 - Fcgr1+ Adgre1+ Cd68+ Lgals3+
+# 13 - Mac-6 - Fcgr1+ Adgre1+ Cd68+ Lgals3+
+# 14 - Mac-7 - H2-Ab1+ H2-Aa+ Cd74+ Fcgr1+ Adgre1+ Cd68+ Lgals3+
+# 16 - Mac-8 - Fcgr1+ Adgre1+ Cd68+ Lgals3+
+# 21 - Mac-9 - Fcgr1+ Adgre1+ Cd68+ Lgals3+
 
-# Antigen presenting cells
-# 2 - APC-1 - H2-Ab1+ H2-Aa+ Cd74+ Fcgr1+ Adgre1+ Cd68+ Lgals3+
-# 14 - APC-2 - H2-Ab1+ H2-Aa+ Cd74+ Fcgr1+ Adgre1+ Cd68+ Lgals3+
-# 15 - APC-3 - Cd209a+ H2-Ab1+ H2-Aa+ Cd74+ Fcgr1+ Cd68+ Lgals3+
-# 24 - APC-4 - H2-Ab1+ H2-Aa+ Cd74+ Cd68+ Lgals3+
-# 30 - APC-5 - H2-Ab1+ H2-Aa+ Cd74+ Ccl5+
+# DC-like cells
+# 15 - DC-1 - Cd209a+, CD11c+ (Itgax), H2-Ab1+ H2-Aa+ Cd74+ Fcgr1+ Cd68+ Lgals3+
+# 24 - DC-2 - H2-Ab1+ H2-Aa+ Cd74+ Cd68+ Lgals3+ 
+#      Likely conventional DC, Itgax+ Naaa+ Irf8+ Xcr1+ Clec9a+ PMID: 29925006
+# 30 - DC-3 - H2-Ab1+ H2-Aa+ Cd74+ Ccl5+ (DC)
+#      Likely migratory DC, Ccr7+ Fscn1+ PMID: 29925006
 
 # Endothelial cells
 # 3 - EC-1 - Cdh5+ Pecam1+ Kdr+ Fabp4+
@@ -92,7 +112,7 @@ dev.off()
 
 # Cycling
 # 8 - Cyc-1 - Mki67+ Ccnb2+ Ccna2+ Stmn1++ Fcgr1+ Adgre1+ Cd68+ Lgals3+,
-#     Cluster 8 is proliferating and mostly macrophages, but not entirely ,
+#     Cluster 8 is proliferating and mostly macrophages, but not entirely
 #     macrophages, there are some endothelial cells and fibroblasts inside
 # 32 - Cyc-2 - Mki67+ Ccnb2+ Ccna2+ Stmn1++ Cd3e+ Cd3d+ Ccl5+,
 #      Cluster 32 is mostly proliferating T-cells, but to be safe I will,
@@ -103,40 +123,40 @@ dev.off()
 obj <- RenameIdents(obj,
                     "0" = "Mac-1",
                     "1" = "Mac-2",
-                    "2" = "APC-1",
+                    "2" = "Mac-3",
                     "3" = "EC-1",
                     "4" = "Fibro-Myo",
                     "5" = "Gran-1",
                     "6" = "Gran-2",
                     "7" = "B-cell",
                     "8" = "Cycling-1",
-                    "9" = "Mac-3",
+                    "9" = "Mac-4",
                     "10" = "EC-2",
-                    "11" = "Mac-4",
+                    "11" = "Mac-5",
                     "12" = "Fibro-Rest",
-                    "13" = "Mac-5",
-                    "14" = "APC-2",
-                    "15" = "APC-3",
-                    "16" = "Mac-6",
+                    "13" = "Mac-6",
+                    "14" = "Mac-7",
+                    "15" = "DC-1",
+                    "16" = "Mac-8",
                     "17" = "EC-3",
                     "18" = "T-cell-1",
                     "19" = "EC-4",
                     "20" = "Fibro-Act",
-                    "21" = "Mac-7",
+                    "21" = "Mac-9",
                     "22" = "T-cell-2",
                     "23" = "NK-cell",
-                    "24" = "APC-4",
+                    "24" = "DC-2",
                     "25" = "EC-5",
                     "26" = "Epi",
                     "27" = "CM",
                     "28" = "EC-6",
                     "29" = "Mural",
-                    "30" = "APC-5",
+                    "30" = "DC-3",
                     "31" = "Gran-3",
                     "32" = "Cycling-2",
                     "33" = "EC-7")
 
-# Store renamed idents as a new meta data column
+# Store renamed idents as a new meta data column, set as Idents
 obj@meta.data$basic_annotation <- Idents(obj)
 
 # Refactor annotation levels
@@ -148,24 +168,26 @@ DimPlot(obj,
         label = T,
         repel = T)
 
+# Set Idents as re-factored basic_annotation identities
+Idents(obj) <- "basic_annotation"
+
 # Save object with basic annotations
 save(obj, file = "results/objects/obj_annotated.Rdata")
 
 # Saved basic annotation, barcodes and UMAP embeddings etc. for consistency in
 # external usage, de-comment to overwrite
-
-# barcodes <- rownames(obj@meta.data)
-# annotation <- obj@meta.data$basic_annotation
-# genotype <- obj@meta.data$genotype
-# timepoint <- obj@meta.data$timepoint
-# sample <- obj@meta.data$sample
-# UMAP_1 <- Embeddings(obj[["umap"]])[,1]
-# UMAP_2 <- Embeddings(obj[["umap"]])[,2]
-# basic_annotation <- data.frame(barcodes,
-#                                annotation,
-#                                genotype,
-#                                timepoint,
-#                                sample,
-#                                UMAP_1,
-#                                UMAP_2)
-# write.csv(basic_annotation, file = "data/basic_annotation.csv", row.names = F)
+barcodes <- rownames(obj@meta.data)
+annotation <- obj@meta.data$basic_annotation
+genotype <- obj@meta.data$genotype
+timepoint <- obj@meta.data$timepoint
+sample <- obj@meta.data$sample
+UMAP_1 <- Embeddings(obj[["umap"]])[,1]
+UMAP_2 <- Embeddings(obj[["umap"]])[,2]
+basic_annotation <- data.frame(barcodes,
+                               annotation,
+                               genotype,
+                               timepoint,
+                               sample,
+                               UMAP_1,
+                               UMAP_2)
+write.csv(basic_annotation, file = "data/basic_annotation.csv", row.names = F)
