@@ -4,6 +4,20 @@
 library(Seurat) #v4.0.1
 library(dplyr)
 
+# Make directories
+output_dirs <- c("results",
+                 "results/objects",
+                 "results/preprocessing")
+
+for (i in output_dirs) {
+  if (!dir.exists(i)) {
+    dir.create(i)
+    print(paste0("made ", i, " directory"))
+  } else {
+    print(paste0(i, " directory already exists."))
+  }
+}
+
 # Read in 10x outputs and create Seurat objects
 day_3 <- Read10X("data/count_matrices/day_3_filtered_feature_bc_matrix")
 day_3 <- CreateSeuratObject(counts = day_3,
