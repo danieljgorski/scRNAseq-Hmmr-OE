@@ -1,5 +1,37 @@
 # Complete analysis of scRNAseq-Hmmr-OE data
 
+# Make directories
+output_dirs <- c("results",
+                 "results/basic-annotation",
+                 "results/cluster-markers",
+                 "results/differential-abundance",
+                 "results/differential-gene-expression",
+                 "results/dimplots",
+                 "results/doublet-removal",
+                 "results/mac-annotation",
+                 "results/mac-cluster-markers",
+                 "results/mac-common-dge",
+                 "results/mac-differential-abundance",
+                 "results/mac-differential-gene-expression",
+                 "results/mac-dimplots",
+                 "results/mac-ora",
+                 "results/mac-violin-plots",
+                 "results/mac-volcano-plots",
+                 "results/objects",
+                 "results/ora",
+                 "results/post-clustering-qc",
+                 "results/preprocessing",
+                 "results/volcano-plots")
+
+for (i in output_dirs) {
+  if (!dir.exists(i)) {
+    dir.create(i)
+    print(paste0("made ", i, " directory"))
+  } else {
+    print(paste0(i, " directory already exists."))
+  }
+}
+
 # Run analysis in order
 source("scripts/1-Hmmr-OE-preprocessing.R")
 source("scripts/2-Hmmr-OE-doublet-classification.R")
