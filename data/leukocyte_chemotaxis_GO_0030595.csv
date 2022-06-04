@@ -1,0 +1,502 @@
+MGI Gene/Marker ID,Symbol,Name,Chr,Qualifier,Annotated Term,Context,Proteoform,Evidence,Inferred From,Reference(s)
+MGI:1917295,2610528A11Rik,RIKEN cDNA 2610528A11 gene,14,,lymphocyte chemotaxis,,,IDA,,J:248456 
+MGI:1917295,2610528A11Rik,RIKEN cDNA 2610528A11 gene,14,,lymphocyte chemotaxis,,,ISO,Q6UWK7 ,J:164563 
+MGI:107825,Adam8,a disintegrin and metallopeptidase domain 8,7,,lymphocyte chemotaxis,,,IDA,,J:165123 
+MGI:109548,Adam10,a disintegrin and metallopeptidase domain 10,9,,positive regulation of T cell chemotaxis,,,ISO,O14672 ,J:164563 
+MGI:1096335,Adam17,a disintegrin and metallopeptidase domain 17,12,,positive regulation of T cell chemotaxis,,,ISO,P78536 ,J:164563 
+MGI:1343098,Aif1,allograft inflammatory factor 1,17,,positive regulation of monocyte chemotaxis,,,ISO,P55008 ,J:164563 
+MGI:1915300,Akirin1,akirin 1,4,,positive regulation of macrophage chemotaxis,,,IBA,PTN002665250 ,J:265628 
+MGI:1915300,Akirin1,akirin 1,4,,positive regulation of macrophage chemotaxis,,,IMP,,J:150456 
+MGI:87999,Alox5,arachidonate 5-lipoxygenase,6,,leukocyte chemotaxis involved in inflammatory response,,,ISO,P09917 ,J:164563 
+MGI:2145890,Ano6,anoctamin 6,15,,dendritic cell chemotaxis,happens in dendritic cell,,IMP,,J:203552 
+MGI:2145890,Ano6,anoctamin 6,15,,positive regulation of monocyte chemotaxis,"happens in macrophage,uses UniProtKB:P10148",,IMP,,J:220493 
+MGI:2145890,Ano6,anoctamin 6,15,,positive regulation of monocyte chemotaxis,,,ISO,Q4KMQ2 ,J:164563 
+MGI:96819,Anxa1,annexin A1,19,,granulocyte chemotaxis,,,IBA,PTN002574794 ,J:265628 
+MGI:96819,Anxa1,annexin A1,19,,granulocyte chemotaxis,,,ISO,P04083 ,J:164563 
+MGI:96819,Anxa1,annexin A1,19,,monocyte chemotaxis,,,ISO,P04083 ,J:164563 
+MGI:88059,App,amyloid beta (A4) precursor protein,16,,positive regulation of monocyte chemotaxis,,,ISO,P05067 ,J:164563 
+MGI:1858952,Arhgef5,Rho guanine nucleotide exchange factor (GEF) 5,6,,myeloid dendritic cell chemotaxis,"happens in bone marrow,results in the movement of myeloid dendritic cell",,IMP,,J:157812 
+MGI:88208,Bsg,basigin,10,,neutrophil chemotaxis,,,ISO,P35613 ,J:164563 
+MGI:105370,Bst1,bone marrow stromal cell antigen 1,5,,regulation of neutrophil chemotaxis,,,ISO,Q10588 ,J:164563 
+MGI:1194505,C1qbp,"complement component 1, q subcomponent binding protein",11,,positive regulation of dendritic cell chemotaxis,,,ISO,Q07021 ,J:164563 
+MGI:1194505,C1qbp,"complement component 1, q subcomponent binding protein",11,,positive regulation of neutrophil chemotaxis,,,ISO,Q07021 ,J:164563 
+MGI:1097680,C3ar1,complement component 3a receptor 1,6,,positive regulation of macrophage chemotaxis,,,IMP,,J:106063 
+MGI:1097680,C3ar1,complement component 3a receptor 1,6,,positive regulation of neutrophil chemotaxis,,,IMP,,J:106063 
+MGI:88232,C5ar1,complement component 5a receptor 1,7,,neutrophil chemotaxis,"happens in peritoneal cavity,results in the movement of leukocyte",,IMP,MGI:1934246 ,J:140680 
+MGI:88232,C5ar1,complement component 5a receptor 1,7,,neutrophil chemotaxis,"happens in peritoneal cavity,results in the movement of neutrophil",,IMP,MGI:1934246 ,J:140680 
+MGI:88232,C5ar1,complement component 5a receptor 1,7,,positive regulation of macrophage chemotaxis,,,IMP,,J:106063 
+MGI:88232,C5ar1,complement component 5a receptor 1,7,,positive regulation of neutrophil chemotaxis,,,IMP,,J:106063 
+MGI:2442013,C5ar2,complement component 5a receptor 2,7,,negative regulation of neutrophil chemotaxis,,,ISO,Q9P296 ,J:164563 
+MGI:88252,Calr,calreticulin,8,,positive regulation of dendritic cell chemotaxis,,,ISO,P27797 ,J:164563 
+MGI:2442190,Camk1d,calcium/calmodulin-dependent protein kinase ID,2,,positive regulation of neutrophil chemotaxis,,,IMP,,J:136892 
+MGI:2442190,Camk1d,calcium/calmodulin-dependent protein kinase ID,2,,regulation of granulocyte chemotaxis,,,ISO,Q8IU85 ,J:164563 
+MGI:98258,Ccl1,chemokine (C-C motif) ligand 1,11,,eosinophil chemotaxis,,,IBA,PTN001381485 ,J:265628 
+MGI:98258,Ccl1,chemokine (C-C motif) ligand 1,11,,lymphocyte chemotaxis,,,IBA,PTN000245709 ,J:265628 
+MGI:98258,Ccl1,chemokine (C-C motif) ligand 1,11,,monocyte chemotaxis,,,IBA,PTN000245709 ,J:265628 
+MGI:98258,Ccl1,chemokine (C-C motif) ligand 1,11,,neutrophil chemotaxis,,,IBA,PTN000245709 ,J:265628 
+MGI:98258,Ccl1,chemokine (C-C motif) ligand 1,11,,positive regulation of monocyte chemotaxis,,,ISO,P22362 ,J:164563 
+MGI:98259,Ccl2,chemokine (C-C motif) ligand 2,11,,eosinophil chemotaxis,,,IBA,PTN001381485 ,J:265628 
+MGI:98259,Ccl2,chemokine (C-C motif) ligand 2,11,,lymphocyte chemotaxis,,,IBA,PTN000245709 ,J:265628 
+MGI:98259,Ccl2,chemokine (C-C motif) ligand 2,11,,lymphocyte chemotaxis,,,ISO,RGD:3645 ,J:155856 
+MGI:98259,Ccl2,chemokine (C-C motif) ligand 2,11,,macrophage chemotaxis,,,ISO,RGD:3645 ,J:155856 
+MGI:98259,Ccl2,chemokine (C-C motif) ligand 2,11,,monocyte chemotaxis,,,IBA,PTN000245709 ,J:265628 
+MGI:98259,Ccl2,chemokine (C-C motif) ligand 2,11,,neutrophil chemotaxis,,,IBA,PTN000245709 ,J:265628 
+MGI:98259,Ccl2,chemokine (C-C motif) ligand 2,11,,neutrophil chemotaxis,,,ISO,RGD:3645 ,J:155856 
+MGI:98259,Ccl2,chemokine (C-C motif) ligand 2,11,,positive regulation of macrophage chemotaxis,,,IDA,,J:147328 
+MGI:98259,Ccl2,chemokine (C-C motif) ligand 2,11,,positive regulation of macrophage chemotaxis,,,ISO,RGD:3645 ,J:155856 
+MGI:98259,Ccl2,chemokine (C-C motif) ligand 2,11,,positive regulation of monocyte chemotaxis,happens in macrophage,,IDA,,J:220493 
+MGI:98259,Ccl2,chemokine (C-C motif) ligand 2,11,,positive regulation of monocyte chemotaxis,,,ISO,RGD:3645 ,J:155856 
+MGI:98260,Ccl3,chemokine (C-C motif) ligand 3,11,,leukocyte chemotaxis,,,ISO,RGD:3647 ,J:155856 
+MGI:98260,Ccl3,chemokine (C-C motif) ligand 3,11,,lymphocyte chemotaxis,,,IBA,PTN000245709 ,J:265628 
+MGI:98260,Ccl3,chemokine (C-C motif) ligand 3,11,,macrophage chemotaxis,,,IGI,P22893 ,J:179147 
+MGI:98260,Ccl3,chemokine (C-C motif) ligand 3,11,,monocyte chemotaxis,,,IBA,PTN000245709 ,J:265628 
+MGI:98260,Ccl3,chemokine (C-C motif) ligand 3,11,,neutrophil chemotaxis,,,IBA,PTN000245709 ,J:265628 
+MGI:98260,Ccl3,chemokine (C-C motif) ligand 3,11,,neutrophil chemotaxis,,,ISO,RGD:3647 ,J:155856 
+MGI:98261,Ccl4,chemokine (C-C motif) ligand 4,11,,eosinophil chemotaxis,,,IBA,PTN001381485 ,J:265628 
+MGI:98261,Ccl4,chemokine (C-C motif) ligand 4,11,,leukocyte chemotaxis,,,ISO,RGD:620441 ,J:155856 
+MGI:98261,Ccl4,chemokine (C-C motif) ligand 4,11,,lymphocyte chemotaxis,,,IBA,PTN000245709 ,J:265628 
+MGI:98261,Ccl4,chemokine (C-C motif) ligand 4,11,,monocyte chemotaxis,,,IBA,PTN000245709 ,J:265628 
+MGI:98261,Ccl4,chemokine (C-C motif) ligand 4,11,,neutrophil chemotaxis,,,IBA,PTN000245709 ,J:265628 
+MGI:98262,Ccl5,chemokine (C-C motif) ligand 5,11,,eosinophil chemotaxis,,,ISO,P13501 ,J:164563 
+MGI:98262,Ccl5,chemokine (C-C motif) ligand 5,11,,lymphocyte chemotaxis,,,IBA,PTN000245709 ,J:265628 
+MGI:98262,Ccl5,chemokine (C-C motif) ligand 5,11,,lymphocyte chemotaxis,,,ISO,RGD:69069 ,J:155856 
+MGI:98262,Ccl5,chemokine (C-C motif) ligand 5,11,,monocyte chemotaxis,,,IBA,PTN000245709 ,J:265628 
+MGI:98262,Ccl5,chemokine (C-C motif) ligand 5,11,,neutrophil chemotaxis,,,IBA,PTN000245709 ,J:265628 
+MGI:98262,Ccl5,chemokine (C-C motif) ligand 5,11,,positive regulation of macrophage chemotaxis,,,ISO,P13501 ,J:164563 
+MGI:98262,Ccl5,chemokine (C-C motif) ligand 5,11,,positive regulation of mast cell chemotaxis,,,ISO,RGD:69069 ,J:155856 
+MGI:98262,Ccl5,chemokine (C-C motif) ligand 5,11,,positive regulation of monocyte chemotaxis,,,IDA,,J:172951 
+MGI:98262,Ccl5,chemokine (C-C motif) ligand 5,11,,positive regulation of monocyte chemotaxis,,,ISO,P13501 ,J:164563 
+MGI:98262,Ccl5,chemokine (C-C motif) ligand 5,11,,positive regulation of natural killer cell chemotaxis,,,ISO,P13501 ,J:164563 
+MGI:98262,Ccl5,chemokine (C-C motif) ligand 5,11,,positive regulation of T cell chemotaxis,,,IBA,PTN000245829 ,J:265628 
+MGI:98262,Ccl5,chemokine (C-C motif) ligand 5,11,,positive regulation of T cell chemotaxis,,,ISO,RGD:69069 ,J:155856 
+MGI:98262,Ccl5,chemokine (C-C motif) ligand 5,11,,positive regulation of T cell chemotaxis,,,ISO,P13501 ,J:164563 
+MGI:98263,Ccl6,chemokine (C-C motif) ligand 6,11,,lymphocyte chemotaxis,,,IBA,PTN000245709 ,J:265628 
+MGI:98263,Ccl6,chemokine (C-C motif) ligand 6,11,,monocyte chemotaxis,,,IBA,PTN000245709 ,J:265628 
+MGI:98263,Ccl6,chemokine (C-C motif) ligand 6,11,,neutrophil chemotaxis,,,IBA,PTN000245709 ,J:265628 
+MGI:99512,Ccl7,chemokine (C-C motif) ligand 7,11,,eosinophil chemotaxis,,,IBA,PTN001381485 ,J:265628 
+MGI:99512,Ccl7,chemokine (C-C motif) ligand 7,11,,eosinophil chemotaxis,,,ISO,P80098 ,J:164563 
+MGI:99512,Ccl7,chemokine (C-C motif) ligand 7,11,,lymphocyte chemotaxis,,,IBA,PTN000245709 ,J:265628 
+MGI:99512,Ccl7,chemokine (C-C motif) ligand 7,11,,monocyte chemotaxis,,,IBA,PTN000245709 ,J:265628 
+MGI:99512,Ccl7,chemokine (C-C motif) ligand 7,11,,neutrophil chemotaxis,,,IBA,PTN000245709 ,J:265628 
+MGI:99512,Ccl7,chemokine (C-C motif) ligand 7,11,,positive regulation of natural killer cell chemotaxis,,,ISO,P80098 ,J:164563 
+MGI:101878,Ccl8,chemokine (C-C motif) ligand 8,11,,eosinophil chemotaxis,,,IBA,PTN001381485 ,J:265628 
+MGI:101878,Ccl8,chemokine (C-C motif) ligand 8,11,,lymphocyte chemotaxis,,,IBA,PTN000245709 ,J:265628 
+MGI:101878,Ccl8,chemokine (C-C motif) ligand 8,11,,monocyte chemotaxis,,,IBA,PTN000245709 ,J:265628 
+MGI:101878,Ccl8,chemokine (C-C motif) ligand 8,11,,neutrophil chemotaxis,,,IBA,PTN000245709 ,J:265628 
+MGI:104533,Ccl9,chemokine (C-C motif) ligand 9,11,,lymphocyte chemotaxis,,,IBA,PTN000245709 ,J:265628 
+MGI:104533,Ccl9,chemokine (C-C motif) ligand 9,11,,monocyte chemotaxis,,,IBA,PTN000245709 ,J:265628 
+MGI:104533,Ccl9,chemokine (C-C motif) ligand 9,11,,neutrophil chemotaxis,,,IBA,PTN000245709 ,J:265628 
+MGI:103576,Ccl11,chemokine (C-C motif) ligand 11,11,,eosinophil chemotaxis,,,IBA,PTN001381485 ,J:265628 
+MGI:103576,Ccl11,chemokine (C-C motif) ligand 11,11,,eosinophil chemotaxis,,,ISO,RGD:3644 ,J:155856 
+MGI:103576,Ccl11,chemokine (C-C motif) ligand 11,11,,eosinophil chemotaxis,,,ISO,P51671 ,J:164563 
+MGI:103576,Ccl11,chemokine (C-C motif) ligand 11,11,,lymphocyte chemotaxis,,,IBA,PTN000245709 ,J:265628 
+MGI:103576,Ccl11,chemokine (C-C motif) ligand 11,11,,mast cell chemotaxis,,,ISO,RGD:3644 ,J:155856 
+MGI:103576,Ccl11,chemokine (C-C motif) ligand 11,11,,monocyte chemotaxis,,,IBA,PTN000245709 ,J:265628 
+MGI:103576,Ccl11,chemokine (C-C motif) ligand 11,11,,neutrophil chemotaxis,,,IBA,PTN000245709 ,J:265628 
+MGI:108224,Ccl12,chemokine (C-C motif) ligand 12,11,,eosinophil chemotaxis,,,IBA,PTN001381485 ,J:265628 
+MGI:108224,Ccl12,chemokine (C-C motif) ligand 12,11,,lymphocyte chemotaxis,,,IBA,PTN000245709 ,J:265628 
+MGI:108224,Ccl12,chemokine (C-C motif) ligand 12,11,,monocyte chemotaxis,,,IBA,PTN000245709 ,J:265628 
+MGI:108224,Ccl12,chemokine (C-C motif) ligand 12,11,,monocyte chemotaxis,,,IDA,,J:37573 
+MGI:108224,Ccl12,chemokine (C-C motif) ligand 12,11,,neutrophil chemotaxis,,,IBA,PTN000245709 ,J:265628 
+MGI:1329039,Ccl17,chemokine (C-C motif) ligand 17,8,,lymphocyte chemotaxis,,,IBA,PTN000245709 ,J:265628 
+MGI:1329039,Ccl17,chemokine (C-C motif) ligand 17,8,,monocyte chemotaxis,,,IBA,PTN000245709 ,J:265628 
+MGI:1329039,Ccl17,chemokine (C-C motif) ligand 17,8,,neutrophil chemotaxis,,,IBA,PTN000245709 ,J:265628 
+MGI:1346316,Ccl19,chemokine (C-C motif) ligand 19,4,,dendritic cell chemotaxis,,,IDA,,J:175182 J:175209 
+MGI:1346316,Ccl19,chemokine (C-C motif) ligand 19,4,,dendritic cell chemotaxis,,,ISO,Q99731 ,J:164563 
+MGI:1346316,Ccl19,chemokine (C-C motif) ligand 19,4,,lymphocyte chemotaxis,,,IBA,PTN000245709 ,J:265628 
+MGI:1346316,Ccl19,chemokine (C-C motif) ligand 19,4,,monocyte chemotaxis,,,IBA,PTN000245709 ,J:265628 
+MGI:1346316,Ccl19,chemokine (C-C motif) ligand 19,4,,myeloid dendritic cell chemotaxis,,,ISO,Q99731 ,J:164563 
+MGI:1346316,Ccl19,chemokine (C-C motif) ligand 19,4,,neutrophil chemotaxis,,,IBA,PTN000245709 ,J:265628 
+MGI:1346316,Ccl19,chemokine (C-C motif) ligand 19,4,,positive regulation of neutrophil chemotaxis,,,ISO,Q99731 ,J:164563 
+MGI:1329031,Ccl20,chemokine (C-C motif) ligand 20,1,,lymphocyte chemotaxis,,,IBA,PTN000245709 ,J:265628 
+MGI:1329031,Ccl20,chemokine (C-C motif) ligand 20,1,,monocyte chemotaxis,,,IBA,PTN000245709 ,J:265628 
+MGI:1329031,Ccl20,chemokine (C-C motif) ligand 20,1,,neutrophil chemotaxis,,,IBA,PTN000245709 ,J:265628 
+MGI:1349183,Ccl21a,chemokine (C-C motif) ligand 21A (serine),4,,dendritic cell chemotaxis,,,IDA,,J:175209 
+MGI:1349183,Ccl21a,chemokine (C-C motif) ligand 21A (serine),4,,dendritic cell chemotaxis,,,ISO,O00585 ,J:164563 
+MGI:1349183,Ccl21a,chemokine (C-C motif) ligand 21A (serine),4,,eosinophil chemotaxis,,,IBA,PTN001381485 ,J:265628 
+MGI:1349183,Ccl21a,chemokine (C-C motif) ligand 21A (serine),4,,lymphocyte chemotaxis,,,IBA,PTN000245709 ,J:265628 
+MGI:1349183,Ccl21a,chemokine (C-C motif) ligand 21A (serine),4,,monocyte chemotaxis,,,IBA,PTN000245709 ,J:265628 
+MGI:1349183,Ccl21a,chemokine (C-C motif) ligand 21A (serine),4,,neutrophil chemotaxis,,,IBA,PTN000245709 ,J:265628 
+MGI:1349183,Ccl21a,chemokine (C-C motif) ligand 21A (serine),4,,positive regulation of macrophage chemotaxis,,,NAS,,J:175337 
+MGI:1349183,Ccl21a,chemokine (C-C motif) ligand 21A (serine),4,,positive regulation of myeloid dendritic cell chemotaxis,,,ISO,O00585 ,J:164563 
+MGI:1349183,Ccl21a,chemokine (C-C motif) ligand 21A (serine),4,,positive regulation of neutrophil chemotaxis,,,ISO,O00585 ,J:164563 
+MGI:1349183,Ccl21a,chemokine (C-C motif) ligand 21A (serine),4,,positive regulation of T cell chemotaxis,"happens in T cell,is a part of cellular response to chemokine,uses UniProtKB:P47774",,IMP,,J:259583 
+MGI:1349182,Ccl21b,chemokine (C-C motif) ligand 21B (leucine),4,,dendritic cell chemotaxis,,,ISO,O00585 ,J:164563 
+MGI:1349182,Ccl21b,chemokine (C-C motif) ligand 21B (leucine),4,,eosinophil chemotaxis,,,IBA,PTN001381485 ,J:265628 
+MGI:1349182,Ccl21b,chemokine (C-C motif) ligand 21B (leucine),4,,leukocyte chemotaxis,,,ISO,U88320 ,J:42623 
+MGI:1349182,Ccl21b,chemokine (C-C motif) ligand 21B (leucine),4,,lymphocyte chemotaxis,,,IBA,PTN000245709 ,J:265628 
+MGI:1349182,Ccl21b,chemokine (C-C motif) ligand 21B (leucine),4,,monocyte chemotaxis,,,IBA,PTN000245709 ,J:265628 
+MGI:1349182,Ccl21b,chemokine (C-C motif) ligand 21B (leucine),4,,neutrophil chemotaxis,,,IBA,PTN000245709 ,J:265628 
+MGI:1349182,Ccl21b,chemokine (C-C motif) ligand 21B (leucine),4,,positive regulation of myeloid dendritic cell chemotaxis,,,ISO,O00585 ,J:164563 
+MGI:1349182,Ccl21b,chemokine (C-C motif) ligand 21B (leucine),4,,positive regulation of neutrophil chemotaxis,,,ISO,O00585 ,J:164563 
+MGI:1891386,Ccl21c,chemokine (C-C motif) ligand 21C (leucine),4,,eosinophil chemotaxis,,,IBA,PTN001381485 ,J:265628 
+MGI:1891386,Ccl21c,chemokine (C-C motif) ligand 21C (leucine),4,,lymphocyte chemotaxis,,,IBA,PTN000245709 ,J:265628 
+MGI:1891386,Ccl21c,chemokine (C-C motif) ligand 21C (leucine),4,,monocyte chemotaxis,,,IBA,PTN000245709 ,J:265628 
+MGI:1891386,Ccl21c,chemokine (C-C motif) ligand 21C (leucine),4,,neutrophil chemotaxis,,,IBA,PTN000245709 ,J:265628 
+MGI:5434896,Ccl21d,chemokine (C-C motif) ligand 21D,4,,dendritic cell chemotaxis,,,ISO,O00585 ,J:164563 
+MGI:5434896,Ccl21d,chemokine (C-C motif) ligand 21D,4,,positive regulation of myeloid dendritic cell chemotaxis,,,ISO,O00585 ,J:164563 
+MGI:5434896,Ccl21d,chemokine (C-C motif) ligand 21D,4,,positive regulation of neutrophil chemotaxis,,,ISO,O00585 ,J:164563 
+MGI:1306779,Ccl22,chemokine (C-C motif) ligand 22,8,,lymphocyte chemotaxis,,,IBA,PTN000245709 ,J:265628 
+MGI:1306779,Ccl22,chemokine (C-C motif) ligand 22,8,,monocyte chemotaxis,,,IBA,PTN000245709 ,J:265628 
+MGI:1306779,Ccl22,chemokine (C-C motif) ligand 22,8,,neutrophil chemotaxis,,,IBA,PTN000245709 ,J:265628 
+MGI:1928953,Ccl24,chemokine (C-C motif) ligand 24,5,,eosinophil chemotaxis,,,IBA,PTN001381485 ,J:265628 
+MGI:1928953,Ccl24,chemokine (C-C motif) ligand 24,5,,eosinophil chemotaxis,,,ISO,O00175 ,J:164563 
+MGI:1928953,Ccl24,chemokine (C-C motif) ligand 24,5,,lymphocyte chemotaxis,,,IBA,PTN000245709 ,J:265628 
+MGI:1928953,Ccl24,chemokine (C-C motif) ligand 24,5,,monocyte chemotaxis,,,IBA,PTN000245709 ,J:265628 
+MGI:1928953,Ccl24,chemokine (C-C motif) ligand 24,5,,neutrophil chemotaxis,,,IBA,PTN000245709 ,J:265628 
+MGI:1099448,Ccl25,chemokine (C-C motif) ligand 25,8,,lymphocyte chemotaxis,,,IBA,PTN000245709 ,J:265628 
+MGI:1099448,Ccl25,chemokine (C-C motif) ligand 25,8,,monocyte chemotaxis,,,IBA,PTN000245709 ,J:265628 
+MGI:1099448,Ccl25,chemokine (C-C motif) ligand 25,8,,neutrophil chemotaxis,,,IBA,PTN000245709 ,J:265628 
+MGI:3589281,Ccl26,chemokine (C-C motif) ligand 26,5,,eosinophil chemotaxis,,,IBA,PTN001381485 ,J:265628 
+MGI:3589281,Ccl26,chemokine (C-C motif) ligand 26,5,,lymphocyte chemotaxis,,,IBA,PTN000245709 ,J:265628 
+MGI:3589281,Ccl26,chemokine (C-C motif) ligand 26,5,,monocyte chemotaxis,,,IBA,PTN000245709 ,J:265628 
+MGI:3589281,Ccl26,chemokine (C-C motif) ligand 26,5,,monocyte chemotaxis,,,ISO,Q9Y258 ,J:164563 
+MGI:3589281,Ccl26,chemokine (C-C motif) ligand 26,5,,neutrophil chemotaxis,,,IBA,PTN000245709 ,J:265628 
+MGI:3589281,Ccl26,chemokine (C-C motif) ligand 26,5,,T cell chemotaxis,,,ISO,Q9Y258 ,J:164563 
+MGI:1343459,Ccl27a,chemokine (C-C motif) ligand 27A,4,,positive regulation of T cell chemotaxis,,,IBA,PTN000426169 ,J:265628 
+MGI:1343459,Ccl27a,chemokine (C-C motif) ligand 27A,4,,positive regulation of T cell chemotaxis,,PR:Q9Z1X0-1,IDA,,J:201721 
+MGI:109185,Ccn3,cellular communication network factor 3,15,,negative regulation of monocyte chemotaxis,,,ISO,P48745 ,J:164563 
+MGI:104618,Ccr1,chemokine (C-C motif) receptor 1,9,,leukocyte chemotaxis,,,IDA,,J:29873 
+MGI:104618,Ccr1,chemokine (C-C motif) receptor 1,9,,leukocyte chemotaxis,,,IMP,MGI:1931850 ,J:41324 
+MGI:104618,Ccr1,chemokine (C-C motif) receptor 1,9,,positive regulation of monocyte chemotaxis,,,ISO,P32246 ,J:164563 
+MGI:104617,Ccr1l1,chemokine (C-C motif) receptor 1-like 1,9,,positive regulation of monocyte chemotaxis,,,ISO,P32246 ,J:164563 
+MGI:106185,Ccr2,chemokine (C-C motif) receptor 2,9,,monocyte chemotaxis,happens in small intestine lamina propria,,IMP,MGI:5562913 ,J:208234 
+MGI:106185,Ccr2,chemokine (C-C motif) receptor 2,9,,positive regulation of monocyte chemotaxis,,,IMP,,J:140759 
+MGI:106185,Ccr2,chemokine (C-C motif) receptor 2,9,,positive regulation of monocyte chemotaxis,,,ISO,P41597 ,J:164563 
+MGI:106185,Ccr2,chemokine (C-C motif) receptor 2,9,,positive regulation of T cell chemotaxis,,,IDA,,J:140232 
+MGI:106185,Ccr2,chemokine (C-C motif) receptor 2,9,,T-helper 17 cell chemotaxis,,,IDA,,J:140232 
+MGI:104616,Ccr3,chemokine (C-C motif) receptor 3,9,,eosinophil chemotaxis,,,ISO,RGD:620593 ,J:155856 
+MGI:104616,Ccr3,chemokine (C-C motif) receptor 3,9,,mast cell chemotaxis,,,ISO,RGD:620593 ,J:155856 
+MGI:1333797,Ccr6,chemokine (C-C motif) receptor 6,17,,positive regulation of dendritic cell chemotaxis,,,IBA,PTN000659315 ,J:265628 
+MGI:1333797,Ccr6,chemokine (C-C motif) receptor 6,17,,positive regulation of dendritic cell chemotaxis,,,ISO,RGD:1308562 ,J:155856 
+MGI:103011,Ccr7,chemokine (C-C motif) receptor 7,11,,lymphocyte chemotaxis across high endothelial venule,,,TAS,,J:168511 
+MGI:103011,Ccr7,chemokine (C-C motif) receptor 7,11,,myeloid dendritic cell chemotaxis,,,ISO,P32248 ,J:164563 
+MGI:103011,Ccr7,chemokine (C-C motif) receptor 7,11,,positive regulation of dendritic cell chemotaxis,,,IMP,,J:57976 
+MGI:103011,Ccr7,chemokine (C-C motif) receptor 7,11,,positive regulation of macrophage chemotaxis,,,NAS,,J:175337 
+MGI:103011,Ccr7,chemokine (C-C motif) receptor 7,11,,positive regulation of neutrophil chemotaxis,,,IMP,,J:168511 
+MGI:103011,Ccr7,chemokine (C-C motif) receptor 7,11,,positive regulation of neutrophil chemotaxis,,,ISO,P32248 ,J:164563 
+MGI:103011,Ccr7,chemokine (C-C motif) receptor 7,11,,positive regulation of T cell chemotaxis,,,TAS,,J:168511 
+MGI:96534,Cd74,"CD74 antigen (invariant polypeptide of major histocompatibility complex, class II antigen-associated)",18,,positive regulation of neutrophil chemotaxis,,,IDA,,J:169979 
+MGI:1333869,Ch25h,cholesterol 25-hydroxylase,19,,B cell chemotaxis,,,IMP,,J:188276 
+MGI:88394,Chga,chromogranin A,12,,mast cell chemotaxis,,,ISO,P10645 ,J:164563 
+MGI:1922708,Cklf,chemokine-like factor,8,,leukocyte chemotaxis,,,ISO,RGD:620708 ,J:155856 
+MGI:1922708,Cklf,chemokine-like factor,8,,lymphocyte chemotaxis,,,ISO,Q9UBR5 ,J:164563 
+MGI:1922708,Cklf,chemokine-like factor,8,,macrophage chemotaxis,,,ISO,Q9UBR5 ,J:164563 
+MGI:1922708,Cklf,chemokine-like factor,8,,neutrophil chemotaxis,,,ISO,RGD:620708 ,J:155856 
+MGI:1922708,Cklf,chemokine-like factor,8,,neutrophil chemotaxis,,,ISO,Q9UBR5 ,J:164563 
+MGI:109603,Cmklr1,chemokine-like receptor 1,5,,positive regulation of macrophage chemotaxis,,,IBA,PTN004683232 ,J:265628 
+MGI:109603,Cmklr1,chemokine-like receptor 1,5,,positive regulation of macrophage chemotaxis,,,ISO,Q99788 ,J:164563 
+MGI:104650,Cnr2,cannabinoid receptor 2 (macrophage),4,,leukocyte chemotaxis,,,IDA,,J:219661 
+MGI:1345961,Coro1a,"coronin, actin binding protein 1A",7,,leukocyte chemotaxis,results in the movement of epithelial cell of pancreas,,IMP,MGI:3664599 ,J:111593 
+MGI:99946,Creb3,cAMP responsive element binding protein 3,4,,positive regulation of monocyte chemotaxis,,,ISO,O43889 ,J:164563 
+MGI:1339753,Csf1,colony stimulating factor 1 (macrophage),3,,positive regulation of macrophage chemotaxis,,,ISO,P09603 ,J:164563 
+MGI:1339758,Csf1r,colony stimulating factor 1 receptor,18,,positive regulation of macrophage chemotaxis,,,ISO,P07333 ,J:164563 
+MGI:1339755,Csf3r,colony stimulating factor 3 receptor (granulocyte),4,,neutrophil chemotaxis,,,IMP,MGI:2388978 ,J:79825 
+MGI:88563,Ctsg,cathepsin G,14,,monocyte chemotaxis,,,ISO,P08311 ,J:164563 
+MGI:1097153,Cx3cl1,chemokine (C-X3-C motif) ligand 1,8,,eosinophil chemotaxis,,,IBA,PTN001381485 ,J:265628 
+MGI:1097153,Cx3cl1,chemokine (C-X3-C motif) ligand 1,8,,lymphocyte chemotaxis,,,IBA,PTN000245709 ,J:265628 
+MGI:1097153,Cx3cl1,chemokine (C-X3-C motif) ligand 1,8,,lymphocyte chemotaxis,,,IDA,,J:40832 
+MGI:1097153,Cx3cl1,chemokine (C-X3-C motif) ligand 1,8,,macrophage chemotaxis,,PR:O35188,IMP,,J:119689 
+MGI:1097153,Cx3cl1,chemokine (C-X3-C motif) ligand 1,8,,monocyte chemotaxis,,,IBA,PTN000245709 ,J:265628 
+MGI:1097153,Cx3cl1,chemokine (C-X3-C motif) ligand 1,8,,neutrophil chemotaxis,,,IBA,PTN000245709 ,J:265628 
+MGI:1097153,Cx3cl1,chemokine (C-X3-C motif) ligand 1,8,,neutrophil chemotaxis,,,IDA,,J:40832 
+MGI:1097153,Cx3cl1,chemokine (C-X3-C motif) ligand 1,8,,positive regulation of macrophage chemotaxis,,,ISO,RGD:620458 ,J:155856 
+MGI:1333815,Cx3cr1,chemokine (C-X3-C motif) receptor 1,9,,leukocyte chemotaxis,,,IMP,,J:129712 
+MGI:1333815,Cx3cr1,chemokine (C-X3-C motif) receptor 1,9,,macrophage chemotaxis,,PR:Q9Z0D9-1,IMP,MGI:3608773 ,J:132951 
+MGI:1333815,Cx3cr1,chemokine (C-X3-C motif) receptor 1,9,,positive regulation of monocyte chemotaxis,,,IMP,,J:90912 
+MGI:1201679,Cxadr,coxsackie virus and adenovirus receptor,16,,neutrophil chemotaxis,,,ISO,P78310 ,J:164563 
+MGI:108068,Cxcl1,chemokine (C-X-C motif) ligand 1,5,,neutrophil chemotaxis,,,IBA,PTN000021269 ,J:265628 
+MGI:108068,Cxcl1,chemokine (C-X-C motif) ligand 1,5,,neutrophil chemotaxis,,,ISO,RGD:619869 ,J:155856 
+MGI:1340094,Cxcl2,chemokine (C-X-C motif) ligand 2,5,,leukocyte chemotaxis,,,ISO,RGD:70069 ,J:155856 
+MGI:1340094,Cxcl2,chemokine (C-X-C motif) ligand 2,5,,neutrophil chemotaxis,,,IBA,PTN000021269 ,J:265628 
+MGI:1340094,Cxcl2,chemokine (C-X-C motif) ligand 2,5,,neutrophil chemotaxis,,,ISO,RGD:70069 ,J:155856 
+MGI:3037818,Cxcl3,chemokine (C-X-C motif) ligand 3,5,,neutrophil chemotaxis,,,IBA,PTN000021269 ,J:265628 
+MGI:3037818,Cxcl3,chemokine (C-X-C motif) ligand 3,5,,neutrophil chemotaxis,,,IDA,,J:88000 
+MGI:3037818,Cxcl3,chemokine (C-X-C motif) ligand 3,5,,neutrophil chemotaxis,,,ISO,RGD:621812 ,J:155856 
+MGI:1096868,Cxcl5,chemokine (C-X-C motif) ligand 5,5,,neutrophil chemotaxis,,,IBA,PTN000021269 ,J:265628 
+MGI:1352449,Cxcl9,chemokine (C-X-C motif) ligand 9,5,,neutrophil chemotaxis,,,IBA,PTN000021269 ,J:265628 
+MGI:1352450,Cxcl10,chemokine (C-X-C motif) ligand 10,5,,neutrophil chemotaxis,,,IBA,PTN000021269 ,J:265628 
+MGI:1352450,Cxcl10,chemokine (C-X-C motif) ligand 10,5,,positive regulation of leukocyte chemotaxis,,,ISO,RGD:620209 ,J:155856 
+MGI:1352450,Cxcl10,chemokine (C-X-C motif) ligand 10,5,,positive regulation of monocyte chemotaxis,,,ISO,P02778 ,J:164563 
+MGI:1352450,Cxcl10,chemokine (C-X-C motif) ligand 10,5,,regulation of T cell chemotaxis,,,ISO,P02778 ,J:164563 
+MGI:1352450,Cxcl10,chemokine (C-X-C motif) ligand 10,5,,T cell chemotaxis,,,ISO,P02778 ,J:164563 
+MGI:103556,Cxcl12,chemokine (C-X-C motif) ligand 12,6,,positive regulation of monocyte chemotaxis,,,ISO,P48061 ,J:164563 
+MGI:103556,Cxcl12,chemokine (C-X-C motif) ligand 12,6,,T cell chemotaxis,,,ISO,P48061 ,J:164563 
+MGI:1888499,Cxcl13,chemokine (C-X-C motif) ligand 13,5,,B cell chemotaxis,,,IMP,,J:119527 
+MGI:1888499,Cxcl13,chemokine (C-X-C motif) ligand 13,5,,B cell chemotaxis,,,ISO,O43927 ,J:164563 
+MGI:1888499,Cxcl13,chemokine (C-X-C motif) ligand 13,5,,B cell chemotaxis across high endothelial venule,,,IDA,,J:119527 
+MGI:1888499,Cxcl13,chemokine (C-X-C motif) ligand 13,5,,lymphocyte chemotaxis across high endothelial venule,,,IMP,,J:119527 
+MGI:1888499,Cxcl13,chemokine (C-X-C motif) ligand 13,5,,neutrophil chemotaxis,,,IBA,PTN000021269 ,J:265628 
+MGI:1888499,Cxcl13,chemokine (C-X-C motif) ligand 13,5,,positive regulation of T cell chemotaxis,,,ISO,O43927 ,J:164563 
+MGI:1888514,Cxcl14,chemokine (C-X-C motif) ligand 14,13,,positive regulation of natural killer cell chemotaxis,,,IMP,MGI:5494299 ,J:202633 
+MGI:1339941,Cxcl15,chemokine (C-X-C motif) ligand 15,5,,neutrophil chemotaxis,,,IBA,PTN000021269 ,J:265628 
+MGI:1339941,Cxcl15,chemokine (C-X-C motif) ligand 15,5,,neutrophil chemotaxis,,,IDA,,J:54701 
+MGI:1932682,Cxcl16,chemokine (C-X-C motif) ligand 16,11,,lymphocyte chemotaxis,,,IEA,IPR026296 ,J:72247 
+MGI:1932682,Cxcl16,chemokine (C-X-C motif) ligand 16,11,,T cell chemotaxis,,,IBA,PTN000373033 ,J:265628 
+MGI:1932682,Cxcl16,chemokine (C-X-C motif) ligand 16,11,,T cell chemotaxis,,,IDA,,J:65117 
+MGI:2387642,Cxcl17,chemokine (C-X-C motif) ligand 17,7,,macrophage chemotaxis,,,IBA,PTN002204389 ,J:265628 
+MGI:2387642,Cxcl17,chemokine (C-X-C motif) ligand 17,7,,macrophage chemotaxis,"happens in lung,happens in larynx mucous membrane,results in the movement of macrophage",,IMP,,J:230699 
+MGI:2387642,Cxcl17,chemokine (C-X-C motif) ligand 17,7,,positive regulation of macrophage chemotaxis,,,IBA,PTN002204389 ,J:265628 
+MGI:2387642,Cxcl17,chemokine (C-X-C motif) ligand 17,7,,positive regulation of macrophage chemotaxis,,,IMP,,J:232054 
+MGI:2387642,Cxcl17,chemokine (C-X-C motif) ligand 17,7,,positive regulation of macrophage chemotaxis,,,ISO,Q6UXB2 ,J:164563 
+MGI:2387642,Cxcl17,chemokine (C-X-C motif) ligand 17,7,,positive regulation of monocyte chemotaxis,,,IBA,PTN002204389 ,J:265628 
+MGI:2387642,Cxcl17,chemokine (C-X-C motif) ligand 17,7,,positive regulation of monocyte chemotaxis,,,ISO,Q6UXB2 ,J:164563 
+MGI:2448715,Cxcr1,chemokine (C-X-C motif) receptor 1,1,,neutrophil chemotaxis,,,IBA,PTN002573743 ,J:265628 
+MGI:105303,Cxcr2,chemokine (C-X-C motif) receptor 2,1,,neutrophil chemotaxis,,,IBA,PTN002573743 ,J:265628 
+MGI:105303,Cxcr2,chemokine (C-X-C motif) receptor 2,1,,neutrophil chemotaxis,,,ISO,RGD:2906 ,J:155856 
+MGI:105303,Cxcr2,chemokine (C-X-C motif) receptor 2,1,,neutrophil chemotaxis,,,ISO,P25025 ,J:164563 
+MGI:105303,Cxcr2,chemokine (C-X-C motif) receptor 2,1,,positive regulation of leukocyte chemotaxis,,,ISO,RGD:2906 ,J:155856 
+MGI:105303,Cxcr2,chemokine (C-X-C motif) receptor 2,1,,positive regulation of neutrophil chemotaxis,,,ISO,RGD:2906 ,J:155856 
+MGI:1277207,Cxcr3,chemokine (C-X-C motif) receptor 3,X,,T cell chemotaxis,,,ISO,RGD:621528 ,J:155856 
+MGI:103567,Cxcr5,chemokine (C-X-C motif) receptor 5,9,,leukocyte chemotaxis,,,IDA,,J:219661 
+MGI:104978,Cyp7b1,"cytochrome P450, family 7, subfamily b, polypeptide 1",3,,B cell chemotaxis,,,IMP,,J:188276 
+MGI:88587,Cyp19a1,"cytochrome P450, family 19, subfamily a, polypeptide 1",9,,negative regulation of macrophage chemotaxis,,,IMP,MGI:1857043 ,J:216958 
+MGI:1341297,Dapk2,death-associated protein kinase 2,9,,positive regulation of eosinophil chemotaxis,,,ISO,Q9UIK4 ,J:164563 
+MGI:1341297,Dapk2,death-associated protein kinase 2,9,,positive regulation of neutrophil chemotaxis,,,ISO,Q9UIK4 ,J:164563 
+MGI:3651158,Defb25,defensin beta 25,2,,positive regulation of monocyte chemotaxis,,,IBA,PTN001030034 ,J:265628 
+MGI:3651158,Defb25,defensin beta 25,2,,positive regulation of monocyte chemotaxis,,,ISO,Q8NES8 ,J:164563 
+MGI:1921256,Dnm1l,dynamin 1-like,16,,positive regulation of neutrophil chemotaxis,,,ISO,O00429 ,J:164563 
+MGI:94917,Dpep1,dipeptidase 1,8,,neutrophil chemotaxis,,,IMP,,J:284980 
+MGI:94919,Dpp4,dipeptidylpeptidase 4,2,,negative regulation of neutrophil chemotaxis,,,ISO,P27487 ,J:164563 
+MGI:105120,Dusp1,dual specificity phosphatase 1,17,,negative regulation of monocyte chemotaxis,,,ISO,P28562 ,J:164563 
+MGI:1349385,Dysf,dysferlin,6,,positive regulation of neutrophil chemotaxis,,,IMP,MGI:1857883 ,J:148110 
+MGI:95283,Edn1,endothelin 1,13,,positive regulation of neutrophil chemotaxis,,,ISO,RGD:2532 ,J:155856 
+MGI:95284,Edn2,endothelin 2,4,,macrophage chemotaxis,,,ISO,P20800 ,J:164563 
+MGI:95284,Edn2,endothelin 2,4,,neutrophil chemotaxis,,,ISO,P20800 ,J:164563 
+MGI:95284,Edn2,endothelin 2,4,,positive regulation of leukocyte chemotaxis,,,ISO,P20800 ,J:164563 
+MGI:95285,Edn3,endothelin 3,2,,neutrophil chemotaxis,,,ISO,P14138 ,J:164563 
+MGI:95285,Edn3,endothelin 3,2,,positive regulation of leukocyte chemotaxis,,,ISO,P14138 ,J:164563 
+MGI:105923,Ednra,endothelin receptor type A,8,,positive regulation of neutrophil chemotaxis,,,ISO,RGD:2535 ,J:155856 
+MGI:102720,Ednrb,endothelin receptor type B,14,,macrophage chemotaxis,,,ISO,P24530 ,J:164563 
+MGI:101910,F2rl1,coagulation factor II (thrombin) receptor-like 1,13,,positive regulation of leukocyte chemotaxis,,,ISO,P55085 ,J:164563 
+MGI:109325,F7,coagulation factor VII,8,,positive regulation of leukocyte chemotaxis,,,IBA,PTN000667633 ,J:265628 
+MGI:109325,F7,coagulation factor VII,8,,positive regulation of leukocyte chemotaxis,,,ISO,P08709 ,J:164563 
+MGI:95496,Fcer1g,"Fc receptor, IgE, high affinity I, gamma polypeptide",1,,neutrophil chemotaxis,,,IBA,PTN000423688 ,J:265628 
+MGI:95496,Fcer1g,"Fc receptor, IgE, high affinity I, gamma polypeptide",1,,neutrophil chemotaxis,,,IMP,MGI:1857165 ,J:78296 J:78297 J:78298 
+MGI:95500,Fcgr3,"Fc receptor, IgG, low affinity III",1,,neutrophil chemotaxis,,,IMP,MGI:1861924 ,J:78297 
+MGI:2441731,Ffar2,free fatty acid receptor 2,7,,leukocyte chemotaxis involved in inflammatory response,,,IMP,,J:153951 
+MGI:95558,Flt1,FMS-like tyrosine kinase 1,5,,monocyte chemotaxis,,,ISO,P17948 ,J:164563 
+MGI:1278319,Fpr2,formyl peptide receptor 2,17,,positive regulation of monocyte chemotaxis,,,ISO,P25090 ,J:164563 
+MGI:1194495,Fpr3,formyl peptide receptor 3,17,,positive regulation of monocyte chemotaxis,,,ISO,P25090 ,J:164563 
+MGI:1278318,Fpr-rs3,"formyl peptide receptor, related sequence 3",17,,positive regulation of monocyte chemotaxis,,,ISO,P25090 ,J:164563 
+MGI:1278317,Fpr-rs4,"formyl peptide receptor, related sequence 4",17,,positive regulation of monocyte chemotaxis,,,ISO,P25090 ,J:164563 
+MGI:2448176,Fpr-rs6,"formyl peptide receptor, related sequence 6",17,,positive regulation of monocyte chemotaxis,,,ISO,P25090 ,J:164563 
+MGI:2448177,Fpr-rs7,"formyl peptide receptor, related sequence 7",17,,positive regulation of monocyte chemotaxis,,,ISO,P25090 ,J:164563 
+MGI:95660,Gas6,growth arrest specific 6,8,,B cell chemotaxis,,,ISO,Q14393 ,J:164563 
+MGI:95660,Gas6,growth arrest specific 6,8,,positive regulation of dendritic cell chemotaxis,,,ISO,Q14393 ,J:164563 
+MGI:1861607,Gbf1,golgi-specific brefeldin A-resistance factor 1,19,,neutrophil chemotaxis,,,ISO,Q92538 ,J:164563 
+MGI:3645655,Gm5849,predicted gene 5849,3,,neutrophil chemotaxis,,,IBA,PTN000181699 ,J:265628 
+MGI:107859,Gpr18,G protein-coupled receptor 18,14,,negative regulation of leukocyte chemotaxis,,,IMP,MGI:5708707 ,J:219661 
+MGI:1929509,Gpr35,G protein-coupled receptor 35,1,,macrophage chemotaxis,,,ISO,Q9HC97 ,J:73065 
+MGI:2442034,Gpr183,G protein-coupled receptor 183,14,,dendritic cell chemotaxis,,,IMP,,J:196453 J:198681 
+MGI:2442034,Gpr183,G protein-coupled receptor 183,14,,leukocyte chemotaxis,,,IDA,,J:219661 
+MGI:2442034,Gpr183,G protein-coupled receptor 183,14,,leukocyte chemotaxis,,,ISO,P32249 ,J:164563 
+MGI:2442034,Gpr183,G protein-coupled receptor 183,14,,T cell chemotaxis,,,IMP,,J:233676 
+MGI:2146785,Gpsm3,"G-protein signalling modulator 3 (AGS3-like, C. elegans)",17,,positive regulation of leukocyte chemotaxis,,,IMP,MGI:4075252 ,J:193270 
+MGI:1344337,Grem1,"gremlin 1, DAN family BMP antagonist",2,,negative regulation of leukocyte chemotaxis,,,ISO,RGD:2359 ,J:155856 
+MGI:1344337,Grem1,"gremlin 1, DAN family BMP antagonist",2,,negative regulation of monocyte chemotaxis,,,ISO,RGD:2359 ,J:155856 
+MGI:96031,Hc,hemolytic complement,2,,negative regulation of macrophage chemotaxis,,,ISO,P01031 ,J:164563 
+MGI:96113,Hmgb1,high mobility group box 1,5,,positive regulation of monocyte chemotaxis,,,ISO,P09429 ,J:164563 
+MGI:107619,Hrh1,histamine receptor H1,6,,eosinophil chemotaxis,,,IEA,IPR000921 ,J:72247 
+MGI:2141879,Hsd3b7,"hydroxy-delta-5-steroid dehydrogenase, 3 beta- and steroid delta-isomerase 7",7,,B cell chemotaxis,,,IMP,,J:188276 
+MGI:107656,Ifng,interferon gamma,10,,neutrophil chemotaxis,,,IDA,,J:85159 
+MGI:107656,Ifng,interferon gamma,10,,neutrophil chemotaxis,,,IMP,MGI:1857184 ,J:85159 
+MGI:96543,Il1b,interleukin 1 beta,2,,neutrophil chemotaxis,,,IDA,,J:85159 
+MGI:96543,Il1b,interleukin 1 beta,2,,positive regulation of neutrophil chemotaxis,,,ISO,RGD:2891 ,J:155856 
+MGI:96556,Il4,interleukin 4,11,,positive regulation of eosinophil chemotaxis,,,IBA,PTN002934025 ,J:265628 
+MGI:96556,Il4,interleukin 4,11,,positive regulation of eosinophil chemotaxis,,,ISO,RGD:2898 ,J:155856 
+MGI:96539,Il12a,interleukin 12a,3,,positive regulation of dendritic cell chemotaxis,,,ISO,P29459 ,J:164563 
+MGI:1270855,Il16,interleukin 16,7,,leukocyte chemotaxis,,,IBA,PTN002602133 ,J:265628 
+MGI:1270855,Il16,interleukin 16,7,,leukocyte chemotaxis,,,IDA,,J:47849 
+MGI:1928397,Il17b,interleukin 17B,18,,neutrophil chemotaxis,,,ISO,AF212311 ,J:62901 
+MGI:107399,Il17ra,interleukin 17 receptor A,6,,granulocyte chemotaxis,,,IMP,,J:161934 
+MGI:2159336,Il17rc,interleukin 17 receptor C,6,,granulocyte chemotaxis,,,IMP,,J:161934 
+MGI:1932410,Il23a,"interleukin 23, alpha subunit p19",10,,positive regulation of neutrophil chemotaxis,,,IDA,,J:147573 
+MGI:1923777,Il34,interleukin 34,8,,positive regulation of macrophage chemotaxis,,,ISO,Q6ZMJ4 ,J:164563 
+MGI:96599,Itga1,integrin alpha 1,13,,neutrophil chemotaxis,,,IMP,MGI:2661083 ,J:83226 
+MGI:104756,Itga9,integrin alpha 9,9,,neutrophil chemotaxis,results in the movement of mature neutrophil,,IGI,MGI:98389 ,J:170901 
+MGI:96607,Itgam,integrin alpha M,7,,neutrophil chemotaxis,,,IMP,MGI:2157556 ,J:83226 
+MGI:96611,Itgb2,integrin beta 2,10,,neutrophil chemotaxis,,,IMP,MGI:1861705 ,J:83226 
+MGI:96611,Itgb2,integrin beta 2,10,,neutrophil chemotaxis,,,ISO,P05107 ,J:164563 
+MGI:1277979,Itgb2l,integrin beta 2-like,16,,neutrophil chemotaxis,,,ISO,P05107 ,J:164563 
+MGI:1933825,Jam3,junction adhesion molecule 3,9,,regulation of neutrophil chemotaxis,,,ISO,Q9BX67 ,J:164563 
+MGI:2685484,Jaml,junction adhesion molecule like,9,,neutrophil chemotaxis,,,IBA,PTN000517236 ,J:265628 
+MGI:2685484,Jaml,junction adhesion molecule like,9,,neutrophil chemotaxis,,,ISO,Q86YT9 ,J:164563 
+MGI:96677,Kit,KIT proto-oncogene receptor tyrosine kinase,5,,mast cell chemotaxis,,,ISO,P10721 ,J:164563 
+MGI:1098776,Lbp,lipopolysaccharide binding protein,2,,leukocyte chemotaxis involved in inflammatory response,happens in peritoneal cavity,,IMP,MGI:1857975 ,J:123792 
+MGI:1098776,Lbp,lipopolysaccharide binding protein,2,,neutrophil chemotaxis,happens in peritoneal cavity,,IMP,MGI:1857975 ,J:123792 
+MGI:1098776,Lbp,lipopolysaccharide binding protein,2,,positive regulation of neutrophil chemotaxis,positively regulates neutrophil chemotaxis,,IMP,MGI:1857975 ,J:123792 
+MGI:96778,Lgals3,"lectin, galactose binding, soluble 3",14,,eosinophil chemotaxis,,,IBA,PTN002602519 ,J:265628 
+MGI:96778,Lgals3,"lectin, galactose binding, soluble 3",14,,eosinophil chemotaxis,,,ISO,P17931 ,J:164563 
+MGI:96778,Lgals3,"lectin, galactose binding, soluble 3",14,,macrophage chemotaxis,,,IBA,PTN002602519 ,J:265628 
+MGI:96778,Lgals3,"lectin, galactose binding, soluble 3",14,,macrophage chemotaxis,,,ISO,P17931 ,J:164563 
+MGI:96778,Lgals3,"lectin, galactose binding, soluble 3",14,,monocyte chemotaxis,,,IBA,PTN002602519 ,J:265628 
+MGI:96778,Lgals3,"lectin, galactose binding, soluble 3",14,,monocyte chemotaxis,,,ISO,P17931 ,J:164563 
+MGI:96778,Lgals3,"lectin, galactose binding, soluble 3",14,,neutrophil chemotaxis,,,IBA,PTN002602519 ,J:265628 
+MGI:96778,Lgals3,"lectin, galactose binding, soluble 3",14,,neutrophil chemotaxis,,,ISO,P17931 ,J:164563 
+MGI:109496,Lgals9,"lectin, galactose binding, soluble 9",11,NOT,regulation of T cell chemotaxis,,,IDA,,J:173540 
+MGI:1330838,Lgmn,legumain,12,,positive regulation of monocyte chemotaxis,,,ISO,Q99538 ,J:164563 
+MGI:96892,Lyn,"LYN proto-oncogene, Src family tyrosine kinase",4,,regulation of monocyte chemotaxis,,,ISO,P07948 ,J:164563 
+MGI:107448,Lyst,lysosomal trafficking regulator,13,,granulocyte chemotaxis,results in the movement of granulocyte,,IMP,MGI:1855968 ,J:5405 
+MGI:1346858,Mapk1,mitogen-activated protein kinase 1,16,,positive regulation of macrophage chemotaxis,,,ISO,P28482 ,J:164563 
+MGI:1346859,Mapk3,mitogen-activated protein kinase 3,7,,positive regulation of macrophage chemotaxis,,,ISO,P27361 ,J:164563 
+MGI:3026965,Mcu,mitochondrial calcium uniporter,10,,positive regulation of neutrophil chemotaxis,,,ISO,Q8NE86 ,J:164563 
+MGI:96949,Mdk,midkine,2,,leukocyte chemotaxis involved in inflammatory response,,,IMP,,J:60666 J:102069 
+MGI:96949,Mdk,midkine,2,,leukocyte chemotaxis involved in inflammatory response,,,ISO,P21741 ,J:164563 
+MGI:96949,Mdk,midkine,2,,positive regulation of leukocyte chemotaxis,,,IMP,,J:102069 J:241140 
+MGI:96949,Mdk,midkine,2,,positive regulation of macrophage chemotaxis,,,IMP,,J:60666 
+MGI:96949,Mdk,midkine,2,,positive regulation of macrophage chemotaxis,,,ISO,P21741 ,J:164563 
+MGI:96949,Mdk,midkine,2,,positive regulation of neutrophil chemotaxis,,,IMP,,J:93637 
+MGI:96982,Mif,macrophage migration inhibitory factor (glycosylation-inhibiting factor),10,,negative regulation of macrophage chemotaxis,,,ISO,P14174 ,J:164563 
+MGI:2153062,Mmp28,matrix metallopeptidase 28 (epilysin),11,,negative regulation of macrophage chemotaxis,,,IMP,MGI:3836773 ,J:145912 
+MGI:1924013,Mospd2,motile sperm domain containing 2,X,,positive regulation of monocyte chemotaxis,,,ISO,Q8NHP6 ,J:164563 
+MGI:1924013,Mospd2,motile sperm domain containing 2,X,,positive regulation of neutrophil chemotaxis,,,ISO,Q8NHP6 ,J:164563 
+MGI:105941,Mpp1,"membrane protein, palmitoylated",X,,regulation of neutrophil chemotaxis,,,IMP,,J:154749 
+MGI:3652339,Msmp,"microseminoprotein, prostate associated",4,,lymphocyte chemotaxis,,,ISO,Q1L6U9 ,J:164563 
+MGI:3652339,Msmp,"microseminoprotein, prostate associated",4,,monocyte chemotaxis,,,ISO,Q1L6U9 ,J:164563 
+MGI:96080,Mst1,macrophage stimulating 1 (hepatocyte growth factor-like),9,,regulation of macrophage chemotaxis,,,IMP,MGI:2445230 ,J:217515 
+MGI:95691,Mstn,myostatin,1,,positive regulation of macrophage chemotaxis,,,IMP,,J:150456 
+MGI:2142572,Mtus1,mitochondrial tumor suppressor 1,8,,regulation of macrophage chemotaxis,,,IBA,PTN001271430 ,J:265628 
+MGI:2142572,Mtus1,mitochondrial tumor suppressor 1,8,,regulation of macrophage chemotaxis,,,IDA,,J:199877 
+MGI:106624,Myo9b,myosin IXb,8,,macrophage chemotaxis,,,IMP,MGI:4867915 ,J:162326 
+MGI:106624,Myo9b,myosin IXb,8,,monocyte chemotaxis,,,IMP,MGI:4867915 ,J:162326 
+MGI:104591,Nbl1,"NBL1, DAN family BMP antagonist",4,,negative regulation of monocyte chemotaxis,,,IDA,,J:183223 
+MGI:1926063,Nckap1l,NCK associated protein 1 like,15,,neutrophil chemotaxis,,,ISO,P55160 ,J:164563 
+MGI:1926063,Nckap1l,NCK associated protein 1 like,15,,positive regulation of neutrophil chemotaxis,,,IMP,,J:141377 
+MGI:97302,Nedd9,"neural precursor cell expressed, developmentally down-regulated gene 9",13,,positive regulation of lymphocyte chemotaxis,,,IMP,,J:116716 
+MGI:1196617,Ninj1,ninjurin 1,13,,leukocyte chemotaxis involved in inflammatory response,,,IDA,,J:304174 
+MGI:1196617,Ninj1,ninjurin 1,13,,leukocyte chemotaxis involved in inflammatory response,,,IMP,,J:268108 
+MGI:1196617,Ninj1,ninjurin 1,13,,leukocyte chemotaxis involved in inflammatory response,,,ISO,Q92982 ,J:164563 
+MGI:1196617,Ninj1,ninjurin 1,13,,macrophage chemotaxis,,,IDA,,J:304174 
+MGI:1196617,Ninj1,ninjurin 1,13,,regulation of monocyte chemotaxis,,,IMP,,J:304706 
+MGI:1196617,Ninj1,ninjurin 1,13,,regulation of monocyte chemotaxis,,,ISO,Q92982 ,J:164563 
+MGI:2429397,Nod2,nucleotide-binding oligomerization domain containing 2,8,,regulation of neutrophil chemotaxis,regulates neutrophil chemotaxis,,IMP,MGI:3529594 ,J:147177 
+MGI:3046173,Nup85,nucleoporin 85,11,,macrophage chemotaxis,,,IDA,,J:100459 
+MGI:1917378,Oxsr1,oxidative-stress responsive 1,9,,positive regulation of T cell chemotaxis,,,IBA,PTN001221360 ,J:265628 
+MGI:1917378,Oxsr1,oxidative-stress responsive 1,9,,positive regulation of T cell chemotaxis,"happens in T cell,is a part of cellular response to chemokine",,IMP,,J:259583 
+MGI:1917378,Oxsr1,oxidative-stress responsive 1,9,,positive regulation of T cell chemotaxis,,,ISO,O95747 ,J:164563 
+MGI:1338892,Padi2,"peptidyl arginine deiminase, type II",4,,negative regulation of lymphocyte chemotaxis,,,ISO,Q9Y2J8 ,J:164563 
+MGI:99557,Pde4b,"phosphodiesterase 4B, cAMP specific",4,,neutrophil chemotaxis,,,IMP,MGI:2181444 ,J:94853 
+MGI:99555,Pde4d,"phosphodiesterase 4D, cAMP specific",13,,neutrophil chemotaxis,,,IMP,MGI:2451168 ,J:94853 
+MGI:97528,Pdgfb,"platelet derived growth factor, B polypeptide",15,,monocyte chemotaxis,,,ISO,P01127 ,J:164563 
+MGI:1888711,Pf4,platelet factor 4,5,,leukocyte chemotaxis,,,IEA,IPR027222 ,J:72247 
+MGI:1888711,Pf4,platelet factor 4,5,,neutrophil chemotaxis,,,IBA,PTN000021269 ,J:265628 
+MGI:105095,Pgf,placental growth factor,12,,positive regulation of mast cell chemotaxis,,,IBA,PTN000246442 ,J:265628 
+MGI:1335106,Pikfyve,"phosphoinositide kinase, FYVE type zinc finger containing",1,,neutrophil chemotaxis,,,IBA,PTN002928511 ,J:265628 
+MGI:1335106,Pikfyve,"phosphoinositide kinase, FYVE type zinc finger containing",1,,neutrophil chemotaxis,,,IDA,,J:251375 
+MGI:1335106,Pikfyve,"phosphoinositide kinase, FYVE type zinc finger containing",1,,neutrophil chemotaxis,,,ISO,Q9Y2I7 ,J:164563 
+MGI:1351327,Pla2g7,"phospholipase A2, group VII (platelet-activating factor acetylhydrolase, plasma)",17,,positive regulation of monocyte chemotaxis,,,ISO,Q13093 ,J:164563 
+MGI:1277961,Plec,plectin,15,,T cell chemotaxis,,,IMP,MGI:3613062 ,J:104701 
+MGI:1888712,Ppbp,pro-platelet basic protein,5,,neutrophil chemotaxis,,,IBA,PTN000021269 ,J:265628 
+MGI:97749,Ppia,peptidylprolyl isomerase A,11,,leukocyte chemotaxis,,,ISO,P62937 ,J:164563 
+MGI:97749,Ppia,peptidylprolyl isomerase A,11,,neutrophil chemotaxis,,,ISO,P62937 ,J:164563 
+MGI:97750,Ppib,peptidylprolyl isomerase B,9,,neutrophil chemotaxis,,,ISO,P23284 ,J:164563 
+MGI:3040696,Prex1,"phosphatidylinositol-3,4,5-trisphosphate-dependent Rac exchange factor 1",2,,neutrophil chemotaxis,,,IGI,MGI:1888518 ,J:168992 
+MGI:3040696,Prex1,"phosphatidylinositol-3,4,5-trisphosphate-dependent Rac exchange factor 1",2,,neutrophil chemotaxis,,,IGI,MGI:98923 ,J:168992 
+MGI:97595,Prkca,"protein kinase C, alpha",11,,neutrophil chemotaxis,,,IMP,MGI:3029711 ,J:85082 
+MGI:1916703,Prss56,"protease, serine 56",1,,positive regulation of leukocyte chemotaxis,,,IBA,PTN000667633 ,J:265628 
+MGI:95481,Ptk2,PTK2 protein tyrosine kinase 2,15,,positive regulation of macrophage chemotaxis,,,ISO,Q05397 ,J:164563 
+MGI:104908,Ptk2b,PTK2 protein tyrosine kinase 2 beta,14,,positive regulation of B cell chemotaxis,,,IMP,,J:63286 
+MGI:104908,Ptk2b,PTK2 protein tyrosine kinase 2 beta,14,,regulation of leukocyte chemotaxis,,,IEA,IPR030610 ,J:72247 
+MGI:104908,Ptk2b,PTK2 protein tyrosine kinase 2 beta,14,,regulation of macrophage chemotaxis,,,IMP,,J:99741 
+MGI:97804,Ptn,pleiotrophin,6,,leukocyte chemotaxis involved in inflammatory response,,,IMP,,J:102069 
+MGI:97804,Ptn,pleiotrophin,6,,positive regulation of leukocyte chemotaxis,,,IMP,,J:102069 
+MGI:104574,Ptprj,"protein tyrosine phosphatase, receptor type, J",2,,positive regulation of macrophage chemotaxis,,,IDA,,J:150385 
+MGI:1097152,Ptpro,"protein tyrosine phosphatase, receptor type, O",6,,monocyte chemotaxis,,,ISO,Q16827 ,J:164563 
+MGI:97845,Rac1,Rac family small GTPase 1,5,,mast cell chemotaxis,,,ISO,RGD:619755 ,J:155856 
+MGI:97845,Rac1,Rac family small GTPase 1,5,,positive regulation of neutrophil chemotaxis,,,IMP,,J:151789 
+MGI:97845,Rac1,Rac family small GTPase 1,5,,positive regulation of neutrophil chemotaxis,,,ISO,P63000 ,J:164563 
+MGI:97846,Rac2,Rac family small GTPase 2,15,,positive regulation of neutrophil chemotaxis,,,IMP,,J:151789 
+MGI:97846,Rac2,Rac family small GTPase 2,15,,positive regulation of neutrophil chemotaxis,,,ISO,P15153 ,J:164563 
+MGI:97846,Rac2,Rac family small GTPase 2,15,,regulation of mast cell chemotaxis,,,IMP,,J:111999 
+MGI:1918910,Rarres2,retinoic acid receptor responder (tazarotene induced) 2,6,,positive regulation of macrophage chemotaxis,,,ISO,Q99969 ,J:164563 
+MGI:2667763,Retnlg,resistin like gamma,16,,myeloid dendritic cell chemotaxis,,,IPI,P59665 ,J:89564 
+MGI:2385708,Rin3,Ras and Rab interactor 3,12,,negative regulation of mast cell chemotaxis,,,ISO,Q8TB24 ,J:164563 
+MGI:2444879,Ripor2,RHO family interacting cell polarization regulator 2,13,,positive regulation of neutrophil chemotaxis,,,IMP,,J:240585 
+MGI:1351455,Rpl13a,ribosomal protein L13A,7,,macrophage chemotaxis,,,IMP,MGI:5502322 ,J:194920 
+MGI:1333780,Rps19,ribosomal protein S19,7,,monocyte chemotaxis,,,ISO,P39019 ,J:164563 
+MGI:1096355,S1pr1,sphingosine-1-phosphate receptor 1,3,,leukocyte chemotaxis,,,IDA,,J:219661 
+MGI:88244,S100a8,S100 calcium binding protein A8 (calgranulin A),3,,neutrophil chemotaxis,,,IBA,PTN000181680 ,J:265628 
+MGI:88244,S100a8,S100 calcium binding protein A8 (calgranulin A),3,,neutrophil chemotaxis,,,ISO,P05109 ,J:164563 
+MGI:1338947,S100a9,S100 calcium binding protein A9 (calgranulin B),3,,leukocyte chemotaxis,,,IMP,MGI:2450165 ,J:81642 
+MGI:1338947,S100a9,S100 calcium binding protein A9 (calgranulin B),3,,neutrophil chemotaxis,,,IBA,PTN000181699 ,J:265628 
+MGI:1338947,S100a9,S100 calcium binding protein A9 (calgranulin B),3,,neutrophil chemotaxis,,,ISO,P06702 ,J:164563 
+MGI:1913416,S100a14,S100 calcium binding protein A14,3,,positive regulation of granulocyte chemotaxis,,,IBA,PTN004281094 ,J:265628 
+MGI:1913416,S100a14,S100 calcium binding protein A14,3,,positive regulation of granulocyte chemotaxis,,,ISO,Q9HCY8 ,J:164563 
+MGI:1913416,S100a14,S100 calcium binding protein A14,3,,positive regulation of monocyte chemotaxis,,,IBA,PTN004281094 ,J:265628 
+MGI:1913416,S100a14,S100 calcium binding protein A14,3,,positive regulation of monocyte chemotaxis,,,ISO,Q9HCY8 ,J:164563 
+MGI:1913961,Sbds,SBDS ribosome maturation factor,5,,leukocyte chemotaxis,,,ISO,Q9Y3A5 ,J:164563 
+MGI:103033,Scg2,secretogranin II,1,,eosinophil chemotaxis,,,IBA,PTN000387919 ,J:265628 
+MGI:103033,Scg2,secretogranin II,1,,eosinophil chemotaxis,,,ISO,P13521 ,J:164563 
+MGI:98279,Sell,"selectin, lymphocyte",1,,positive regulation of neutrophil chemotaxis,,,ISO,RGD:3655 ,J:155856 
+MGI:97608,Serpine1,"serine (or cysteine) peptidase inhibitor, clade E, member 1",5,,positive regulation of monocyte chemotaxis,,,ISO,P05121 ,J:164563 
+MGI:1351314,Slamf1,signaling lymphocytic activation molecule family member 1,1,,leukocyte chemotaxis involved in inflammatory response,,,IMP,MGI:3044919 ,J:229624 
+MGI:1351314,Slamf1,signaling lymphocytic activation molecule family member 1,1,,positive regulation of dendritic cell chemotaxis,,,IMP,MGI:3044919 ,J:229624 
+MGI:1351314,Slamf1,signaling lymphocytic activation molecule family member 1,1,,positive regulation of macrophage chemotaxis,,,IMP,MGI:3044919 ,J:229624 J:232381 
+MGI:1921998,Slamf8,SLAM family member 8,1,,leukocyte chemotaxis involved in inflammatory response,,,IBA,PTN000249467 ,J:265628 
+MGI:1921998,Slamf8,SLAM family member 8,1,,leukocyte chemotaxis involved in inflammatory response,,,IMP,MGI:5442794 ,J:229624 
+MGI:1921998,Slamf8,SLAM family member 8,1,,negative regulation of dendritic cell chemotaxis,,,IMP,MGI:5442794 ,J:229624 
+MGI:1921998,Slamf8,SLAM family member 8,1,,negative regulation of macrophage chemotaxis,,,IMP,MGI:5442794 ,J:229624 
+MGI:1921998,Slamf8,SLAM family member 8,1,,negative regulation of monocyte chemotaxis,,,IMP,MGI:5442794 ,J:229624 
+MGI:1923692,Slamf9,SLAM family member 9,1,,plasmacytoid dendritic cell chemotaxis,,,IMP,MGI:6364884 ,J:279164 
+MGI:2180781,Slc8b1,"solute carrier family 8 (sodium/lithium/calcium exchanger), member B1",5,,regulation of lymphocyte chemotaxis,,,IMP,,J:241464 
+MGI:101924,Slc12a2,"solute carrier family 12, member 2",18,,T cell chemotaxis,"happens in T cell,is a part of cellular response to chemokine",,IMP,,J:259583 
+MGI:101924,Slc12a2,"solute carrier family 12, member 2",18,,T cell chemotaxis,,,ISO,P55011 ,J:164563 
+MGI:1316650,Slc37a4,"solute carrier family 37 (glucose-6-phosphate transporter), member 4",9,,neutrophil chemotaxis,"happens in peritoneal cavity,results in the movement of neutrophil",,IMP,MGI:3046091 ,J:117277 
+MGI:1315205,Slit2,slit guidance ligand 2,5,,negative regulation of leukocyte chemotaxis,,,ISO,O94813 ,J:164563 
+MGI:1315205,Slit2,slit guidance ligand 2,5,,negative regulation of monocyte chemotaxis,,,ISO,RGD:69310 ,J:155856 
+MGI:1315205,Slit2,slit guidance ligand 2,5,,negative regulation of neutrophil chemotaxis,,,ISO,O94813 ,J:164563 
+MGI:98282,Spi1,spleen focus forming virus (SFFV) proviral integration oncogene,2,,positive regulation of myeloid dendritic cell chemotaxis,,,IMP,,J:294049 
+MGI:98389,Spp1,secreted phosphoprotein 1,5,,neutrophil chemotaxis,results in the movement of mature neutrophil,,IDA,,J:170901 
+MGI:98389,Spp1,secreted phosphoprotein 1,5,,neutrophil chemotaxis,results in the movement of mature neutrophil,,IGI,MGI:104756 ,J:170901 
+MGI:1926193,Stap1,signal transducing adaptor family member 1,5,,negative regulation of macrophage chemotaxis,,,IMP,,J:144524 
+MGI:1858416,Stk39,serine/threonine kinase 39,2,,positive regulation of T cell chemotaxis,,,IBA,PTN001221360 ,J:265628 
+MGI:1858416,Stk39,serine/threonine kinase 39,2,,positive regulation of T cell chemotaxis,,,ISO,Q9UEW8 ,J:164563 
+MGI:1298390,Swap70,SWA-70 protein,7,,positive regulation of mast cell chemotaxis,,,IMP,,J:95122 
+MGI:99515,Syk,spleen tyrosine kinase,13,,neutrophil chemotaxis,,,ISO,P43405 ,J:164563 
+MGI:2444563,Tafa4,TAFA chemokine like family member 4,6,,macrophage chemotaxis,,,IBA,PTN000788808 ,J:265628 
+MGI:2444563,Tafa4,TAFA chemokine like family member 4,6,,macrophage chemotaxis,,,IDA,,J:271704 
+MGI:98737,Thbs1,thrombospondin 1,2,,positive regulation of macrophage chemotaxis,,,IMP,,J:155187 
+MGI:1101779,Thbs4,thrombospondin 4,13,,positive regulation of neutrophil chemotaxis,,,ISO,P35443 ,J:164563 
+MGI:2152213,Tirap,toll-interleukin 1 receptor (TIR) domain-containing adaptor protein,9,,positive regulation of neutrophil chemotaxis,,,IMP,,J:169888 
+MGI:1921591,Tmem102,transmembrane protein 102,11,,positive regulation of T cell chemotaxis,,,IMP,,J:200103 
+MGI:1195266,Tnfaip6,tumor necrosis factor alpha induced protein 6,2,,negative regulation of neutrophil chemotaxis,,,ISO,P98066 ,J:164563 
+MGI:1100089,Tnfsf11,"tumor necrosis factor (ligand) superfamily, member 11",14,,monocyte chemotaxis,,,ISO,O14788 ,J:164563 
+MGI:1355317,Tnfsf14,"tumor necrosis factor (ligand) superfamily, member 14",17,,positive regulation of T cell chemotaxis,positively regulates T cell chemotaxis,,IDA,,J:168073 
+MGI:1355317,Tnfsf14,"tumor necrosis factor (ligand) superfamily, member 14",17,,T cell chemotaxis,happens in CL:0000235,,IDA,,J:168073 
+MGI:1355317,Tnfsf14,"tumor necrosis factor (ligand) superfamily, member 14",17,,T cell chemotaxis,happens in T cell,,IDA,,J:168073 
+MGI:2673064,Tnfsf18,"tumor necrosis factor (ligand) superfamily, member 18",1,,positive regulation of macrophage chemotaxis,"happens in colon lamina propria,happens in mesenteric lymph node,happens at the same time as inflammatory response|happens in peritoneal cavity,happens at the same time as inflammatory response",,IMP,,J:206613 
+MGI:2673064,Tnfsf18,"tumor necrosis factor (ligand) superfamily, member 18",1,,positive regulation of monocyte chemotaxis,,,IMP,,J:206613 
+MGI:2673064,Tnfsf18,"tumor necrosis factor (ligand) superfamily, member 18",1,,regulation of dendritic cell chemotaxis,"happens in colon lamina propria,happens in mesenteric lymph node,happens at the same time as inflammatory response",,IMP,,J:206613 
+MGI:1930005,Trem1,triggering receptor expressed on myeloid cells 1,17,,neutrophil chemotaxis,,,IBA,PTN000451705 ,J:265628 
+MGI:1930005,Trem1,triggering receptor expressed on myeloid cells 1,17,,neutrophil chemotaxis,,,IGI,MGI:1930003 ,J:194295 
+MGI:1930005,Trem1,triggering receptor expressed on myeloid cells 1,17,,positive regulation of macrophage chemotaxis,,,ISO,RGD:1309467 ,J:155856 
+MGI:1930003,Trem3,triggering receptor expressed on myeloid cells 3,17,,neutrophil chemotaxis,,,IBA,PTN000451705 ,J:265628 
+MGI:1930003,Trem3,triggering receptor expressed on myeloid cells 3,17,,neutrophil chemotaxis,,,IGI,MGI:1930005 ,J:194295 
+MGI:1351901,Trpm2,"transient receptor potential cation channel, subfamily M, member 2",10,,dendritic cell chemotaxis,,,IMP,,J:178425 
+MGI:1915917,Trpm4,"transient receptor potential cation channel, subfamily M, member 4",7,,dendritic cell chemotaxis,,,IMP,,J:140991 
+MGI:1926945,Trpv4,"transient receptor potential cation channel, subfamily V, member 4",5,,positive regulation of macrophage chemotaxis,happens in adipose tissue,,IMP,,J:188264 
+MGI:98923,Vav1,vav 1 oncogene,17,,neutrophil chemotaxis,,,IGI,MGI:3040696 ,J:168922 
+MGI:1888518,Vav3,vav 3 oncogene,3,,neutrophil chemotaxis,,,IGI,MGI:3040696 ,J:168922 
+MGI:103178,Vegfa,vascular endothelial growth factor A,17,,basophil chemotaxis,,,ISO,P15692 ,J:164563 
+MGI:103178,Vegfa,vascular endothelial growth factor A,17,,positive regulation of mast cell chemotaxis,,,IBA,PTN000246442 ,J:265628 
+MGI:103178,Vegfa,vascular endothelial growth factor A,17,,positive regulation of mast cell chemotaxis,,,ISO,P15692 ,J:164563 
+MGI:106199,Vegfb,vascular endothelial growth factor B,19,,positive regulation of mast cell chemotaxis,,,IBA,PTN000246442 ,J:265628 
+MGI:106199,Vegfb,vascular endothelial growth factor B,19,,positive regulation of mast cell chemotaxis,,,ISO,P49765 ,J:164563 
+MGI:109124,Vegfc,vascular endothelial growth factor C,8,,positive regulation of mast cell chemotaxis,,,IBA,PTN000246442 ,J:265628 
+MGI:109124,Vegfc,vascular endothelial growth factor C,8,,positive regulation of mast cell chemotaxis,,,ISO,P49767 ,J:164563 
+MGI:108037,Vegfd,vascular endothelial growth factor D,X,,positive regulation of mast cell chemotaxis,,,IBA,PTN000246442 ,J:265628 
+MGI:108037,Vegfd,vascular endothelial growth factor D,X,,positive regulation of mast cell chemotaxis,,,ISO,O43915 ,J:164563 
+MGI:2442092,Wnk1,WNK lysine deficient protein kinase 1,6,,positive regulation of T cell chemotaxis,,,ISO,Q9H4A3 ,J:164563 
+MGI:98958,Wnt5a,"wingless-type MMTV integration site family, member 5A",14,,positive regulation of T cell chemotaxis,,,ISO,P41221 ,J:164563 
+MGI:104593,Xcl1,chemokine (C motif) ligand 1,1,,lymphocyte chemotaxis,,,IBA,PTN000245709 ,J:265628 
+MGI:104593,Xcl1,chemokine (C motif) ligand 1,1,,mature natural killer cell chemotaxis,,,IDA,,J:38259 
+MGI:104593,Xcl1,chemokine (C motif) ligand 1,1,,monocyte chemotaxis,,,IBA,PTN000245709 ,J:265628 
+MGI:104593,Xcl1,chemokine (C motif) ligand 1,1,,neutrophil chemotaxis,,,IBA,PTN000245709 ,J:265628 
+MGI:104593,Xcl1,chemokine (C motif) ligand 1,1,,positive regulation of B cell chemotaxis,,,IDA,,J:172902 
+MGI:104593,Xcl1,chemokine (C motif) ligand 1,1,,positive regulation of leukocyte chemotaxis,,,IDA,,J:29507 
+MGI:104593,Xcl1,chemokine (C motif) ligand 1,1,,positive regulation of natural killer cell chemotaxis,,,IDA,,J:38259 
+MGI:104593,Xcl1,chemokine (C motif) ligand 1,1,,positive regulation of neutrophil chemotaxis,,,IDA,,J:172902 
+MGI:104593,Xcl1,chemokine (C motif) ligand 1,1,,positive regulation of T cell chemotaxis,,,IBA,PTN000245854 ,J:265628 
+MGI:104593,Xcl1,chemokine (C motif) ligand 1,1,,positive regulation of T cell chemotaxis,,,IDA,,J:38259 J:172921 
+MGI:1916242,Zfp580,zinc finger protein 580,7,,positive regulation of leukocyte chemotaxis,,,ISO,Q9UK33 ,J:164563 
