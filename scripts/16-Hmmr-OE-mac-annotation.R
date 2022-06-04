@@ -47,15 +47,15 @@ top5 <- seurat_cluster_markers_mac %>%
 top20 <- seurat_cluster_markers_mac %>%
   group_by(cluster) %>%
   top_n(n = 20, wt = avg_log2FC)
-top20 <- top20[!duplicated(top20$gene),]
+top20 <- top20[!duplicated(top20$gene), ]
 top2 <- top20 %>%
   group_by(cluster) %>%
   top_n(n = 2, wt = avg_log2FC)
-top2 <- top2[!duplicated(top2$gene),]
+top2 <- top2[!duplicated(top2$gene), ]
 
 # Filter out duplicates
-top20 <- top20[!duplicated(top20$gene),]
-top2 <- top2[!duplicated(top2$gene),]
+top20 <- top20[!duplicated(top20$gene), ]
+top2 <- top2[!duplicated(top2$gene), ]
 
 # Down sample extract markers from scaled data slot
 mac_down <- subset(mac, downsample = 100)
@@ -63,7 +63,7 @@ mat <- mac_down[["RNA"]]@scale.data[top20$gene, ] %>% as.matrix()
 
 # Find scaled data range and create custom colors
 quantile(mat, c(0.05, 0.95))
-cols = circlize::colorRamp2(c(-1.5, 0, 2), c("#2664ad", "white", "#eb2a0e"))
+cols <- circlize::colorRamp2(c(-1.5, 0, 2), c("#2664ad", "white", "#eb2a0e"))
 
 # Build annotations for column and row splitting
 cluster_anno <- mac_down@meta.data$seurat_clusters
@@ -176,7 +176,7 @@ for (i in unique(seurat_cluster_markers_mac$cluster)) {
   df <- seurat_cluster_markers_mac %>% dplyr::filter(cluster == i)
   pdf(file = paste0("results/mac-annotation/Cluster_", i, "_ora.pdf"),
                     useDingbats = F)
-  ORA(df$gene,rownames(mac), paste0("Cluster-", i, ": cluster markers"))
+  ORA(df$gene, rownames(mac), paste0("Cluster-", i, ": cluster markers"))
   dev.off()
 }
 

@@ -56,7 +56,7 @@ obj_milo <- countCells(obj_milo,
 obj_milo <- calcNhoodDistance(obj_milo, d = 25)
 
 # Define experimental design
-exp_design <- data.frame(colData(obj_milo))[,c("sample", "genotype")]
+exp_design <- data.frame(colData(obj_milo))[, c("sample", "genotype")]
 exp_design <- distinct(exp_design)
 rownames(exp_design) <- exp_design$sample
 exp_design
@@ -66,7 +66,7 @@ milo_res <- testNhoods(obj_milo, design = ~ genotype, design.df = exp_design)
 milo_res %>%  arrange(SpatialFDR) %>%  head()
 
 # Inspecting and plotting results
-p1 <- ggplot(milo_res, aes(PValue)) + geom_histogram(bins=50)
+p1 <- ggplot(milo_res, aes(PValue)) + geom_histogram(bins = 50)
 p2 <- ggplot(milo_res, aes(logFC, -log10(SpatialFDR))) +
   geom_point() +
   geom_hline(yintercept = 1) ## Mark significance threshold (10% FDR)
@@ -81,24 +81,25 @@ obj_milo <- buildNhoodGraph(obj_milo)
 # Plot DA results next to UMAP
 p1 <- plotReducedDim(obj_milo,
                      dimred = "UMAP",
-                     colour_by="basic_annotation",
+                     colour_by = "basic_annotation",
                      text_by = "basic_annotation",
                      text_size = 3) +
   scale_color_manual(values = colors) +
   NoLegend()
-p2 <- plotNhoodGraphDA(obj_milo, milo_res, alpha = 0.05) # alpha here is statistical sig threshold, not transparency
+p2 <- plotNhoodGraphDA(obj_milo, milo_res, alpha = 0.05)
+                    # alpha here is statistical sig threshold, not transparency
 pdf(file = "results/differential-abundance/milo_UMAP_NhoodGraph.pdf",
     height = 6.5,
     width = 12,
     useDingbats = F
     )
-print(p1 + p2 + plot_layout(guides="collect"))
+print(p1 + p2 + plot_layout(guides = "collect"))
 dev.off()
 
 # Annotate the Nhoods based on basic_annotation
 milo_res <- annotateNhoods(obj_milo, milo_res, coldata_col = "basic_annotation")
 unique(milo_res$basic_annotation)
-ggplot(milo_res, aes(basic_annotation_fraction)) + geom_histogram(bins=50)
+ggplot(milo_res, aes(basic_annotation_fraction)) + geom_histogram(bins = 50)
 milo_res$basic_annotation <- ifelse(milo_res$basic_annotation_fraction < 0.6,
                                     "Mixed",
                                     milo_res$basic_annotation)
@@ -133,13 +134,13 @@ abundances <- unclass(abundances)
 head(abundances)
 
 # Attaching some column metadata and making DGEList object
-extra.info <- colData(obj_sce)[match(colnames(abundances), obj_sce$sample),]
+extra.info <- colData(obj_sce)[match(colnames(abundances), obj_sce$sample), ]
 y.ab <- DGEList(abundances, samples = extra.info)
 y.ab
 
 # Filter low abundance
 keep <- filterByExpr(y.ab, group = y.ab$samples$genotype)
-y.ab <- y.ab[keep,]
+y.ab <- y.ab[keep, ]
 summary(keep)
 
 # Design matrix
@@ -164,7 +165,7 @@ ocsa_da_res$table
 # Workflow with normalization (assuming most labels do not change in abundance)
 y.ab2 <- calcNormFactors(y.ab)
 y.ab2$samples$norm.factors
-y.ab2 <- estimateDisp(y.ab2, design, trend="none")
+y.ab2 <- estimateDisp(y.ab2, design, trend = "none")
 fit.ab2 <- glmQLFit(y.ab2, design, robust = TRUE, abundance.trend = FALSE)
 ocsa_da_res_norm <- glmQLFTest(fit.ab2, coef = ncol(design))
 topTags(ocsa_da_res_norm)

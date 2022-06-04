@@ -56,17 +56,18 @@ mac_milo <- countCells(mac_milo,
 mac_milo <- calcNhoodDistance(mac_milo, d = 25)
 
 # Define experimental design
-exp_design <- data.frame(colData(mac_milo))[,c("sample", "genotype")]
+exp_design <- data.frame(colData(mac_milo))[, c("sample", "genotype")]
 exp_design <- distinct(exp_design)
 rownames(exp_design) <- exp_design$sample
 exp_design
 
 # Testing
-mac_milo_res <- testNhoods(mac_milo, design = ~ genotype, design.df = exp_design)
+mac_milo_res <- testNhoods(mac_milo,
+  design = ~ genotype, design.df = exp_design)
 mac_milo_res %>%  arrange(SpatialFDR) %>%  head()
 
 # Inspecting and plotting results
-p1 <- ggplot(mac_milo_res, aes(PValue)) + geom_histogram(bins=50)
+p1 <- ggplot(mac_milo_res, aes(PValue)) + geom_histogram(bins = 50)
 p2 <- ggplot(mac_milo_res, aes(logFC, -log10(SpatialFDR))) +
   geom_point() +
   geom_hline(yintercept = 1) ## Mark significance threshold (10% FDR)
@@ -81,24 +82,27 @@ mac_milo <- buildNhoodGraph(mac_milo)
 # Plot DA results next to UMAP
 p1 <- plotReducedDim(mac_milo,
                      dimred = "UMAP",
-                     colour_by="mac_annotation",
+                     colour_by = "mac_annotation",
                      text_by = "mac_annotation",
                      text_size = 3) +
   scale_color_manual(values = colors) +
   NoLegend()
-p2 <- plotNhoodGraphDA(mac_milo, mac_milo_res, alpha = 0.05) # alpha here is statistical sig threshold, not transparency
+p2 <- plotNhoodGraphDA(mac_milo, mac_milo_res, alpha = 0.05)
+                    # alpha here is statistical sig threshold, not transparency
 pdf(file = "results/mac-differential-abundance/mac_milo_UMAP_NhoodGraph.pdf",
     height = 6.5,
     width = 12,
     useDingbats = F
     )
-print(p1 + p2 + plot_layout(guides="collect"))
+print(p1 + p2 + plot_layout(guides = "collect"))
 dev.off()
 
 # Annotate the Nhoods based on basic_annotation
-mac_milo_res <- annotateNhoods(mac_milo, mac_milo_res, coldata_col = "mac_annotation")
+mac_milo_res <- annotateNhoods(mac_milo,
+                              mac_milo_res,
+                              coldata_col = "mac_annotation")
 unique(mac_milo_res$mac_annotation)
-ggplot(mac_milo_res, aes(mac_annotation_fraction)) + geom_histogram(bins=50)
+ggplot(mac_milo_res, aes(mac_annotation_fraction)) + geom_histogram(bins = 50)
 mac_milo_res$mac_annotation <- ifelse(mac_milo_res$mac_annotation_fraction < 0.6,
                                     "Mixed",
                                     mac_milo_res$mac_annotation)
@@ -133,13 +137,13 @@ abundances <- unclass(abundances)
 head(abundances)
 
 # Attaching some column metadata and making DGEList object
-extra.info <- colData(mac_sce)[match(colnames(abundances), mac_sce$sample),]
+extra.info <- colData(mac_sce)[match(colnames(abundances), mac_sce$sample), ]
 y.ab <- DGEList(abundances, samples = extra.info)
 y.ab
 
 # Filter low abundance
 keep <- filterByExpr(y.ab, group = y.ab$samples$genotype)
-y.ab <- y.ab[keep,]
+y.ab <- y.ab[keep, ]
 summary(keep)
 
 # Design matrix
@@ -164,7 +168,7 @@ ocsa_da_res$table
 # Workflow with normalization (assuming most labels do not change in abundance)
 y.ab2 <- calcNormFactors(y.ab)
 y.ab2$samples$norm.factors
-y.ab2 <- estimateDisp(y.ab2, design, trend="none")
+y.ab2 <- estimateDisp(y.ab2, design, trend = "none")
 fit.ab2 <- glmQLFit(y.ab2, design, robust = TRUE, abundance.trend = FALSE)
 mac_ocsa_da_res_norm <- glmQLFTest(fit.ab2, coef = ncol(design))
 topTags(mac_ocsa_da_res_norm)

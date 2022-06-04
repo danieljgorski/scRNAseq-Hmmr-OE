@@ -30,22 +30,22 @@ write.csv(mac_cluster_markers,
 top20 <- mac_cluster_markers %>%
   group_by(cluster) %>%
   top_n(n = 20, wt = avg_log2FC)
-top20 <- top20[!duplicated(top20$gene),]
+top20 <- top20[!duplicated(top20$gene), ]
 top3 <- top20 %>%
   group_by(cluster) %>%
   top_n(n = 3, wt = avg_log2FC)
-top3 <- top3[!duplicated(top3$gene),]
+top3 <- top3[!duplicated(top3$gene), ]
 
 # Filter out duplicates
-top20 <- top20[!duplicated(top20$gene),]
-top3 <- top3[!duplicated(top3$gene),]
+top20 <- top20[!duplicated(top20$gene), ]
+top3 <- top3[!duplicated(top3$gene), ]
 
 # Extract markers from scaled data slot
 mat <- mac[["RNA"]]@scale.data[top20$gene, ] %>% as.matrix()
 
 # Find scaled data range and create custom colors
 quantile(mat, c(0.05, 0.95))
-cols = circlize::colorRamp2(c(-2, 0, 2), c("#2664ad", "white", "#eb2a0e"))
+cols <- circlize::colorRamp2(c(-2, 0, 2), c("#2664ad", "white", "#eb2a0e"))
 
 # Build annotations for column and row splitting
 cluster_anno <- mac@meta.data$mac_annotation
@@ -58,7 +58,7 @@ right <- rowAnnotation(foo = anno_block(gp = gpar(fill = colors[1:16]),
                                                    top3$gene),
                                            labels = top3$gene,
                                            labels_gp = gpar(fontsize = 10,
-                                                            fontface = "italic")))
+                                                          fontface = "italic")))
 
 # Plot heatmap
 p <- Heatmap(mat,

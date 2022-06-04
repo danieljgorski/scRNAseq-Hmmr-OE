@@ -21,7 +21,7 @@ mac <- DietSeurat(mac, assays = "RNA")
 # Subset macrophages inside Cycling-1
 cyc <- subset(x = obj, idents = "Cycling-1")
 cyc_mac <- subset(x = cyc, subset = Fcgr1 > 0.1 & Adgre1 > 0.1 & Cd68 > 0.5)
-cyc_mac <-DietSeurat(cyc_mac, assays = "RNA")
+cyc_mac <- DietSeurat(cyc_mac, assays = "RNA")
 
 # Merge all macrophages
 mac <- merge(x = mac, y = cyc_mac)

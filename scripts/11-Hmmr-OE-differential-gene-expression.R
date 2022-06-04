@@ -33,7 +33,7 @@ write.csv(dge_no_threshold,
 
 # Filter out non-significant genes
 dge <- dge_no_threshold[dge_no_threshold$p_val_adj < 0.01 &
-                          abs(dge_no_threshold$avg_log2FC) > 0.25,]
+                          abs(dge_no_threshold$avg_log2FC) > 0.25, ]
 
 # Save significant deg
 write.csv(dge,
@@ -48,8 +48,9 @@ p <- dge %>%
   ggplot(aes(x = cluster)) +
   geom_bar(aes(fill = regulation)) +
   coord_flip() +
-  scale_fill_manual(name = "Regulation in OE", values = c("#D75438","#4878CD"))+
-  theme_bw()+
+  scale_fill_manual(name = "Regulation in OE",
+    values = c("#D75438", "#4878CD")) +
+  theme_bw() +
   ggtitle("Number of differentially expressed genes")
 pdf(file = "results/differential-gene-expression/dge_count.pdf",
     useDingbats = F)

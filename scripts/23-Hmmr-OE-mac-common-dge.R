@@ -39,13 +39,13 @@ df$gene <- factor(df$gene, levels = rev(c(df$gene)))
 # GO term
 df$GO <- "maybe"
 for (row in 1:nrow(df)) {
-  if (df[row,]$gene %in% cell_migration){
-    df[row,]$GO <- "migration"
-    if (df[row,]$gene %in% leukocyte_chemotaxis){
-      df[row,]$GO <- "chemotaxis"
+  if (df[row, ]$gene %in% cell_migration) {
+    df[row, ]$GO <- "migration"
+    if (df[row, ]$gene %in% leukocyte_chemotaxis) {
+      df[row, ]$GO <- "chemotaxis"
     }
   } else{
-    df[row,]$GO <- "other"
+    df[row, ]$GO <- "other"
   }
 }
 
@@ -82,7 +82,7 @@ ggplot(df, aes(x = count, y = gene)) +
 
   theme_minimal() +
   theme(plot.title = element_text(color = "#5c5c5c", size = 14),
-        plot.margin = unit(c(1,3,1,1), "cm"),
+        plot.margin = unit(c(1, 3, 1, 1), "cm"),
         panel.grid = element_blank(),
         axis.text.y = element_text(color = "gray70", size = 8),
         axis.title.y = element_text(hjust = 0.5, color = "gray70", size = 10),
@@ -134,12 +134,12 @@ ggplot(df, aes(x = n, y = cluster)) +
   xlab("Number of downregulated genes involved in leukocyte chemotaxis") +
   theme_void() +
   theme(plot.title = element_text(color = "#5c5c5c", size = 14),
-        plot.margin = unit(c(1,2,1,1), "cm"),
+        plot.margin = unit(c(1, 2, 1, 1), "cm"),
         axis.text.y = element_text(colour = "gray70", size = 10, hjust = 1),
         axis.text.x = element_text(colour = "gray70", size = 10),
         axis.title.x = element_text(colour = "gray70", size = 11, hjust = 0, vjust = -1),
         legend.position = c(0.95, 0.15),
-        legend.key.height = unit(.3,"cm"),
+        legend.key.height = unit(.3, "cm"),
         legend.key.width = unit(0.4, "cm"),
         legend.title = element_text(colour = "gray70"),
         legend.title.align = -2,

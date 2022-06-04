@@ -34,22 +34,22 @@ obj_down <- subset(obj, downsample = 100)
 top20 <- cluster_markers %>%
   group_by(cluster) %>%
   top_n(n = 20, wt = avg_log2FC)
-top20 <- top20[!duplicated(top20$gene),]
+top20 <- top20[!duplicated(top20$gene), ]
 top2 <- top20 %>%
   group_by(cluster) %>%
   top_n(n = 2, wt = avg_log2FC)
-top2 <- top2[!duplicated(top2$gene),]
+top2 <- top2[!duplicated(top2$gene), ]
 
 # Filter out duplicates
-top20 <- top20[!duplicated(top20$gene),]
-top2 <- top2[!duplicated(top2$gene),]
+top20 <- top20[!duplicated(top20$gene), ]
+top2 <- top2[!duplicated(top2$gene), ]
 
 # Extract markers from scaled data slot
 mat <- obj_down[["RNA"]]@scale.data[top20$gene, ] %>% as.matrix()
 
 # Find scaled data range and create custom colors
 quantile(mat, c(0.05, 0.95))
-cols = circlize::colorRamp2(c(-2, 0, 2), c("#2664ad", "white", "#eb2a0e"))
+cols <- circlize::colorRamp2(c(-2, 0, 2), c("#2664ad", "white", "#eb2a0e"))
 
 # Build annotations for column and row splitting
 cluster_anno <- obj_down@meta.data$basic_annotation
@@ -62,7 +62,7 @@ right <- rowAnnotation(foo = anno_block(gp = gpar(fill = colors),
                                                    top2$gene),
                                            labels = top2$gene,
                                            labels_gp = gpar(fontsize = 10,
-                                                            fontface = "italic")))
+                                                          fontface = "italic")))
 
 # Plot heatmap
 p <- Heatmap(mat,
