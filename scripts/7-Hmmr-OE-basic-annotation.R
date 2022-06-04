@@ -9,7 +9,7 @@ library(dplyr)
 # Load object
 load("results/objects/obj_integrated_clean.Rdata")
 
-# Calculate seurat_cluster markers, with high stringency to return very 
+# Calculate seurat_cluster markers, with high stringency to return very
 # specific markers, quickly.
 seurat_cluster_markers <- FindAllMarkers(obj,
                                   assay = "RNA",
@@ -67,7 +67,7 @@ dev.off()
 
 # DC-like cells
 # 15 - DC-1 - Cd209a+, CD11c+ (Itgax), H2-Ab1+ H2-Aa+ Cd74+ Fcgr1+ Cd68+ Lgals3+
-# 24 - DC-2 - H2-Ab1+ H2-Aa+ Cd74+ Cd68+ Lgals3+ 
+# 24 - DC-2 - H2-Ab1+ H2-Aa+ Cd74+ Cd68+ Lgals3+
 #      Likely conventional DC, Itgax+ Naaa+ Irf8+ Xcr1+ Clec9a+ PMID: 29925006
 # 30 - DC-3 - H2-Ab1+ H2-Aa+ Cd74+ Ccl5+ (DC)
 #      Likely migratory DC, Ccr7+ Fscn1+ PMID: 29925006
@@ -160,7 +160,7 @@ obj <- RenameIdents(obj,
 obj@meta.data$basic_annotation <- Idents(obj)
 
 # Refactor annotation levels
-source("scripts/dimplotlevels.R")
+source("scripts/etc/dimplotlevels.R")
 obj@meta.data$basic_annotation <- factor(obj@meta.data$basic_annotation,
                                          levels = dimplotlevels)
 DimPlot(obj,

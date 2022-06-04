@@ -11,8 +11,8 @@ library(org.Mm.eg.db)
 library(enrichplot)
 library(knitr)
 library(kableExtra)
-source("scripts/ORA_up.R")
-source("scripts/ORA_down.R")
+source("scripts/etc/ORA_up.R")
+source("scripts/etc/ORA_down.R")
 
 # Load dge data
 mac_dge_no_threshold <-

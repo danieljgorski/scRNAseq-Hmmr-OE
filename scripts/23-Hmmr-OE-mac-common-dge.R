@@ -1,4 +1,4 @@
-# Plotting common differentially downregulated genes in macrophage clusters, 
+# Plotting common differentially downregulated genes in macrophage clusters,
 # and highlighting genes involved in cell migration and leukocyte chemotaxis
 
 # Load libraries
@@ -6,7 +6,7 @@ library(ggplot2)
 library(ggrepel)
 library(dplyr)
 library(forcats)
-source("scripts/maclevels.R")
+source("scripts/etc/maclevels.R")
 
 # Read in dge and cell_migration GOBP data
 dge_full <- read.csv("results/mac-differential-gene-expression/mac_dge_no_threshold.csv")
@@ -35,7 +35,7 @@ df <- dge %>%
 # Factor genes for consistent plot ordering
 df$gene <- factor(df$gene, levels = rev(c(df$gene)))
 
-# Find if gene is listed in cell migration GO term, if so assign color and 
+# Find if gene is listed in cell migration GO term, if so assign color and
 # GO term
 df$GO <- "maybe"
 for (row in 1:nrow(df)) {
@@ -43,7 +43,7 @@ for (row in 1:nrow(df)) {
     df[row,]$GO <- "migration"
     if (df[row,]$gene %in% leukocyte_chemotaxis){
       df[row,]$GO <- "chemotaxis"
-    } 
+    }
   } else{
     df[row,]$GO <- "other"
   }
@@ -55,7 +55,7 @@ pdf(file = "results/mac-common-dge/mac-common-down-dge.pdf",
     useDingbats = F)
 ggplot(df, aes(x = count, y = gene)) +
   geom_segment(
-    aes(x = 0, xend = count, y = gene, yend = gene), 
+    aes(x = 0, xend = count, y = gene, yend = gene),
     color = ifelse(df$GO %in% c("migration", "chemotaxis"), "#0458AB", "gray70"),
     size = ifelse(df$GO %in% c("migration", "chemotaxis"), 0.8, 0.5)) +
   geom_point(
@@ -68,18 +68,18 @@ ggplot(df, aes(x = count, y = gene)) +
     position = position_nudge(x = 0.2),
     color = "#0458AB",
     size = ifelse(df$GO == "chemotaxis", 3.25, 0)) +
-  
+
   ggtitle(expression(paste("Reduced chemotaxis in ",
                            italic("Hmmr"),
                            " OE macrophages"))) +
-  ylab("Downregulated in > 1 macrophage cluster") +  
+  ylab("Downregulated in > 1 macrophage cluster") +
   xlab("Number of macrophage clusters with downregulation") +
-  
+
   scale_x_continuous(limits = c(0, 13),
                      breaks = c(0, 2, 4, 6, 8, 10, 12),
                      expand = c(0, 0.01)) +
   coord_cartesian(clip = "off") +
-  
+
   theme_minimal() +
   theme(plot.title = element_text(color = "#5c5c5c", size = 14),
         plot.margin = unit(c(1,3,1,1), "cm"),
@@ -88,7 +88,7 @@ ggplot(df, aes(x = count, y = gene)) +
         axis.title.y = element_text(hjust = 0.5, color = "gray70", size = 10),
         axis.title.x = element_text(hjust = 0, color = "gray70", size = 10),
         axis.text.x = element_text(color = "gray70", size = 8)) +
-  
+
   annotate("text", x = 7.5, y = 15, label = "cell migration GO:0016477",
            color = "#0458AB", size = 3.5, hjust = 0) +
   annotate("segment",
@@ -108,10 +108,10 @@ ggplot(df, aes(x = count, y = gene)) +
   annotate("text", x = 8.35, y = 13, label = "leukocyte chemotaxis GO:0030595",
            color = "#0458AB", size = 3.5, fontface = "italic", hjust = 0) +
   annotate("text", x = 7.5, y = 11.25, label = "other",
-           color = "gray70", size = 3.5, hjust = 0) 
+           color = "gray70", size = 3.5, hjust = 0)
 dev.off()
 
-# Write df 
+# Write df
 write.csv(df,
           file = "results/mac-common-dge/mac-common-down-dge.csv",
           row.names = F)

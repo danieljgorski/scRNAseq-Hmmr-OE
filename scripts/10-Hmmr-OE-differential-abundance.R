@@ -11,8 +11,8 @@ library(miloR)
 library(SingleCellExperiment)
 library(scater)
 library(edgeR)
-source("scripts/colors.R")
-source("scripts/dimplotlevels.R")
+source("scripts/etc/colors.R")
+source("scripts/etc/dimplotlevels.R")
 
 # Load object
 load("results/objects/obj_annotated.Rdata")

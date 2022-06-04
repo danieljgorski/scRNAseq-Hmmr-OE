@@ -6,8 +6,8 @@ library(ggplot2)
 library(dplyr)
 library(ggrepel)
 library(ComplexHeatmap)
-source("scripts/colors.R")
-source("scripts/maclevels.R")
+source("scripts/etc/colors.R")
+source("scripts/etc/maclevels.R")
 
 # Load object
 load("results/objects/mac_annotated.Rdata")
@@ -57,7 +57,7 @@ right <- rowAnnotation(foo = anno_block(gp = gpar(fill = colors[1:16]),
                        bar = anno_mark(which(rownames(mat) %in%
                                                    top3$gene),
                                            labels = top3$gene,
-                                           labels_gp = gpar(fontsize = 10, 
+                                           labels_gp = gpar(fontsize = 10,
                                                             fontface = "italic")))
 
 # Plot heatmap
@@ -99,7 +99,7 @@ avg_exp <- as.data.frame(avg_exp)
 # Loop through each cluster, find top 20 highest expressed genes, save
 avg_exp_list <- list()
 for (i in colnames(avg_exp)) {
-  top_20 <- avg_exp %>% select(i) %>% top_n(20) 
+  top_20 <- avg_exp %>% select(i) %>% top_n(20)
   top_20$gene <- rownames(top_20)
   top_20$cluster <- i
   colnames(top_20) <- c("expression", "gene", "cluster")

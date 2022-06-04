@@ -5,7 +5,7 @@ library(Seurat) #>=4.0.1
 library(ggplot2)
 library(dplyr)
 library(ggrepel)
-source("scripts/VolcanoPlot.R")
+source("scripts/etc/VolcanoPlot.R")
 
 # Load dge data
 mac_dge_no_threshold <-

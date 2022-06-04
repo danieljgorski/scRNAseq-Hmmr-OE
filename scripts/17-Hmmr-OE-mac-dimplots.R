@@ -3,20 +3,20 @@
 library(Seurat) #>=4.0.1
 library(ggplot2)
 library(ggrepel)
-source("scripts/colors.R")
-source("scripts/HighlightedDimPlot.R")
+source("scripts/etc/colors.R")
+source("scripts/etc/HighlightedDimPlot.R")
 
 # Load object
 load("results/objects/mac_annotated.Rdata")
 
 # DimPlot of mac annotation
-p <- DimPlot(mac, 
-             reduction = "umap", 
+p <- DimPlot(mac,
+             reduction = "umap",
              pt.size = .3,
-             raster = F, 
+             raster = F,
              label = F,
              cols = colors,
-             group.by = "mac_annotation") + 
+             group.by = "mac_annotation") +
   xlab("UMAP-1") +
   ylab("UMAP-2") +
   labs(color = "Identity") +
@@ -28,13 +28,13 @@ p <- DimPlot(mac,
         axis.text.y = element_blank(),
         axis.title = element_text(size = 16),
         plot.title = element_blank()) +
-  guides(color = guide_legend(override.aes = list(size = 4.25), 
+  guides(color = guide_legend(override.aes = list(size = 4.25),
                               nrow = 37))
-q <- LabelClusters(plot = p, 
-                   id = "mac_annotation", 
+q <- LabelClusters(plot = p,
+                   id = "mac_annotation",
                    repel = T,
                    force = 0.5,
-                   box = T, 
+                   box = T,
                    fill = alpha("white", 0.45),
                    size = 4,
                    label.r = unit(0.25, "lines"),

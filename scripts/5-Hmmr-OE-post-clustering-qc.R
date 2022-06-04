@@ -255,7 +255,7 @@ for (i in markers) {
 # Typical cell-types with top canonical markers
 
 # Fibroblast markers, Col1a1, Tcf21, Postn
-# Macrophage markers, Fcgr1, Adgre1, 
+# Macrophage markers, Fcgr1, Adgre1,
 # EC markers, Cdh5, Kdr, Pecam1
 # Granulocytes, S100a8, S100a9,
 # Proliferating, Mki67, Ccnb2
@@ -293,7 +293,7 @@ for (i in markers) {
 #20- Cdh5, Kdr, Pecam1
 #21- Col1a1 low, Tcf21 low, Postn low, Plp1 low, Kcna1 low
 #22- Col1a1, Tcf21 low, Postn, Mik67 low, Ccnb2 low, Wt1, Dmkn
-#23- Col1a1 low, Postn low, Fcgr1 low, Adgre1 low, S100a8 low, S100a9 low, 
+#23- Col1a1 low, Postn low, Fcgr1 low, Adgre1 low, S100a8 low, S100a9 low,
 #    H2-Ab1, Cd74
 #24- Fcgr1 low, Adgre1 low, H2-Ab1 low
 #25- Fcgr1, Adgre1
@@ -324,12 +324,12 @@ for (i in markers) {
 # different based on your machine, for me, these are specifically clusters:
 # 5, 6, 12, 23, 24, 27, 30
 
-# 5: Typical low feature granulocyte cluster with strong canonical 
+# 5: Typical low feature granulocyte cluster with strong canonical
 # marker gene expression (S100a8, S100a9). Low percent.mt
 
-# 6: Seems to be macrophage cluster, but has low expression of Fcgr1, Adgre1 
+# 6: Seems to be macrophage cluster, but has low expression of Fcgr1, Adgre1
 # and Cd68. But very high expression of Lgals3 (Mac-2). Marker genes include
-# Fabp5, Ftl1, Fth1, Prdx1, all which plausible macrophage function. Low 
+# Fabp5, Ftl1, Fth1, Prdx1, all which plausible macrophage function. Low
 # percent.mt
 
 # 12: Contains cells with high and low endothelial marker gene expression, has
@@ -337,17 +337,17 @@ for (i in markers) {
 # of genes with plausible EC function, e.g. Fabp4 (known EC marker gene) and
 # Cd36 (fatty acid transport).
 
-# 23: Very high percent.mt, marker genes have a mix of cell types. Likely 
+# 23: Very high percent.mt, marker genes have a mix of cell types. Likely
 # multiplets of fibroblasts, macrophages, granulocytes and DC-like cells.
 # Will remove from the analysis.
 
 # 24: Very few marker genes (58), likely macrophage but has low expression of
 # Fcgr1 and Adgre1. High percent.mt. Marker genes include long-non-coding RNA
-# (Gm42418 and Gm26917), similar to PMID: 33205009. tRNA synthetase Lars2, 
-# and transcription factor AY036118. Likely low-quality macrophages, will 
+# (Gm42418 and Gm26917), similar to PMID: 33205009. tRNA synthetase Lars2,
+# and transcription factor AY036118. Likely low-quality macrophages, will
 # removed from analysis.
 
-# 27: Typical low feature granulocyte cluster with strong canonical 
+# 27: Typical low feature granulocyte cluster with strong canonical
 # marker gene expression (S100a8, S100a9). Low percent.mt
 
 # 30: Cardiomyocytes, strong expression of canonical markers Actc1, Nppa, Nppb.
@@ -365,7 +365,7 @@ for (i in markers) {
 # 24: See above
 
 # 25: Borderline high percent.mt, however has high nFeature, many markers genes
-# (244) and strong expression of macrophage markers Fcgr1, Adgre1. Likely a 
+# (244) and strong expression of macrophage markers Fcgr1, Adgre1. Likely a
 # macrophage sub-population.
 
 # Investigating very small clusters, cluster numbering might be
@@ -374,7 +374,7 @@ for (i in markers) {
 
 # Unfortunately clusters 37, 38, 39, 40 all express a combination of endothelial
 # cell, innate immune cell, and B-cell markers. Because its possible that these
-# populations are multiplets of endothelial cells with bound extravasating 
+# populations are multiplets of endothelial cells with bound extravasating
 # leukocytes, they will be removed.
 
 ###############################################################################
@@ -412,4 +412,3 @@ save(obj, file = "results/objects/obj_clean.Rdata")
 # Clear memory
 rm(list = ls())
 gc()
-

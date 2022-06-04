@@ -11,7 +11,7 @@ library(yulab.utils)
 library(clusterProfiler)
 library(org.Mm.eg.db)
 library(enrichplot)
-source("scripts/ORA.R")
+source("scripts/etc/ORA.R")
 
 # Load full object
 load("results/objects/mac_integrated_clean.Rdata")
@@ -70,7 +70,7 @@ cluster_anno <- mac_down@meta.data$seurat_clusters
 right <- rowAnnotation(foo = anno_mark(which(rownames(mat) %in%
                                                top2$gene),
                                        labels = top2$gene,
-                                       labels_gp = gpar(fontsize = 10, 
+                                       labels_gp = gpar(fontsize = 10,
                                                         fontface = "italic")))
 
 # Plot
@@ -171,7 +171,7 @@ for (i in mac_genes) {
 
 # Gene ontology over-representation analysis of marker genes----
 
-# Loop through clusters, extract markers and input into GOBP ora 
+# Loop through clusters, extract markers and input into GOBP ora
 for (i in unique(seurat_cluster_markers_mac$cluster)) {
   df <- seurat_cluster_markers_mac %>% dplyr::filter(cluster == i)
   pdf(file = paste0("results/mac-annotation/Cluster_", i, "_ora.pdf"),
@@ -183,58 +183,58 @@ for (i in unique(seurat_cluster_markers_mac$cluster)) {
 ###############################################################################
 # Annotation notes
 ###############################################################################
-# 8-(Mac-TR, tissue resident macrophages, d3 + d7, Ly6c2-, Ccr2-, Adgre1+ 
-#   Cx3cr1+ Timd4+, Lyve1+, [Sub-population is Timd4- Lyve1- H2-Aa-high, 
+# 8-(Mac-TR, tissue resident macrophages, d3 + d7, Ly6c2-, Ccr2-, Adgre1+
+#   Cx3cr1+ Timd4+, Lyve1+, [Sub-population is Timd4- Lyve1- H2-Aa-high,
 #   similar to Farbehi et al. 2019])
-# 
+#
 # 6-(Mono, bone marrow derived monocytes, d3, Ly6c2+, Ccr2-high, Adgre1-low,
-#   H2-Aa-low, Fcgr1+, Il1b-high, [Low expression of typical macrophage 
-#   functional markers, phagocytosis and complement, i.e. Mrc1-low, Trem2-low, 
+#   H2-Aa-low, Fcgr1+, Il1b-high, [Low expression of typical macrophage
+#   functional markers, phagocytosis and complement, i.e. Mrc1-low, Trem2-low,
 #   Mertk-low, C1q(a-c)-low])
-# 
-# 2-(Mac-Ifn, interferon stimulated macrophages, Ly6c2+, Ccr2-high, Adgre1+, 
+#
+# 2-(Mac-Ifn, interferon stimulated macrophages, Ly6c2+, Ccr2-high, Adgre1+,
 #    Ifit1+, Ifit3+, Cxcl10+, Rsad2+)
-# 
-# 0-(Mac-M1-1, monocyte derived pro-inflammatory classical M1 macrophages, 
-#   largely d3, some d7, Ly6c2-, Ccr2+, Adgre1+, H2-Aa-low, Cx3cr1-low, Mrc1+, 
+#
+# 0-(Mac-M1-1, monocyte derived pro-inflammatory classical M1 macrophages,
+#   largely d3, some d7, Ly6c2-, Ccr2+, Adgre1+, H2-Aa-low, Cx3cr1-low, Mrc1+,
 #   Trem2+, Mertk+, C1q(a-c)-high)
-# 
-# 3-(Mac-M1-2, monocyte derived pro-inflammatory classical M1 macrophages, 
-#   largely d3, Ly6c2-, Ccr2+, Adgre1+, H2-Aa-low, Cx3cr1-, Mrc1+, Trem2+, 
-#   Mertk+, C1q(a-c)-high) 
-# 
-# 5-(Mac-M1-3, monocyte derived pro-inflammatory classical M1 macrophages, 
-#   largely d3, Ly6c2-, Ccr2+, Adgre1+, H2-Aa-low, Cx3cr1-, Mrc1+, Trem2+, 
+#
+# 3-(Mac-M1-2, monocyte derived pro-inflammatory classical M1 macrophages,
+#   largely d3, Ly6c2-, Ccr2+, Adgre1+, H2-Aa-low, Cx3cr1-, Mrc1+, Trem2+,
 #   Mertk+, C1q(a-c)-high)
-# 
-# 1-(Mac-M2-1, monocyte derived reparative non-classical M2 macrophages, 
+#
+# 5-(Mac-M1-3, monocyte derived pro-inflammatory classical M1 macrophages,
+#   largely d3, Ly6c2-, Ccr2+, Adgre1+, H2-Aa-low, Cx3cr1-, Mrc1+, Trem2+,
+#   Mertk+, C1q(a-c)-high)
+#
+# 1-(Mac-M2-1, monocyte derived reparative non-classical M2 macrophages,
 #   d3 and d7, Ly6c2-, Ccr2-high, Adgre1+, H2-Aa-high, Cx3cr1+)
-# 
-# 11-(Mac-M2-2, monocyte derived reparative non-classical M2 macrophages, 
-#   largely d3, Ly6c2-low, Ccr2-high, Adgre1+, H2-Aa-high, Cx3cr1+, [May be 
-#   directly differentiated from monocyte pool? Ly6c2-low (not negative), 
-#   Il1b-high, low expression of typical macrophage functional markers, 
-#   phagocytosis and complement, i.e. Mrc1-low, Trem2-low, Mertk-low, 
+#
+# 11-(Mac-M2-2, monocyte derived reparative non-classical M2 macrophages,
+#   largely d3, Ly6c2-low, Ccr2-high, Adgre1+, H2-Aa-high, Cx3cr1+, [May be
+#   directly differentiated from monocyte pool? Ly6c2-low (not negative),
+#   Il1b-high, low expression of typical macrophage functional markers,
+#   phagocytosis and complement, i.e. Mrc1-low, Trem2-low, Mertk-low,
 #   C1q(a-c)-low])
-# 
-# 13-(Mac-M2-3, monocyte derived reparative non-classical M2 macrophages, 
+#
+# 13-(Mac-M2-3, monocyte derived reparative non-classical M2 macrophages,
 #   d3 and d7, Ly6c2- Ccr2+, Adgre1-low, H2-Aa-high)
-# 
+#
 # 7-(Mac-Cyc-1, cycling macrophages, Ly6c2- Ccr2+ Adgre1+ Cx3cr1+ Mki67+ Ccnb2+)
-# 
+#
 # 10-(Mac-Cyc-2, cycling macrophages, Ly6c2- Ccr2+ Adgre1+ Cx3cr1+ Mki67+)
-# 
-# 4-(Mac-12, Lgals3+, Fcgr1+, Trem2+, Ly6c2-, Ccr2-, Adgre1-, Mrc1-low, 
+#
+# 4-(Mac-12, Lgals3+, Fcgr1+, Trem2+, Ly6c2-, Ccr2-, Adgre1-, Mrc1-low,
 #    Mertk-low)
-# 
-# 9-(Mac-13, similar to MAC8 from Farbehi et al. 2019, Ly6c2-, Ccr2+, Adgre1+, 
+#
+# 9-(Mac-13, similar to MAC8 from Farbehi et al. 2019, Ly6c2-, Ccr2+, Adgre1+,
 #   Saa3+, Ltc4s+, Ccl24+, Ednrb+)
 # 12-(Mac-14, Ly6c2-, Ccr2+, Adgre1+, Mrc1-low, Mertk-low)
-# 
-# 14-(Mac-15, similar to MAC7 from Farbehi et al. 2019, Ly6c2-, Ccr2+, Adgre1+, 
-#   Cx3cr1+, C1qa-c-Low, Mrc1-low, Trem2-low, Mertk-low, Il1b-high, Ear2+, 
+#
+# 14-(Mac-15, similar to MAC7 from Farbehi et al. 2019, Ly6c2-, Ccr2+, Adgre1+,
+#   Cx3cr1+, C1qa-c-Low, Mrc1-low, Trem2-low, Mertk-low, Il1b-high, Ear2+,
 #   Pglyrp1+, Eno3+, Itgal+, Ace+)
-# 
+#
 # 15-(Mac-16, Ly6c2-, Ccr2+, Adgre1+, H2-Aa+)
 ###############################################################################
 
@@ -261,7 +261,7 @@ mac <- RenameIdents(mac,
 mac@meta.data$mac_annotation <- Idents(mac)
 
 # Refactor annotation levels
-source("scripts/maclevels.R")
+source("scripts/etc/maclevels.R")
 mac@meta.data$mac_annotation <- factor(mac@meta.data$mac_annotation,
                                          levels = maclevels)
 DimPlot(mac,

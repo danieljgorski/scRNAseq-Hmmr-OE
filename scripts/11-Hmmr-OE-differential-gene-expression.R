@@ -4,7 +4,7 @@
 library(Seurat) #>=4.0.1
 library(ggplot2)
 library(dplyr)
-source("scripts/dimplotlevels.R")
+source("scripts/etc/dimplotlevels.R")
 
 # Load object
 load("results/objects/obj_annotated.Rdata")
@@ -12,11 +12,11 @@ load("results/objects/obj_annotated.Rdata")
 # Seurat based Wilcox method, no threshold, loop through each cluster
 genes <- list()
 for (i in levels(Idents(obj))) {
-  results <- FindMarkers(obj, 
-                         subset.ident = i, 
+  results <- FindMarkers(obj,
+                         subset.ident = i,
                          group.by = "genotype",
-                         ident.1 = "OE", 
-                         base = 2, 
+                         ident.1 = "OE",
+                         base = 2,
                          logfc.threshold = 0,
                          densify = T)
   results$cluster <- i
@@ -27,11 +27,11 @@ for (i in levels(Idents(obj))) {
 }
 dge_no_threshold <- do.call(rbind, genes)
 rownames(dge_no_threshold) <- NULL
-write.csv(dge_no_threshold, 
+write.csv(dge_no_threshold,
           file = "results/differential-gene-expression/dge_no_threshold.csv",
           row.names = F)
 
-# Filter out non-significant genes 
+# Filter out non-significant genes
 dge <- dge_no_threshold[dge_no_threshold$p_val_adj < 0.01 &
                           abs(dge_no_threshold$avg_log2FC) > 0.25,]
 

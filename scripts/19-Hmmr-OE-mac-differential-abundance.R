@@ -11,8 +11,8 @@ library(miloR)
 library(SingleCellExperiment)
 library(scater)
 library(edgeR)
-source("scripts/colors.R")
-source("scripts/maclevels.R")
+source("scripts/etc/colors.R")
+source("scripts/etc/maclevels.R")
 
 # Load object
 load("results/objects/mac_annotated.Rdata")

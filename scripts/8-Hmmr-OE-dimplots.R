@@ -4,20 +4,20 @@
 library(Seurat) #>=4.0.1
 library(ggplot2)
 library(ggrepel)
-source("scripts/colors.R")
-source("scripts/HighlightedDimPlot.R")
+source("scripts/etc/colors.R")
+source("scripts/etc/HighlightedDimPlot.R")
 
 # Load object
 load("results/objects/obj_annotated.Rdata")
 
 # DimPlot of basic annotation
-p <- DimPlot(obj, 
-             reduction = "umap", 
+p <- DimPlot(obj,
+             reduction = "umap",
              pt.size = .3,
-             raster = F, 
+             raster = F,
              label = F,
              cols = colors,
-             group.by = "basic_annotation") + 
+             group.by = "basic_annotation") +
   xlab("UMAP-1") +
   ylab("UMAP-2") +
   labs(color = "Identity") +
@@ -29,13 +29,13 @@ p <- DimPlot(obj,
         axis.text.y = element_blank(),
         axis.title = element_text(size = 16),
         plot.title = element_blank()) +
-  guides(color = guide_legend(override.aes = list(size = 4.25), 
+  guides(color = guide_legend(override.aes = list(size = 4.25),
                               nrow = 37))
-q <- LabelClusters(plot = p, 
-                   id = "basic_annotation", 
+q <- LabelClusters(plot = p,
+                   id = "basic_annotation",
                    repel = T,
                    force = 0.5,
-                   box = T, 
+                   box = T,
                    fill = alpha("white", 0.45),
                    size = 4,
                    label.r = unit(0.25, "lines"),
