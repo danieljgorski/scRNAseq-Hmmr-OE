@@ -48,5 +48,3 @@ library(forcats)
 <p align="center">
   <img src="/eg/Heatmap.png" width="1000">
 </p>
-
-![Heatmap](/eg/Heatmap.png)
