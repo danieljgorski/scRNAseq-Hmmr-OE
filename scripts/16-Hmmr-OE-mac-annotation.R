@@ -4,7 +4,6 @@
 library(Seurat) #v4.0.1
 library(dplyr)
 library(ComplexHeatmap)
-library(ape)
 library(ggplot2)
 library(patchwork)
 library(yulab.utils)
