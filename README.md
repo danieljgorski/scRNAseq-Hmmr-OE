@@ -42,11 +42,11 @@ library(forcats)
 ### Examples
 ---
 <p align="center">
-  <img src="/eg/DimPlot_basic_annotation.pdf" width="1000">
+  <img src="/eg/DimPlot_basic_annotation.png" width="1000">
 </p>
 
 <p align="center">
-  <img src="/eg/Heatmap.pdf" width="1000">
+  <img src="/eg/Heatmap.png" width="1000">
 </p>
 
-![Heatmap](/eg/Heatmap.pdf)
+![Heatmap](/eg/Heatmap.png)
