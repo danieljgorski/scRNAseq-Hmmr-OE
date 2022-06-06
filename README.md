@@ -20,7 +20,7 @@ The following scRNA-seq-specific libraries were used:
 * [SingleCellExperiment](https://bioconductor.org/packages/release/bioc/html/SingleCellExperiment.html) v1.16.0
 * [scater](https://bioconductor.org/packages/release/bioc/html/scater.html) v1.22.0
 * [edgeR](https://bioconductor.org/packages/release/bioc/html/edgeR.html) v3.36.0
-* [clusterProfiler](BiocManager::install("clusterProfiler") v4.2.1
+* [clusterProfiler](https://bioconductor.org/packages/release/bioc/html/clusterProfiler.html) v4.2.1
 * [enrichplot](https://bioconductor.org/packages/release/bioc/html/enrichplot.html) v1.14.1
 * [org.Mm.eg.db](https://bioconductor.org/packages/release/data/annotation/html/org.Mm.eg.db.html) v3.14.0
 * [yulab.utils](https://cran.r-project.org/package=yulab.utils) v0.0.4
