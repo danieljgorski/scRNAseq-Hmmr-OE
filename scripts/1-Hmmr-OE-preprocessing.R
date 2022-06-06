@@ -5,14 +5,14 @@ library(Seurat) #v4.0.1
 library(dplyr)
 
 # Read in 10x outputs and create Seurat objects
-day_3 <- Read10X("data/count_matrices/day_3_filtered_feature_bc_matrix")
+day_3 <- Read10X("data/day_3_filtered_feature_bc_matrix")
 day_3 <- CreateSeuratObject(counts = day_3,
                             project = "474",
                             min.cells = 3,
                             min.features = 200,
                             names.field = 2,
                             names.delim = "-")
-day_7 <- Read10X("data/count_matrices/day_7_filtered_feature_bc_matrix")
+day_7 <- Read10X("data/day_7_filtered_feature_bc_matrix")
 day_7 <- CreateSeuratObject(counts = day_7,
                             project = "153",
                             min.cells = 3,
