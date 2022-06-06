@@ -100,3 +100,4 @@ By starting your R session with the R project file, `scRNAseq-Hmmr-OE.Rproj`, yo
 * Add abstract at submission
 * Add full author list at submission
 * Add differential expression + mechanism schematic after publication
+* Updated "About" short description after publication
