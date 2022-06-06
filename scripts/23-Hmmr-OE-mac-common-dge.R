@@ -10,7 +10,7 @@ source("scripts/etc/maclevels.R")
 
 # Read in dge and cell_migration GOBP data
 dge_full <- read.csv("results/mac-differential-gene-expression/mac_dge_no_threshold.csv")
-cell_migration <- read.csv("data/cell_migration_G0_0016477.csv")
+cell_migration <- read.csv("data/cell_migration_GO_0016477.csv")
 cell_migration <- unique(cell_migration$Symbol)
 leukocyte_chemotaxis <- read.csv("data/leukocyte_chemotaxis_GO_0030595.csv")
 leukocyte_chemotaxis <- unique(leukocyte_chemotaxis$Symbol)
