@@ -88,11 +88,11 @@ By starting your R session with the R project file, `scRNAseq-Hmmr-OE.Rproj`, yo
 
 ## Examples
 <p align="center">
-  <img src="/eg/DimPlot_basic_annotation.png" width="1000">
+  <img src="/examples/DimPlot_basic_annotation.png" width="1000">
 </p>
 
 <p align="center">
-  <img src="/eg/Heatmap.png" width="1000">
+  <img src="/examples/Heatmap.png" width="1000">
 </p>
 
 
