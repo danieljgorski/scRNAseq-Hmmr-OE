@@ -2,10 +2,10 @@
 This repository contains single-cell RNA sequencing analysis of 137,166 cardiac interstitial cells from WT and Hyaluronan Mediated Motility Receptor(*Hmmr*) over-expressing (OE) mice, 3 days (n = 3, 4) and 7 days (n = 3, 4) after acute myocardial infarction. Data were processed with the Seurat toolkit, using SCTransform normalization and reference-based integration with reciprocal PCA. WT samples were used as reference, OE samples as query.
 
 ## Sequencing data
-Sequencing data, including fastq files and count matrices will be available upon publication or reasonable request.
+Sequencing data, including fastq files and count matrices will be available upon publication or request.
 
 ## Analysis
-To recreate the full analyses on your machine you can follow the steps below. If you would like to process the data with your own custom workflow, a final list of cells (barcodes + metadata) after preprocessing, doublet removal and low-quality cluster removal can be found in:
+To recreate the full analysis you can follow the steps below. If you would like to process the data with your own custom workflow, a final list of cells (barcodes + metadata) after preprocessing, doublet removal and low-quality cluster removal can be found in:
 
 * `data/basic_annotation.csv` (all interstitial cells)
 * `data/mac_annotation.csv` (re-clustered macrophage subset)
@@ -82,7 +82,7 @@ scRNAseq-Hmmr-OE/data/
     mac_annotation.csv
     seurat_cell_cycle.csv  
 ```
-By starting your R session with the R project file, `scRNAseq-Hmmr-OE.Rproj`, your working directory will be set to the main `scRNAseq-Hmmr-OE` folder, no matter the location on your machine. This will allow easy reading/writing of data/results without having to define absolute paths.
+By starting your R session with the R project file, `scRNAseq-Hmmr-OE.Rproj`, your working directory will be set to the main `scRNAseq-Hmmr-OE` folder, no matter the location on your machine. This will allow easy reading/writing of data/results using relative paths.
 
 `0-Hmmr-OE-complete-analysis.R` will create all necessary directories and run the full analysis in the appropriate order. Each analysis step can also be run individually for better interactivity, starting from `1-Hmmr-OE-preprocessing.R`. The estimated total memory needed to hold and process the resulting Seurat objects is ~120GB.
 
