@@ -160,7 +160,7 @@ write.csv(top5,
 top10 <- cluster_markers %>%
   group_by(cluster) %>%
   slice_max(n = 10, order_by = avg_log2FC)
-write.csv(top5,
+write.csv(top10,
           file = "results/post-clustering-qc/cluster_markers_top_10.csv",
           row.names = F)
 
