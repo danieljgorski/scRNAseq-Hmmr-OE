@@ -124,10 +124,6 @@ write.csv(mac_milo_res,
           file = "results/mac-differential-abundance/mac_milo_res.csv",
           row.names = F)
 
-# Save milo object
-save(mac_milo, file = "results/objects/mac_milo.Rdata")
-
-
 # OCSA-DA Analysis with edgeR----
 #http://bioconductor.org/books/3.14/OSCA.multisample/differential-abundance.html
 
@@ -163,7 +159,7 @@ plotQLDisp(fit.ab, cex = 1)
 mac_ocsa_da_res <- glmQLFTest(fit.ab, coef = ncol(design))
 summary(decideTests(mac_ocsa_da_res))
 topTags(mac_ocsa_da_res, n = 34)
-ocsa_da_res$table
+mac_ocsa_da_res$table
 
 # Workflow with normalization (assuming most labels do not change in abundance)
 y.ab2 <- calcNormFactors(y.ab)
@@ -178,6 +174,3 @@ write.csv(topTags(mac_ocsa_da_res, n = 16),
           file = "results/mac-differential-abundance/mac_ocsa_da_res.csv")
 write.csv(topTags(mac_ocsa_da_res_norm, n = 16),
           file = "results/mac-differential-abundance/mac_ocsa_da_res_norm.csv")
-
-# Save sce object
-save(mac_sce, file = "results/objects/mac_sce.Rdata")

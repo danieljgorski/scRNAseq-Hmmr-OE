@@ -182,79 +182,62 @@ for (i in unique(seurat_cluster_markers_mac$cluster)) {
 ###############################################################################
 # Annotation notes
 ###############################################################################
-# 8-(Mac-TR, tissue resident macrophages, d3 + d7, Ly6c2-, Ccr2-, Adgre1+
+# 7-(Mac-TR, tissue resident macrophages, d3 + d7, Ly6c2-, Ccr2-, Adgre1+
 #   Cx3cr1+ Timd4+, Lyve1+, [Sub-population is Timd4- Lyve1- H2-Aa-high,
 #   similar to Farbehi et al. 2019])
 #
-# 6-(Mono, bone marrow derived monocytes, d3, Ly6c2+, Ccr2-high, Adgre1-low,
+# 5-(Mono, bone marrow derived monocytes, d3, Ly6c2+, Ccr2-high, Adgre1-low,
 #   H2-Aa-low, Fcgr1+, Il1b-high, [Low expression of typical macrophage
 #   functional markers, phagocytosis and complement, i.e. Mrc1-low, Trem2-low,
 #   Mertk-low, C1q(a-c)-low])
 #
-# 2-(Mac-Ifn, interferon stimulated macrophages, Ly6c2+, Ccr2-high, Adgre1+,
+# 4-(Mac-Ifn, interferon stimulated macrophages, Ly6c2+, Ccr2-high, Adgre1+,
 #    Ifit1+, Ifit3+, Cxcl10+, Rsad2+)
-#
+# 
 # 0-(Mac-M1-1, monocyte derived pro-inflammatory classical M1 macrophages,
+#   largely d3,  Ly6c2-, Ccr2+, Adgre1+, H2-Aa-low, Cx3cr1-, Mrc1+,
+#   Trem2+, Mertk+, C1q(a-c)-high)
+#
+# 1-(Mac-M1-2, monocyte derived pro-inflammatory classical M1 macrophages,
 #   largely d3, some d7, Ly6c2-, Ccr2+, Adgre1+, H2-Aa-low, Cx3cr1-low, Mrc1+,
 #   Trem2+, Mertk+, C1q(a-c)-high)
 #
-# 3-(Mac-M1-2, monocyte derived pro-inflammatory classical M1 macrophages,
-#   largely d3, Ly6c2-, Ccr2+, Adgre1+, H2-Aa-low, Cx3cr1-, Mrc1+, Trem2+,
-#   Mertk+, C1q(a-c)-high)
+# 2-(Mac-M2-1, monocyte derived reparative non-classical M2 macrophages,
+#   d3 and d7, Ly6c2- subpop, Ly6c2+ subpop, Ccr2-high, Adgre1+, H2-Aa-high,
+#   Cx3cr1+)
 #
-# 5-(Mac-M1-3, monocyte derived pro-inflammatory classical M1 macrophages,
-#   largely d3, Ly6c2-, Ccr2+, Adgre1+, H2-Aa-low, Cx3cr1-, Mrc1+, Trem2+,
-#   Mertk+, C1q(a-c)-high)
+# 8-(Mac-M2-2, monocyte derived reparative non-classical M2 macrophages,
+#   largely d3, Ly6c2-, Ccr2+, Adgre1-low, H2-Aa-high, Cx3cr1-low)
 #
-# 1-(Mac-M2-1, monocyte derived reparative non-classical M2 macrophages,
-#   d3 and d7, Ly6c2-, Ccr2-high, Adgre1+, H2-Aa-high, Cx3cr1+)
+# 9-(Mac-M2-3, monocyte derived reparative non-classical M2 macrophages,
+#   largely d7, Ly6c2-, Ccr2+, Adgre1+, H2-Aa-high, Cx3cr1+)
 #
-# 11-(Mac-M2-2, monocyte derived reparative non-classical M2 macrophages,
-#   largely d3, Ly6c2-low, Ccr2-high, Adgre1+, H2-Aa-high, Cx3cr1+, [May be
-#   directly differentiated from monocyte pool? Ly6c2-low (not negative),
-#   Il1b-high, low expression of typical macrophage functional markers,
-#   phagocytosis and complement, i.e. Mrc1-low, Trem2-low, Mertk-low,
-#   C1q(a-c)-low])
+# 3-(Mac-Cyc, cycling macrophages, Ly6c2- Ccr2+ Adgre1+ Cx3cr1+ Mki67+ Ccnb2+)
 #
-# 13-(Mac-M2-3, monocyte derived reparative non-classical M2 macrophages,
-#   d3 and d7, Ly6c2- Ccr2+, Adgre1-low, H2-Aa-high)
-#
-# 7-(Mac-Cyc-1, cycling macrophages, Ly6c2- Ccr2+ Adgre1+ Cx3cr1+ Mki67+ Ccnb2+)
-#
-# 10-(Mac-Cyc-2, cycling macrophages, Ly6c2- Ccr2+ Adgre1+ Cx3cr1+ Mki67+)
-#
-# 4-(Mac-12, Lgals3+, Fcgr1+, Trem2+, Ly6c2-, Ccr2-, Adgre1-, Mrc1-low,
-#    Mertk-low)
-#
-# 9-(Mac-13, similar to MAC8 from Farbehi et al. 2019, Ly6c2-, Ccr2+, Adgre1+,
+# 6-(Mac-10, similar to MAC8 from Farbehi et al. 2019, Ly6c2-, Ccr2+, Adgre1+,
 #   Saa3+, Ltc4s+, Ccl24+, Ednrb+)
-# 12-(Mac-14, Ly6c2-, Ccr2+, Adgre1+, Mrc1-low, Mertk-low)
 #
-# 14-(Mac-15, similar to MAC7 from Farbehi et al. 2019, Ly6c2-, Ccr2+, Adgre1+,
-#   Cx3cr1+, C1qa-c-Low, Mrc1-low, Trem2-low, Mertk-low, Il1b-high, Ear2+,
-#   Pglyrp1+, Eno3+, Itgal+, Ace+)
+# 10-(Mac-11, similar to MAC7 from Farbehi et al. 2019, Ly6c2-, Ccr2+, Adgre1+,
+#   Cx3cr1+, C1qa-c-Low, Mrc1-, Trem2-low, Mertk-, Il1b-high, Ear2+,
+#   Pglyrp1+, Eno3+, Itgal+, Ace+, must be similar to monocytes?)
 #
-# 15-(Mac-16, Ly6c2-, Ccr2+, Adgre1+, H2-Aa+)
+# 11-(Mac-12, Ly6c2-, Ccr2+, Adgre1+, H2-Aa+)
 ###############################################################################
 
 # Rename Idents to annotations
 mac <- RenameIdents(mac,
                     "0" = "Mac-M1-1",
-                    "1" = "Mac-M2-1",
-                    "2" = "Mac-IFN",
-                    "3" = "Mac-M1-2",
-                    "4" = "Mac-12",
-                    "5" = "Mac-M1-3",
-                    "6" = "Mono",
-                    "7" = "Mac-Cyc-1",
-                    "8" = "Mac-TR",
-                    "9" = "Mac-13",
-                    "10" = "Mac-Cyc-2",
-                    "11" = "Mac-M2-2",
-                    "12" = "Mac-14",
-                    "13" = "Mac-M2-3",
-                    "14" = "Mac-15",
-                    "15" = "Mac-16")
+                    "1" = "Mac-M1-2",
+                    "2" = "Mac-M2-1",
+                    "3" = "Mac-Cyc",
+                    "4" = "Mac-IFN",
+                    "5" = "Mono",
+                    "6" = "Mac-10",
+                    "7" = "Mac-TR",
+                    "8" = "Mac-M2-2",
+                    "9" = "Mac-M2-3",
+                    "10" = "Mac-11",
+                    "11" = "Mac-12")
 
 # Store renamed idents as a new meta data column
 mac@meta.data$mac_annotation <- Idents(mac)

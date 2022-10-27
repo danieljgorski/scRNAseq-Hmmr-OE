@@ -47,7 +47,7 @@ mac <- RunPCA(mac, npcs = 50, verbose = T)
 ElbowPlot(mac, ndims = 50)
 mac <- RunUMAP(mac, reduction = "pca", dims = 1:25, verbose = T)
 mac <- FindNeighbors(mac, dims = 1:25, verbose = T)
-mac <- FindClusters(mac, resolution = 0.6, verbose = T) # reduced resolution
+mac <- FindClusters(mac, resolution = 0.3, verbose = T) 
 DimPlot(mac, label = T)
 
 # Normalizing and scaling RNA assay

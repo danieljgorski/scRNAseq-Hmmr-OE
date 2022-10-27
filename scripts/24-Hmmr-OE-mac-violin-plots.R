@@ -16,7 +16,7 @@ for (i in df$gene) {
   sig <- dge %>%
     filter(gene == i) %>%
     filter(abs(avg_log2FC) > 0.25) %>%
-    filter(p_val_adj < 0.1)
+    filter(p_val_adj < 0.01)
   v <- VlnPlot(mac,
                i,
                split.by = "genotype",
