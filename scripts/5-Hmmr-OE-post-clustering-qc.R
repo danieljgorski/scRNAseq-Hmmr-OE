@@ -184,7 +184,6 @@ qc_summary <- obj@meta.data %>%
             calculate_mode(Phase))
 qc_summary <- qc_summary %>% left_join(marker_count,
                                       by = c("seurat_clusters" = "cluster"))
-
 colnames(qc_summary) <- c("cluster",
                           "mean_percent_mt",
                           "mean_dissociation_score",
@@ -330,12 +329,15 @@ for (i in markers) {
 # 6: Seems to be macrophage cluster, but has low expression of Fcgr1, Adgre1
 # and Cd68. But very high expression of Lgals3 (Mac-2). Marker genes include
 # Fabp5, Ftl1, Fth1, Prdx1, all which plausible macrophage function. Low
-# percent.mt
+# percent.mt. Upon a second pass, I decided to remove these cells as they
+# do not have typical marker gene expression and curiously low nFeatures.
 
 # 12: Contains cells with high and low endothelial marker gene expression, has
 # relatively few marker genes (124), high percent.mt. However high expression
 # of genes with plausible EC function, e.g. Fabp4 (known EC marker gene) and
-# Cd36 (fatty acid transport).
+# Cd36 (fatty acid transport). After a second pass I decided to remove
+# these cells as they do not have typical marker gene expression and low
+# nFeatures compared to neighboring ECs.
 
 # 23: Very high percent.mt, marker genes have a mix of cell types. Likely
 # multiplets of fibroblasts, macrophages, granulocytes and DC-like cells.
@@ -351,6 +353,8 @@ for (i in markers) {
 # marker gene expression (S100a8, S100a9). Low percent.mt
 
 # 30: Cardiomyocytes, strong expression of canonical markers Actc1, Nppa, Nppb.
+# After a second pass I have decided to remove these cells, because they are
+# most likely dying or stressed CMs.
 
 # Investigating clusters with >5% mean_percent_mt, cluster numbering might be
 # different based on your machine, for me, these are specifically clusters:
@@ -377,12 +381,26 @@ for (i in markers) {
 # populations are multiplets of endothelial cells with bound extravasating
 # leukocytes, they will be removed.
 
+# Investigating a special case, cluster 21, on a first pass I marked these as 
+# activating fibroblasts, but after a second pass (subsetting fibroblasts),
+# these cells contain macrophage characteristics, and have oddly low gene
+# expression for fibroblasts that should be transdifferentiating. They also
+# clustered on their own upon re-clustering. I believe they are stressed or
+# dying fibroblasts and myeloid cells. I will remove them from the analysis.
+
 ###############################################################################
 
 # Exclude low-quality clusters determined during post-clustering-qc
+# First pass excluded clusters 23, 24, 37, 38, 39 and 40.
+# After a second pass of the data (subsetting macrophages and fibroblasts) I
+# decided to also exclude clusters 6, 12, 21 and 30.
 obj <- subset(x = obj,
-              idents = c("23",
+              idents = c("6",
+                         "12",
+                         "21",
+                         "23",
                          "24",
+                         "30",
                          "37",
                          "38",
                          "39",
