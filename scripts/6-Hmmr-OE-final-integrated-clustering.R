@@ -46,7 +46,8 @@ obj <- IntegrateData(anchorset = obj_anchors,
 obj <- RunPCA(obj, npcs = 50, verbose = T)
 obj <- RunUMAP(obj, reduction = "pca", dims = 1:25, verbose = T)
 obj <- FindNeighbors(obj, dims = 1:25, verbose = T)
-obj <- FindClusters(obj, resolution = 0.8, verbose = T)
+obj <- FindClusters(obj, resolution = 0.4, verbose = T)
+DimPlot(obj, label = T)
 
 # Normalizing and scaling RNA assay
 DefaultAssay(obj) <- "RNA"
