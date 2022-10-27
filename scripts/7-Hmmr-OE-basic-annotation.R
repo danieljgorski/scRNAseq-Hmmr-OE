@@ -5,6 +5,7 @@ library(Seurat) #v4.0.1
 library(patchwork)
 library(ggplot2)
 library(dplyr)
+library(ggrepel)
 
 # Load object
 load("results/objects/obj_integrated_clean.Rdata")
@@ -56,67 +57,52 @@ dev.off()
 
 # Macrophages
 # 0 - Mac-1 - Fcgr1+ Adgre1+ Cd68+ Lgals3+
-# 1 - Mac-2 - Fcgr1+ Adgre1+ Cd68+ Lgals3+
-# 2 - Mac-3 - H2-Ab1+ H2-Aa+ Cd74+ Fcgr1+ Adgre1+ Cd68+ Lgals3+
-# 9 - Mac-4 - Cd68+ Lgals3+
-# 11 - Mac-5 - Fcgr1+ Adgre1+ Cd68+ Lgals3+
-# 13 - Mac-6 - Fcgr1+ Adgre1+ Cd68+ Lgals3+
-# 14 - Mac-7 - H2-Ab1+ H2-Aa+ Cd74+ Fcgr1+ Adgre1+ Cd68+ Lgals3+
-# 16 - Mac-8 - Fcgr1+ Adgre1+ Cd68+ Lgals3+
-# 21 - Mac-9 - Fcgr1+ Adgre1+ Cd68+ Lgals3+
+# 1 - Mac-2 - H2-Ab1+ H2-Aa+ Cd74+ Fcgr1+ Adgre1+ Cd68+ Lgals3+
+# 2 - Mac-3 - Fcgr1+ Adgre1+ Cd68+ Lgals3+
+# 6 - Mac-4 - Fcgr1+ Adgre1+ Cd68+ Lgals3+
+# 10 - Mac-5 - Fcgr1+ Adgre1+ Cd68+ Lgals3+
 
 # DC-like cells
-# 15 - DC-1 - Cd209a+, CD11c+ (Itgax), H2-Ab1+ H2-Aa+ Cd74+ Fcgr1+ Cd68+ Lgals3+
-# 24 - DC-2 - H2-Ab1+ H2-Aa+ Cd74+ Cd68+ Lgals3+
+# 13 - DC-1 - Cd209a+, CD11c+ (Itgax), H2-Ab1+ H2-Aa+ Cd74+ Fcgr1+ Cd68+ Lgals3+
+# 18 - DC-2 - H2-Ab1+ H2-Aa+ Cd74+ Cd68+ Lgals3+
 #      Likely conventional DC, Itgax+ Naaa+ Irf8+ Xcr1+ Clec9a+ PMID: 29925006
-# 30 - DC-3 - H2-Ab1+ H2-Aa+ Cd74+ Ccl5+ (DC)
+# 21 - DC-3 - H2-Ab1+ H2-Aa+ Cd74+ Ccl5+ (DC)
 #      Likely migratory DC, Ccr7+ Fscn1+ PMID: 29925006
 
 # Endothelial cells
 # 3 - EC-1 - Cdh5+ Pecam1+ Kdr+ Fabp4+
-# 10 - EC-2 - Cdh5+ Pecam1+ Kdr+ Fabp4+
-# 17 - EC-3 - Cdh5+ Pecam1+ Kdr+ Fabp4+
-# 19 - EC-4 - Cdh5+ Pecam1+ Kdr+ Fabp4+
-# 25 - EC-5 - Cdh5+ Pecam1+ Kdr+ Fabp4+
-# 28 - EC-6 - Cdh5+ Pecam1+ Kdr+ Fabp4+
-# 33 - EC-7 - Pecam1+ Fabp4+
+# 11 - EC-2 - Cdh5+ Pecam1+ Kdr+ Fabp4+
+# 19 - EC-3 - Cdh5+ Pecam1+ Kdr+ Fabp4+
 
 # Fibroblasts
-# 4 - Fibro-Myo - Pdgfra+ Tcf21+ Col1a1+ Postn++ Cthrc1++
-# 12 - Fibro-Rest - Pdgfra+ Tcf21+ Col1a1+ Gsn++ Postn+
-# 20 - Fibro-Act - Col1a1+ Postn+ Cthrc1+
+# 5 - Fibro-1 - Pdgfra+ Tcf21+ Col1a1+ Postn++ Cthrc1++
+# 12 - Fibro-2 - Pdgfra+ Tcf21+ Col1a1+ Gsn++ Postn+
+# 14 - Fibro-3 - Pdgfra+ Tcf21+ Col1a1+ Postn+ Cthrc1+ Mki67+ Ccnb2+ Ccn2a+
+#      Stmn1+, Wt1+ Dmkn+ Saa3+ Krt8+ Krt19+, Mixture of activating,
+#      proliferating fibroblasts and epicardial cells
 
-# Epicardial cells
-# 26 - Epi - Wt1+ Dmkn+ Saa3+ Krt8+ Krt19+
+#Cycling cells
+# 7 - Cycling - Mki67+ Ccnb2+ Ccna2+ Stmn1++ Fcgr1+ Adgre1+ Cd68+ Lgals3+,
+#     Proliferating and mostly macrophages, but not entirely
+#     macrophages, there are some endothelial cells and fibroblasts inside
 
 # Mural cells (smooth muscle cells and pericytes)
-# 29 - Mural - Myh11+ Rgs5+ Tagln+ Pdgfrb+ Cspg4+ Vtn+ Postn+ Fabp4+
+# 20 - Mural - Myh11+ Rgs5+ Tagln+ Pdgfrb+ Cspg4+ Vtn+ Postn+ Fabp4+
 
 # Granulocytes
-# 5 - Gran-1 - S100a8+ S100a9+ Csf3r+
-# 6 - Gran-2 - S100a8+ S100a9+ Csf3r+
-# 31 - Gran-3 - S100a8+ S100a9+ Csf3r+
+# 4 - Gran-1 - S100a8+ S100a9+ Csf3r+
+# 9 - Gran-2 - S100a8+ S100a9+ Csf3r+
 
 # B cells
-# 7 - B-cell - Ms4a1+ Cd79a+ H2-Ab1+ Cd74+  H2-Aa+
+# 8 - B-cell - Ms4a1+ Cd79a+ H2-Ab1+ Cd74+  H2-Aa+
 
 # T cells
-# 18 - T-cell-1 - Cd3e+ Cd3d+ Ccl5+
-# 22 - T-cell-2 - TCd3e+ Cd3d+ Lef1+
+# 15 - T-cell-1 - Cd3e+ Cd3d+ Ccl5+
+# 16 - T-cell-2 - Cd3e+ Cd3d+ Lef1+
 
 # NK cells
-# 23 - NK-cell - Ncr1+ Klrk1+ Ccl5+
+# 17 - NK-cell - Ncr1+ Klrk1+ Ccl5+
 
-# Cardiomyocytes
-# 27 - CM - Actc1+ Nppa+ Nppb+ Tnnc1+ Tnnt2+
-
-# Cycling
-# 8 - Cyc-1 - Mki67+ Ccnb2+ Ccna2+ Stmn1++ Fcgr1+ Adgre1+ Cd68+ Lgals3+,
-#     Cluster 8 is proliferating and mostly macrophages, but not entirely
-#     macrophages, there are some endothelial cells and fibroblasts inside
-# 32 - Cyc-2 - Mki67+ Ccnb2+ Ccna2+ Stmn1++ Cd3e+ Cd3d+ Ccl5+,
-#      Cluster 32 is mostly proliferating T-cells, but to be safe I will,
-#      annotate these as the second cycling cluster
 ###############################################################################
 
 # Rename Idents to annotations
@@ -125,36 +111,25 @@ obj <- RenameIdents(obj,
                     "1" = "Mac-2",
                     "2" = "Mac-3",
                     "3" = "EC-1",
-                    "4" = "Fibro-Myo",
-                    "5" = "Gran-1",
-                    "6" = "Gran-2",
-                    "7" = "B-cell",
-                    "8" = "Cycling-1",
-                    "9" = "Mac-4",
-                    "10" = "EC-2",
-                    "11" = "Mac-5",
-                    "12" = "Fibro-Rest",
-                    "13" = "Mac-6",
-                    "14" = "Mac-7",
-                    "15" = "DC-1",
-                    "16" = "Mac-8",
-                    "17" = "EC-3",
-                    "18" = "T-cell-1",
-                    "19" = "EC-4",
-                    "20" = "Fibro-Act",
-                    "21" = "Mac-9",
-                    "22" = "T-cell-2",
-                    "23" = "NK-cell",
-                    "24" = "DC-2",
-                    "25" = "EC-5",
-                    "26" = "Epi",
-                    "27" = "CM",
-                    "28" = "EC-6",
-                    "29" = "Mural",
-                    "30" = "DC-3",
-                    "31" = "Gran-3",
-                    "32" = "Cycling-2",
-                    "33" = "EC-7")
+                    "4" = "Gran-1",
+                    "5" = "Fibro-1",
+                    "6" = "Mac-4",
+                    "7" = "Cycling",
+                    "8" = "B-cell",
+                    "9" = "Gran-2",
+                    "10" = "Mac-5",
+                    "11" = "EC-2",
+                    "12" = "Fibro-2",
+                    "13" = "DC-1",
+                    "14" = "Fibro-3",
+                    "15" = "T-cell-1",
+                    "16" = "T-cell-2",
+                    "17" = "NK-cell",
+                    "18" = "DC-2",
+                    "19" = "EC-3",
+                    "20" = "Mural",
+                    "21" = "DC-3"
+                    )
 
 # Store renamed idents as a new meta data column, set as Idents
 obj@meta.data$basic_annotation <- Idents(obj)
@@ -176,18 +151,89 @@ save(obj, file = "results/objects/obj_annotated.Rdata")
 
 # Saved basic annotation, barcodes and UMAP embeddings etc. for consistency in
 # external usage, de-comment to overwrite
-# barcodes <- rownames(obj@meta.data)
-# annotation <- obj@meta.data$basic_annotation
-# genotype <- obj@meta.data$genotype
-# timepoint <- obj@meta.data$timepoint
-# sample <- obj@meta.data$sample
-# UMAP_1 <- Embeddings(obj[["umap"]])[,1]
-# UMAP_2 <- Embeddings(obj[["umap"]])[,2]
-# basic_annotation <- data.frame(barcodes,
-#                                annotation,
-#                                genotype,
-#                                timepoint,
-#                                sample,
-#                                UMAP_1,
-#                                UMAP_2)
-# write.csv(basic_annotation, file = "data/basic_annotation.csv", row.names = F)
+barcodes <- rownames(obj@meta.data)
+annotation <- obj@meta.data$basic_annotation
+genotype <- obj@meta.data$genotype
+timepoint <- obj@meta.data$timepoint
+sample <- obj@meta.data$sample
+umap_1 <- Embeddings(obj[["umap"]])[,1]
+umap_2 <- Embeddings(obj[["umap"]])[,2]
+basic_annotation <- data.frame(barcodes,
+                               annotation,
+                               genotype,
+                               timepoint,
+                               sample,
+                               umap_1,
+                               umap_2)
+write.csv(basic_annotation, file = "data/basic_annotation.csv", row.names = F)
+
+# Quality control summary of basic annotated object
+
+# Counting cluster markers
+marker_count <- seurat_cluster_markers %>%
+  group_by(cluster) %>%
+  summarise(nMarkers = n())
+marker_count$cluster <- as.character(marker_count$cluster)
+
+# Finding most common phase designation
+calculate_mode <- function(x) {
+  uniqx <- unique(na.omit(x))
+  uniqx[which.max(tabulate(match(x, uniqx)))]
+}
+
+# Summarizing QC metrics
+qc_summary <- obj@meta.data %>%
+  group_by(seurat_clusters) %>%
+  summarize(mean(percent.mt),
+            mean(nFeature_RNA),
+            mean(nCount_RNA),
+            calculate_mode(basic_annotation))
+qc_summary <- qc_summary %>% left_join(marker_count,
+                                       by = c("seurat_clusters" = "cluster"))
+
+colnames(qc_summary) <- c("cluster",
+                          "mean_percent_mt",
+                          "mean_nFeatures",
+                          "mean_nCounts",
+                          "basic_annotation",
+                          "nMarkers")
+write.csv(qc_summary,
+          file = "results/basic-annotation/final_qc_summary.csv",
+          row.names = F)
+
+# Plotting QC summary
+p <- ggplot(qc_summary, aes(x = mean_percent_mt,
+                            y = mean_nFeatures,
+                            colour = nMarkers,
+                            label = basic_annotation)) +
+  scale_colour_viridis_c() +
+  geom_point(size = 3) +
+  geom_text_repel() +
+  ggtitle("Final clustering QC")
+pdf(file = "results/basic-annotation/final_qc_summary_scatter.pdf",
+    width = 8,
+    height = 6,
+    useDingbats = F)
+print(p)
+dev.off()
+
+# Plotting QC overview summary + nFeature + Clusters
+p1 <- DimPlot(obj, label = T, raster = F) + NoLegend()
+p2 <- FeaturePlot(obj,
+                  features = "nFeature_RNA",
+                  label = T,
+                  raster = F) + NoLegend()
+p3 <- ggplot(qc_summary, aes(x = mean_percent_mt,
+                             y = mean_nFeatures,
+                             colour = nMarkers,
+                             label = basic_annotation)) +
+  scale_colour_viridis_c() +
+  geom_point(size = 3) +
+  geom_text_repel() +
+  ggtitle("Final clustering QC")
+pdf(file = "results/basic-annotation/final_qc_overview.pdf",
+    width = 13,
+    height = 10,
+    useDingbats = F)
+print((p1 / p2) | p3 )
+dev.off()
