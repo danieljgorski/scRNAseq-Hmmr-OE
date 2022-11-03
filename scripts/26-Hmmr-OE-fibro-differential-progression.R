@@ -50,6 +50,19 @@ pdf(file = "results/fibro-differential-progression/genotypes.pdf",
 print(p1)
 dev.off()
 
+# UMAP of fibroblast subset with basic annotation
+p2 <- plotReducedDim(sce, dimred = "UMAP",
+                     colour_by = "basic_annotation",
+                     text_by = "basic_annotation") +
+  scale_color_manual(values = colors[12:14]) +
+  theme(legend.title = element_blank())
+pdf(file = "results/fibro-differential-progression/basic_annotation.pdf",
+    height = 4,
+    width = 6,
+    useDingbats = F)
+print(p2)
+dev.off()
+
 # Calculate the imbalance score and visualize
 scores <- condiments::imbalance_score(
   Object = df %>% select(UMAP_1, UMAP_2) %>% as.matrix(), 
@@ -70,9 +83,25 @@ pdf(file = "results/fibro-differential-progression/imbalance.pdf",
 print(p3)
 dev.off()
 
+# Plot markers of resting and activated fibroblasts
+for (i in c("Gsn", "Cthrc1", "Postn", "Col1a1")) {
+  p <- plotReducedDim(sce,
+                      dimred = "UMAP",
+                      colour_by = i,
+                      by_exprs_values = "logcounts") +
+    scale_fill_viridis_b() +
+    theme(legend.title = element_text(face = "italic"))
+  pdf(file = paste0("results/fibro-differential-progression/featureplot_", i, ".pdf"),
+      height = 4,
+      width = 6,
+      useDingbats = F)
+  print(p)
+  dev.off()
+}
+
 # Trajectory inference with slingshot, starting in Fibro-2, which are
 # are resting fibroblasts (Gsn+), ending in Fibro-1, which are activated
-# fibroblasts, (Postn+, Cthrc1+)
+# fibroblasts, (Postn+, Cthrc1+, Col1a1-high)
 sce <- slingshot(sce, reducedDim = 'UMAP',
                  clusterLabels = colData(sce)$basic_annotation,
                  start.clus = 'Fibro-2',
@@ -148,19 +177,22 @@ sce <- fitGAM(counts = sce,
 mean(rowData(sce)$tradeSeq$converged)
 
 # Differential expression across conditions through pseudotime
-condRes <- conditionTest(sce, l2fc = log2(1.25))
+condRes <- conditionTest(sce, l2fc = log2(1.2))
 condRes$padj <- p.adjust(condRes$pvalue, "fdr")
 condRes <- condRes %>% filter(padj <= 0.05) %>% arrange(desc(waldStat))
 high_exp <- assay(sce, "counts") %>% log1p() %>% rowMeans() # calculate log1p mean expression of each gene 
 high_exp <- high_exp[high_exp > 0.4] # genes with high expression
 high_exp <- names(high_exp)
 condRes <- condRes %>% filter(rownames(condRes) %in% high_exp) # Filter out differentially expressed genes with low expression
-write.csv(condRes, file = "results/fibro-differential-progression/deg_ps.csv")
+condRes$gene <- rownames(condRes)
+condRes <- condRes[,c("gene", "waldStat", "df", "pvalue", "padj")]
+deg_ps <- condRes
+write.csv(deg_ps, file = "results/fibro-differential-progression/deg_ps.csv", row.names = F)
 
 # Heatmaps of genes DE between conditions, ordered according to a hierarchical 
 # clustering on the WT condition
 yhatSmooth <- predictSmooth(sce,
-                            gene = rownames(condRes),
+                            gene = deg_ps$gene,
                             nPoints = 100,
                             tidy = FALSE) %>%
   log1p()
@@ -186,14 +218,14 @@ matchingHeatmap_oe <- pheatmap(yhatSmoothScaled[heatSmooth_wt$tree_row$order, 10
 p9 <- plot_grid(heatSmooth_wt[[4]], matchingHeatmap_oe[[4]], ncol = 2)
 p9
 pdf(file = "results/fibro-differential-progression/deg_ps_heatmap.pdf",
-    height = 6,
+    height = 7,
     width = 6,
     useDingbats = F)
 print(p9)
 dev.off()
 
 # Visualize genes
-for (i in rownames(condRes)) {
+for (i in deg_ps$gene) {
   p <- plotSmoothers(sce,
                      assays(sce)$counts,
                      gene = i,
