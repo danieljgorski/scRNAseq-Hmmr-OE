@@ -21,7 +21,8 @@ output_dirs <- c("results",
                  "results/ora",
                  "results/post-clustering-qc",
                  "results/preprocessing",
-                 "results/volcano-plots")
+                 "results/volcano-plots",
+                 "results/fibro-differential-progression")
 
 for (i in output_dirs) {
   if (!dir.exists(i)) {
@@ -57,3 +58,5 @@ source("scripts/21-Hmmr-OE-mac-volcano-plots.R")
 source("scripts/22-Hmmr-OE-mac-ora.R")
 source("scripts/23-Hmmr-OE-mac-common-dge.R")
 source("scripts/24-Hmmr-OE-mac-violin-plots.R")
+source("scripts/25-Hmmr-OE-fibro-subset.R")
+source("scripts/26-Hmmr-OE-fibro-differential-progression.R")
