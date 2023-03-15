@@ -16,6 +16,9 @@ source("scripts/etc/dimplotlevels.R")
 # Load object
 load("results/objects/obj_annotated.Rdata")
 
+# Convert to SingleCellExperiment
+obj_sce <- as.SingleCellExperiment(obj, assay = "RNA")
+
 # Proportion calculation----
 prop_by_sample <- (prop.table(table(obj@meta.data$basic_annotation,
                                           obj@meta.data$sample), margin = 2))
@@ -27,10 +30,7 @@ write.csv(prop_by_sample,
           file = "results/differential-abundance/prop_by_sample.csv",
           row.names = F)
 
-# miloR----
-# Convert to SingleCellExperiment
-obj_sce <- as.SingleCellExperiment(obj, assay = "RNA")
-
+# miloR genotype analysis----
 # Convert to milo object
 obj_milo <- Milo(obj_sce)
 head(colData(obj_milo))
@@ -86,12 +86,12 @@ p1 <- plotReducedDim(obj_milo,
   scale_color_manual(values = colors) +
   NoLegend()
 p2 <- plotNhoodGraphDA(obj_milo, milo_res, alpha = 0.05)
-                    # alpha here is statistical sig threshold, not transparency
+# alpha here is statistical sig threshold, not transparency
 pdf(file = "results/differential-abundance/milo_UMAP_NhoodGraph.pdf",
     height = 6.5,
     width = 12,
     useDingbats = F
-    )
+)
 print(p1 + p2 + plot_layout(guides = "collect"))
 dev.off()
 
@@ -124,7 +124,7 @@ write.csv(milo_res,
 save(obj_milo, file = "results/objects/obj_milo.Rdata")
 
 
-# OCSA-DA Analysis with edgeR----
+# OCSA-DA Analysis with edgeR genotype analysis----
 #http://bioconductor.org/books/3.14/OSCA.multisample/differential-abundance.html
 
 # Abundances
@@ -177,3 +177,44 @@ write.csv(topTags(ocsa_da_res_norm, n = 34),
 
 # Save sce object
 save(obj_sce, file = "results/objects/obj_sce.Rdata")
+
+# OCSA-DA Analysis with edgeR time point analysis----
+#http://bioconductor.org/books/3.14/OSCA.multisample/differential-abundance.html
+
+# Abundances
+abundances <- table(obj_sce$basic_annotation, obj_sce$sample)
+abundances <- unclass(abundances)
+head(abundances)
+
+# Attaching some column metadata and making DGEList object
+extra.info <- colData(obj_sce)[match(colnames(abundances), obj_sce$sample), ]
+y.ab <- DGEList(abundances, samples = extra.info)
+y.ab
+
+# Filter low abundance
+keep <- filterByExpr(y.ab, group = y.ab$samples$timepoint)
+y.ab <- y.ab[keep, ]
+summary(keep)
+
+# Design matrix
+design <- model.matrix(~timepoint, y.ab$samples)
+
+# Estimate dispersion
+y.ab <- estimateDisp(y.ab, design, trend = "none")
+summary(y.ab$common.dispersion)
+plotBCV(y.ab, cex = 1)
+
+# QL fit
+fit.ab <- glmQLFit(y.ab, design, robust = TRUE, abundance.trend = FALSE)
+summary(fit.ab$var.prior)
+plotQLDisp(fit.ab, cex = 1)
+
+# Test
+ocsa_da_res_timepoint <- glmQLFTest(fit.ab, coef = ncol(design))
+summary(decideTests(ocsa_da_res_timepoint))
+topTags(ocsa_da_res_timepoint, n = 34)
+ocsa_da_res_timepoint$table
+
+# Save results
+write.csv(topTags(ocsa_da_res_timepoint, n = 34),
+          file = "results/differential-abundance/ocsa_da_res_timepoint.csv")
