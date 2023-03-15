@@ -17,6 +17,7 @@ library(scales)
 library(pheatmap)
 library(scater)
 source("scripts/etc/geno_colors.R")
+source("scripts/etc/colors.R")
 
 # Load the fibroblast subset object
 load("results/objects/fibro.Rdata")
@@ -41,24 +42,34 @@ p1 <- ggplot(df, aes(x = UMAP_1, y = UMAP_2, col = genotype)) +
   scale_color_manual(values=c("#999999", "#008000")) +
   labs(col = "Genotype", x="UMAP-1", y="UMAP-2") +
   theme_classic() +
-  theme(axis.text = element_blank())
+  theme(axis.text = element_blank(),
+        legend.title = element_blank(),
+        legend.position = "top",
+        legend.justification = "left",
+        legend.text = element_text(size = 32),
+        axis.title = element_text(size = 32)) +
+  guides(color = guide_legend(override.aes = list(size = 8.25)))
 p1
 pdf(file = "results/fibro-differential-progression/genotypes.pdf",
-    height = 4,
-    width = 6,
     useDingbats = F)
 print(p1)
 dev.off()
 
 # UMAP of fibroblast subset with basic annotation
 p2 <- plotReducedDim(sce, dimred = "UMAP",
-                     colour_by = "basic_annotation",
-                     text_by = "basic_annotation") +
+                     colour_by = "basic_annotation") +
   scale_color_manual(values = colors[12:14]) +
+  labs(x = "UMAP-1", y = "UMAP-2") +
+  theme(axis.text = element_blank(),
+        legend.title = element_blank(),
+        legend.position = "top",
+        legend.justification = "left",
+        legend.text = element_text(size = 32),
+        axis.title = element_text(size = 32)) +
+  guides(color = guide_legend(override.aes = list(size = 8.25)))
   theme(legend.title = element_blank())
+p2
 pdf(file = "results/fibro-differential-progression/basic_annotation.pdf",
-    height = 4,
-    width = 6,
     useDingbats = F)
 print(p2)
 dev.off()
@@ -72,13 +83,19 @@ df$scores <- scores$scaled_scores
 p3 <- ggplot(df, aes(x = UMAP_1, y = UMAP_2, col = scores)) +
   geom_point(size = .7) +
   scale_color_viridis_c(option = "C") +
-  labs(col = "Imbalance\nscore", x="UMAP-1", y="UMAP-2") +
+  labs(title = "Imbalance score", x = "UMAP-1", y = "UMAP-2") +
   theme_classic() +
-  theme(axis.text = element_blank())
+  theme(plot.title = element_text(size = 44),
+        legend.key.size = unit(.75, "cm"),
+        legend.position = c(0.14,0.93),
+        legend.direction = "horizontal",
+        legend.title = element_blank(),
+        legend.text = element_text(size = 16),
+        legend.spacing.y = unit(0.15, "cm"),
+        axis.text = element_blank(),
+        axis.title = element_text(size = 32))
 p3
 pdf(file = "results/fibro-differential-progression/imbalance.pdf",
-    height = 4,
-    width = 6,
     useDingbats = F)
 print(p3)
 dev.off()
@@ -90,10 +107,17 @@ for (i in c("Gsn", "Cthrc1", "Postn", "Col1a1")) {
                       colour_by = i,
                       by_exprs_values = "logcounts") +
     scale_fill_viridis_b() +
-    theme(legend.title = element_text(face = "italic"))
+    labs(x = "UMAP-1", y = "UMAP-2", title = i) +
+    theme(axis.text = element_blank(),
+          legend.key.size = unit(.75, "cm"),
+          legend.position = c(0.01,0.95),
+          legend.direction = "horizontal",
+          legend.title = element_blank(),
+          plot.title = element_text(size = 50, face = "italic"),
+          legend.spacing.y = unit(0.15, "cm"),
+          legend.text = element_text(size = 14),
+          axis.title = element_text(size = 32))
   pdf(file = paste0("results/fibro-differential-progression/featureplot_", i, ".pdf"),
-      height = 4,
-      width = 6,
       useDingbats = F)
   print(p)
   dev.off()
@@ -126,18 +150,28 @@ curve <- slingCurves(sce)[[1]]
 p4 <- ggplot(df, aes(x = UMAP_1, y = UMAP_2, col = slingPseudotime_1)) +
   geom_point(size = .7) +
   scale_color_viridis_c() +
-  labs(col = "Pseudotime", x="UMAP-1", y="UMAP-2") +
+  labs(title = "Pseudotime", x="UMAP-1", y="UMAP-2") +
   geom_path(data = curve$s[curve$ord, ] %>% as.data.frame(),
-            col = "black", size = 1.25) +
+            col = "black", size = 2.25, arrow = arrow()) +
   theme_classic() +
-  theme(axis.text = element_blank())
+  theme(plot.title = element_text(size = 44),
+        legend.key.size = unit(.75, "cm"),
+        legend.position = c(0.14,0.93),
+        legend.direction = "horizontal",
+        legend.title = element_blank(),
+        legend.text = element_text(size = 16),
+        legend.spacing.y = unit(0.15, "cm"),
+        axis.text = element_blank(),
+        axis.title = element_text(size = 32))
 p4
 pdf(file = "results/fibro-differential-progression/trajectory.pdf",
-    height = 4,
-    width = 6,
     useDingbats = F)
 print(p4)
 dev.off()
+
+# Kolmogorov-Smirnov Test for differential progression
+KS_res <- progressionTest(SlingshotDataSet(sce), conditions = sce$genotype)
+# KS-test statistic = 0.0877, p-value = 6.66e-16, significant
 
 # Plot the pseudotime distributions of each genotype
 p5 <- ggplot(df, aes(x = slingPseudotime_1,
@@ -146,21 +180,23 @@ p5 <- ggplot(df, aes(x = slingPseudotime_1,
   geom_density(alpha = .5) +
   scale_fill_manual(values=c("#999999", "#008000")) +
   scale_color_manual(values=c("#999999", "#008000")) +
-  labs(x = "Pseudotime", fill = "Genotype", y="Density", color = "Genotype") +
+  labs(x = "Pseudotime", fill = "Genotype", y = "Density", color = "Genotype") +
+  annotate("text", x = 1, y = .12, label = "P = 6.66e-16", size = 9) +
   theme_classic() +
   theme(legend.position = "top",
-        legend.justification = "left")
+        legend.key.height = unit(1, "cm"),
+        legend.key.width =  unit(1, "cm"),
+        legend.justification = "left",
+        legend.title = element_blank(),
+        legend.text = element_text(size = 38),
+        axis.title = element_text(size = 32),
+        axis.text = element_text(size = 24))
 p5
 pdf(file = "results/fibro-differential-progression/differential-progression.pdf",
-    height = 4,
-    width = 6,
+    width = 14,
     useDingbats = F)
 print(p5)
 dev.off()
-
-# Kolmogorov-Smirnov Test for differential progression
-progressionTest(SlingshotDataSet(sce), conditions = sce$genotype)
-# KS-test statistic = 0.0877, p-value = 6.66e-16, significant
 
 # Differential gene expression
 set.seed(3)
@@ -226,24 +262,25 @@ dev.off()
 
 # Visualize genes
 for (i in deg_ps$gene) {
+  padj <- deg_ps %>% filter(gene==i) %>% .$padj %>% signif(., digits = 3)
   p <- plotSmoothers(sce,
                      assays(sce)$counts,
                      gene = i,
-                     lwd = 2.5,
+                     lwd = 3,
                      border = TRUE,
-                     size = .3,
+                     size = .4,
                      curvesCols = geno_colors) +
     scale_color_manual(values = geno_colors,
                        labels = c("WT", "Hmmr-OE")) +
-    ggtitle(i) +
+    labs(title = i, subtitle = paste0("Padj = ", padj)) +
     theme_classic() +
-    theme(plot.title = element_text(face = "italic", size = 24),
+    theme(plot.title = element_text(face = "italic", size = 50, vjust = -3),
+          plot.subtitle = element_text(size = 24, hjust = 0.90, vjust = 0),
           legend.position = "none",
-          legend.title = element_blank()) +
-    guides(color = guide_legend(override.aes = list(size = 3.5)))
+          legend.title = element_blank(),
+          axis.title = element_text(size = 32),
+          axis.text = element_text(size = 24))
   pdf(file = paste0("results/fibro-differential-progression/deg_ps_", i, ".pdf"),
-      height = 4,
-      width = 6,
       useDingbats = F)
   print(p)
   dev.off()
